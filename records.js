@@ -884,33 +884,56 @@
     }
 
     records = Object.values(baseMap);
+    render(); // Immediate instant render so admin UI is never blank
 
-    // If Firestore is available, attempt to load live registrations
-    if (window.MLN_FIREBASE && window.MLN_FIREBASE.isConfigured && window.MLN_FIREBASE.db) {
-      setStatus("Syncing registrations with Firestore...");
-      window.MLN_FIREBASE.db.collection("registrations").get().then(function (snapshot) {
-        if (!snapshot.empty) {
-          snapshot.docs.forEach(function (doc) {
-            var data = doc.data();
-            data.id = doc.id;
-            baseMap[doc.id] = data;
+    // 1. Fetch from first-party API (immune to client-side ad-blockers)
+    fetch("/api/records")
+      .then(function (res) { return res.json(); })
+      .then(function (resData) {
+        if (resData && resData.success && Array.isArray(resData.records) && resData.records.length > 0) {
+          resData.records.forEach(function (r) {
+            if (r && r.id) baseMap[r.id] = r;
           });
           records = Object.values(baseMap);
+          records.sort(function (a, b) {
+            return new Date(b.registeredAt || 0) - new Date(a.registeredAt || 0);
+          });
+          render();
         }
+      })
+      .catch(function () {});
 
-        records.sort(function (a, b) {
-          return new Date(b.registeredAt || 0) - new Date(a.registeredAt || 0);
-        });
-
-        setStatus("");
-        render();
-      }).catch(function (error) {
-        console.warn("Firestore fetch error, operating in robust mock data mode:", error);
-        setStatus("Operating in Mock Mode (In-Memory Attendance)", false);
-        render();
+    // 2. If client Firestore is available, attempt real-time sync with strict timeout
+    if (window.MLN_FIREBASE && window.MLN_FIREBASE.isConfigured && window.MLN_FIREBASE.db) {
+      var firestoreGet = window.MLN_FIREBASE.db.collection("registrations").get();
+      var timeout = new Promise(function (_, reject) {
+        setTimeout(function () { reject(new Error("Timeout")); }, 1600);
       });
+
+      Promise.race([firestoreGet, timeout])
+        .then(function (snapshot) {
+          if (snapshot && !snapshot.empty) {
+            snapshot.docs.forEach(function (doc) {
+              var data = doc.data();
+              data.id = doc.id;
+              baseMap[doc.id] = data;
+            });
+            records = Object.values(baseMap);
+          }
+
+          records.sort(function (a, b) {
+            return new Date(b.registeredAt || 0) - new Date(a.registeredAt || 0);
+          });
+
+          setStatus("");
+          render();
+        })
+        .catch(function (error) {
+          setStatus("");
+          render();
+        });
     } else {
-      setStatus("Operating in Mock Mode (In-Memory Attendance)", false);
+      setStatus("");
       render();
     }
   }

@@ -1079,6 +1079,9 @@
     data.attended = false;
     data.attendedAt = null;
 
+    var permanentId = getPermanentMemberId(data.email, data.rollNumber);
+    data.id = permanentId;
+
     // Persist photo to localStorage keyed by rollNumber
     if (data.photo && data.rollNumber) {
       try {
@@ -1086,67 +1089,89 @@
       } catch (e) {}
     }
 
-    function completeRegistrationSuccess(regId) {
-      var passData = {
-        id: regId,
-        name: data.name,
-        rollNumber: data.rollNumber,
-        className: data.className,
-        interest: data.interest,
-        activity: data.activity,
-        email: data.email,
-        mobile: data.mobile,
-        instagram: data.instagram,
-        linkedin: data.linkedin,
-        whatsapp: data.whatsapp,
-        portfolioUrl: data.portfolioUrl,
-        photo: data.photo,
-        experience: data.experience,
-        experienceDuration: data.experienceDuration,
-        registeredAt: data.registeredAt
-      };
+    var passData = {
+      id: permanentId,
+      name: data.name,
+      rollNumber: data.rollNumber,
+      className: data.className,
+      interest: data.interest,
+      activity: data.activity,
+      email: data.email,
+      mobile: data.mobile,
+      instagram: data.instagram,
+      linkedin: data.linkedin,
+      whatsapp: data.whatsapp,
+      portfolioUrl: data.portfolioUrl,
+      photo: data.photo,
+      experience: data.experience,
+      experienceDuration: data.experienceDuration,
+      registeredAt: data.registeredAt
+    };
 
-      try {
-        var rawStore = localStorage.getItem("mln_local_registrations");
-        var list = rawStore ? JSON.parse(rawStore) : [];
-        var existingIdx = list.findIndex(function (it) {
-          return (it.rollNumber && it.rollNumber.trim().toUpperCase() === data.rollNumber) ||
-                 (it.email && it.email.trim().toLowerCase() === data.email);
-        });
-        if (existingIdx >= 0) {
-          list[existingIdx] = Object.assign(list[existingIdx], passData);
-        } else {
-          list.push(passData);
-        }
-        localStorage.setItem("mln_local_registrations", JSON.stringify(list));
-        localStorage.setItem("mln_last_pass", JSON.stringify(passData));
-        localStorage.removeItem("mln_reg_draft");
-      } catch (err) {}
+    // 1. Instantly persist to localStorage so data is NEVER lost even if connection drops
+    try {
+      var rawStore = localStorage.getItem("mln_local_registrations");
+      var list = rawStore ? JSON.parse(rawStore) : [];
+      var existingIdx = list.findIndex(function (it) {
+        return (it.rollNumber && it.rollNumber.trim().toUpperCase() === data.rollNumber) ||
+               (it.email && it.email.trim().toLowerCase() === data.email);
+      });
+      if (existingIdx >= 0) {
+        list[existingIdx] = Object.assign(list[existingIdx], passData);
+      } else {
+        list.push(passData);
+      }
+      localStorage.setItem("mln_local_registrations", JSON.stringify(list));
+      localStorage.setItem("mln_last_pass", JSON.stringify(passData));
+      localStorage.removeItem("mln_reg_draft");
+    } catch (err) {}
+
+    // 2. Dispatch non-blocking background sync to first-party API (immune to ad-blockers)
+    try {
+      fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(passData),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+
+    var hasCompleted = false;
+    function completeRegistrationSuccess(regId) {
+      if (hasCompleted) return;
+      hasCompleted = true;
 
       showAlert("success", isEditMode ? "Portfolio updated successfully! Loading your digital pass..." : "Registration confirmed! Generating your official member pass...");
       window.setTimeout(function () {
         var queryParams = new URLSearchParams({
-          id: regId,
+          id: regId || permanentId,
           name: data.name,
           dept: data.interest,
           activity: data.activity,
           roll: data.rollNumber
         });
         window.location.href = "thankyou.html?" + queryParams.toString();
-      }, 700);
+      }, 650);
     }
 
-    var permanentId = getPermanentMemberId(data.email, data.rollNumber);
-    data.id = permanentId;
+    // 3. Strict 1200ms timeout race: never wait forever if Firestore is blocked by Brave/uBlock
+    var timeoutPromise = new Promise(function (resolve) {
+      window.setTimeout(function () {
+        resolve({ id: permanentId, timedOut: true });
+      }, 1200);
+    });
 
-    // Attempt Firebase save with automatic offline fallback
-    RegistrationStore.save(data, permanentId)
-      .then(function (docRef) {
-        var regId = (docRef && docRef.id) ? docRef.id : permanentId;
+    // Attempt client Firebase save with automatic offline fallback
+    Promise.race([
+      RegistrationStore.save(data, permanentId),
+      timeoutPromise
+    ])
+      .then(function (result) {
+        var regId = (result && result.id) ? result.id : permanentId;
         completeRegistrationSuccess(regId);
       })
       .catch(function (err) {
-        console.warn("Firebase persistence offline/unconfigured. Storing locally with zero-backend support:", err);
+        console.warn("Client Firestore offline/blocked by ad-blocker. Local storage and server sync active:", err);
         completeRegistrationSuccess(permanentId);
       });
   }
