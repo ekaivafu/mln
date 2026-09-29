@@ -53,7 +53,8 @@ body.theme-marketing {
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -79,7 +80,7 @@ body {
   opacity: 0.95;
 }
 
-/* Animated Cyber Living Grid Backdrop - Continuous Top to Bottom */
+/* Static GPU Cyber Living Grid Backdrop - Zero CPU Repaints */
 .perspective-grid-backdrop {
   position: fixed;
   inset: 0;
@@ -89,13 +90,8 @@ body {
     linear-gradient(to right, rgba(255, 224, 201, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 224, 201, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
-  animation: gridDriftMotion 25s linear infinite;
   opacity: 0.85;
-}
-
-@keyframes gridDriftMotion {
-  0% { background-position: 0 0; }
-  100% { background-position: 44px 44px; }
+  transform: translate3d(0, 0, 0);
 }
 
 /* ==================== CENTERED PORTFOLIO STAGE ==================== */
@@ -973,10 +969,235 @@ body {
   color: var(--port-peach);
   flex-shrink: 0;
 }
+
+/* ==========================================================================
+   CINEMATIC BRANDED PRELOADER
+   ========================================================================== */
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999999;
+  background: #080504;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  contain: strict;
+}
+.site-preloader.is-loaded {
+  opacity: 0 !important;
+  transform: scale(1.03) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.site-preloader.is-active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+.preloader-ambient-glow {
+  position: absolute;
+  width: min(520px, 92vw);
+  height: min(520px, 92vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239, 118, 87, 0.22) 0%, rgba(0, 242, 161, 0.08) 45%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: preloaderPulseGlow 3s ease-in-out infinite alternate;
+}
+@keyframes preloaderPulseGlow {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 0.95; }
+}
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+}
+.preloader-lens-wrap {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preloader-ring-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #ef7657;
+  border-right-color: rgba(239, 118, 87, 0.4);
+  animation: preloaderSpin 1.8s linear infinite;
+  box-shadow: 0 0 20px rgba(239, 118, 87, 0.35);
+}
+.preloader-ring-inner {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1.5px dashed #00f2a1;
+  animation: preloaderSpinRev 2.4s linear infinite;
+}
+.preloader-shutter-center {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(239, 118, 87, 0.35), rgba(0, 242, 161, 0.25));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(239, 118, 87, 0.5), 0 0 16px rgba(0, 242, 161, 0.4);
+}
+.preloader-shutter-center svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+}
+@keyframes preloaderSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes preloaderSpinRev {
+  to { transform: rotate(-360deg); }
+}
+.preloader-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 0 6px 0;
+  background: linear-gradient(135deg, #ffffff 30%, #ffad7b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.preloader-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Space Grotesk', monospace, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00f2a1;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 242, 161, 0.08);
+  border: 1px solid rgba(0, 242, 161, 0.24);
+  margin-bottom: 22px;
+}
+.preloader-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f2a1;
+  box-shadow: 0 0 8px #00f2a1;
+  animation: preloaderBlink 1s ease-in-out infinite;
+}
+@keyframes preloaderBlink {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+.preloader-progress-track {
+  width: 150px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+.preloader-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ef7657, #ff9a70, #00f2a1);
+  box-shadow: 0 0 12px rgba(239, 118, 87, 0.8);
+  animation: preloaderLineLoop 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes preloaderLineLoop {
+  0% { left: -45%; width: 30%; }
+  50% { width: 60%; }
+  100% { left: 100%; width: 30%; }
+}
 </style>
 </head>
 
 <body>
+
+<!-- Cinematic Branded Preloader / Page Transition Overlay -->
+<div id="sitePreloader" class="site-preloader" aria-hidden="true">
+  <div class="preloader-ambient-glow"></div>
+  <div class="preloader-content">
+    <div class="preloader-lens-wrap">
+      <div class="preloader-ring-outer"></div>
+      <div class="preloader-ring-inner"></div>
+      <div class="preloader-shutter-center">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+          <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>
+        </svg>
+      </div>
+    </div>
+    <div class="preloader-title">MLN ALLIANCE</div>
+    <div class="preloader-badge">
+      <span class="preloader-dot"></span>
+      Portfolio ID • Verified
+    </div>
+    <div class="preloader-progress-track">
+      <div class="preloader-progress-line"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    function dismiss() {
+      var p = document.getElementById("sitePreloader");
+      if (p && !p.classList.contains("is-loaded")) {
+        p.classList.add("is-loaded");
+      }
+    }
+    if (document.readyState === "complete") {
+      setTimeout(dismiss, 100);
+    } else {
+      window.addEventListener("load", function(){ setTimeout(dismiss, 120); });
+      setTimeout(dismiss, 1000);
+    }
+    window.addEventListener("pageshow", function(e){ if (e.persisted) dismiss(); });
+    // Back navigation smoothly triggers preloader
+    document.querySelectorAll(".portfolio-back-btn, a[href]").forEach(function(link){
+      link.addEventListener("click", function(e){
+        var href = link.getAttribute("href");
+        if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
+        var p = document.getElementById("sitePreloader");
+        if (p) {
+          p.classList.remove("is-loaded");
+          p.classList.add("is-active");
+        }
+      });
+    });
+  })();
+</script>
 
 <!-- Live Canvas Ambient Living Fluid & Dust Constellation -->
 <canvas id="ambientBgCanvas"></canvas>
@@ -1238,18 +1459,16 @@ body {
     if (e.touches && e.touches[0]) {
       mouse.targetX = e.touches[0].clientX;
       mouse.targetY = e.touches[0].clientY;
-      document.documentElement.style.setProperty("--cursor-x", e.touches[0].clientX + "px");
-      document.documentElement.style.setProperty("--cursor-y", e.touches[0].clientY + "px");
     }
   }, { passive: true });
 
-  // 120 Floating cosmic embers & constellations distributed top to bottom
-  var PARTICLE_COUNT = 120;
+  // Adaptive particle count for fluid 120Hz mobile & high-res screens
+  var PARTICLE_COUNT = (window.innerWidth < 768) ? 36 : 64;
   for (var i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 2.2 + 0.8,
+      radius: Math.random() * 2.0 + 0.8,
       vx: (Math.random() - 0.5) * 0.45,
       vy: -Math.random() * 0.65 - 0.25,
       alpha: Math.random() * 0.65 + 0.25,
@@ -1340,7 +1559,7 @@ body {
       }
     }
 
-    // 2. Cosmic Constellation & Floating Embers across Full Viewport
+    // 2. Cosmic Constellation & Floating Embers (Optimized O(N) spatial pruning)
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
       p.x += p.vx;
@@ -1359,13 +1578,15 @@ body {
       for (var j = i + 1; j < particles.length; j++) {
         var p2 = particles[j];
         var dx = p.x - p2.x;
+        if (Math.abs(dx) > 85) continue;
         var dy = p.y - p2.y;
+        if (Math.abs(dy) > 85) continue;
         var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 95) {
+        if (dist < 85) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = "rgba(255, 224, 201, " + ((1 - dist / 95) * 0.14) + ")";
+          ctx.strokeStyle = "rgba(255, 224, 201, " + ((1 - dist / 85) * 0.12) + ")";
           ctx.lineWidth = 0.75;
           ctx.stroke();
         }
@@ -1379,14 +1600,19 @@ body {
 
 /* ==========================================================================
    INTERACTIVE 3D TILT PHYSICS & SPOTLIGHT CURSOR ENGINE
+   Guarded for fine pointer / hover devices to prevent mobile scroll lag
    ========================================================================== */
 (function initTiltAndSpotlight() {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    return;
+  }
+
   var cutoutContainer = document.getElementById("heroCutoutContainer");
   var gatePassCard = document.getElementById("gatePassCard");
   var bentoCards = document.querySelectorAll(".bento-link-row");
 
-  document.addEventListener("mousemove", function(e) {
-    bentoCards.forEach(function(card) {
+  bentoCards.forEach(function(card) {
+    card.addEventListener("mousemove", function(e) {
       var rect = card.getBoundingClientRect();
       var x = e.clientX - rect.left;
       var y = e.clientY - rect.top;

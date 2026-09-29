@@ -64,12 +64,12 @@
 *, *::before, *::after{ box-sizing: border-box; }
 
 html{
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior: auto; }
   *, *::before, *::after{
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
@@ -79,8 +79,8 @@ html{
 }
 
 @keyframes pageEntrance{
-  0%{ opacity: 0; filter: blur(8px); transform: translateY(8px) scale(0.995); }
-  100%{ opacity: 1; filter: none; transform: none; }
+  0%{ opacity: 0; transform: translateY(6px); }
+  100%{ opacity: 1; transform: none; }
 }
 
 body{
@@ -92,14 +92,14 @@ body{
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
-  animation: pageEntrance 400ms var(--ease-out) forwards;
-  transition: opacity 280ms var(--ease-out), transform 280ms var(--ease-out), filter 280ms ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  animation: pageEntrance 300ms var(--ease-out) forwards;
+  transition: opacity 220ms var(--ease-out);
 }
 
 body.page-leaving{
   opacity: 0 !important;
-  filter: blur(8px) !important;
-  transform: translateY(-8px) scale(0.99) !important;
   pointer-events: none;
 }
 
@@ -331,21 +331,25 @@ p{ margin: 0 0 1em; max-width: 62ch; }
    ADDICTIVE SCROLL-DRIVEN FOCUS ENGINE (PHONE & DESKTOP ACTIVE RESPONSE)
    -------------------------------------------------------------------------- */
 .card, .dept-card, .pipeline-step, .cta-glass-banner {
-  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 320ms ease,
-              box-shadow 380ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, border-color, box-shadow;
+  transition: border-color 280ms ease, box-shadow 280ms ease;
 }
 
-/* Focused Card in Reading Zone (Scroll Response) */
+/* Focused Card in Reading Zone (Scroll Response - Zero reflow, zero geometry jump) */
 .card.is-focused,
 .dept-card.is-focused {
   border-top-color: rgba(255, 255, 255, 0.65) !important;
   border-color: rgba(255, 176, 137, 0.45) !important;
   box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.32),
-              0 24px 60px -16px rgba(239, 118, 87, 0.30),
-              0 12px 30px -8px rgba(0, 0, 0, 0.85) !important;
-  transform: translateY(-5px) scale(1.018) !important;
+              0 16px 40px -12px rgba(239, 118, 87, 0.22),
+              0 8px 24px -6px rgba(0, 0, 0, 0.75) !important;
+}
+
+/* Desktop-only subtle lift on actual mouse hover */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover, .dept-card:hover {
+    transform: translateY(-4px);
+    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms ease, box-shadow 240ms ease;
+  }
 }
 
 /* Production Card in focus: Audio spectrum energetic surge */
@@ -4582,5 +4586,325 @@ body.register-page {
 @keyframes toastBarDecay {
   from { width: 100%; }
   to { width: 0%; }
+}
+
+/* ==========================================================================
+   CINEMATIC BRANDED PRELOADER & PAGE TRANSITION OVERLAY
+   Ultra-smooth 120Hz aperture iris loading sequence
+   ========================================================================== */
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999999;
+  background: #080504;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  contain: strict;
+}
+
+.site-preloader.is-loaded {
+  opacity: 0 !important;
+  transform: scale(1.03) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.site-preloader.is-active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.preloader-ambient-glow {
+  position: absolute;
+  width: min(520px, 92vw);
+  height: min(520px, 92vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239, 118, 87, 0.22) 0%, rgba(0, 242, 161, 0.08) 45%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: preloaderPulseGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderPulseGlow {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 0.95; }
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.preloader-lens-wrap {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-ring-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #ef7657;
+  border-right-color: rgba(239, 118, 87, 0.4);
+  animation: preloaderSpin 1.8s linear infinite;
+  box-shadow: 0 0 20px rgba(239, 118, 87, 0.35);
+}
+
+.preloader-ring-inner {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1.5px dashed #00f2a1;
+  animation: preloaderSpinRev 2.4s linear infinite;
+}
+
+.preloader-shutter-center {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(239, 118, 87, 0.35), rgba(0, 242, 161, 0.25));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(239, 118, 87, 0.5), 0 0 16px rgba(0, 242, 161, 0.4);
+}
+
+.preloader-shutter-center svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes preloaderSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes preloaderSpinRev {
+  to { transform: rotate(-360deg); }
+}
+
+.preloader-title {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 0 6px 0;
+  background: linear-gradient(135deg, #ffffff 30%, #ffad7b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.preloader-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Space Grotesk', monospace, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00f2a1;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 242, 161, 0.08);
+  border: 1px solid rgba(0, 242, 161, 0.24);
+  margin-bottom: 22px;
+}
+
+.preloader-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f2a1;
+  box-shadow: 0 0 8px #00f2a1;
+  animation: preloaderBlink 1s ease-in-out infinite;
+}
+
+@keyframes preloaderBlink {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+.preloader-progress-track {
+  width: 150px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ef7657, #ff9a70, #00f2a1);
+  box-shadow: 0 0 12px rgba(239, 118, 87, 0.8);
+  animation: preloaderLineLoop 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes preloaderLineLoop {
+  0% { left: -45%; width: 30%; }
+  50% { width: 60%; }
+  100% { left: 100%; width: 30%; }
+}
+
+/* ==========================================================================
+   UNIVERSAL SCREEN TYPE OPTIMIZATIONS (120Hz PHONES, TABLETS, DESKTOPS)
+   ========================================================================== */
+
+/* 1. TOUCH & HIGH-REFRESH RATE (POCO F6, ANDROID, iOS) OPTIMIZATIONS */
+@media (hover: none) and (pointer: coarse) {
+  /* Prevent heavy multi-layer blur composition stalls during 120Hz touch pan */
+  .card, .dept-card, .pipeline-step, .bento-card {
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+
+  /* Natural hardware kinetic fling */
+  body, html {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+
+  /* Instant tap feedback with zero scroll reflow */
+  .btn:active, .pick-card:active, .tab-btn:active, .nav-cta:active {
+    transform: scale(0.97);
+    transition: transform 80ms ease;
+  }
+}
+
+/* 2. ULTRA-NARROW / COMPACT SMARTPHONES (<= 380px) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 2.1rem !important;
+    line-height: 1.12 !important;
+  }
+  .hero-tag {
+    font-size: 0.68rem !important;
+    padding: 4px 10px !important;
+  }
+  .hero-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .hero-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .dept-grid, .stats-grid, .values-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .pipeline-steps {
+    gap: 14px !important;
+  }
+  .pipeline-step {
+    padding: 16px 14px !important;
+  }
+}
+
+/* 3. STANDARD MODERN SMARTPHONES (381px - 576px, e.g. Poco F6 412px, iPhone 393px) */
+@media (min-width: 381px) and (max-width: 576px) {
+  .hero-title {
+    font-size: 2.45rem !important;
+    line-height: 1.15 !important;
+  }
+  .hero-tagline {
+    font-size: 0.95rem !important;
+  }
+  .hero-actions {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero-actions .btn {
+    width: 100% !important;
+  }
+  .dept-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+}
+
+/* 4. TABLETS & FOLDABLE EXTENDED (577px - 991px) */
+@media (min-width: 577px) and (max-width: 991px) {
+  .dept-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  .hero-container {
+    padding-top: 60px !important;
+  }
+}
+
+/* 5. LAPTOPS & DESKTOPS (992px - 1439px) */
+@media (min-width: 992px) and (max-width: 1439px) {
+  .dept-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+  }
+  .pipeline-steps {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* 6. LARGE SCREENS & 4K ULTRAWIDE MONITORS (>= 1440px) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1360px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-content {
+    max-width: 960px !important;
+  }
+  .hero-title {
+    font-size: 4.8rem !important;
+    letter-spacing: -0.04em !important;
+  }
+  .dept-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 28px !important;
+  }
+  .pipeline-steps {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+  }
 }
 

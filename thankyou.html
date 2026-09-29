@@ -12,6 +12,48 @@
 </head>
 <body>
 
+<!-- Cinematic Branded Preloader / Page Transition Overlay -->
+<div id="sitePreloader" class="site-preloader" aria-hidden="true">
+  <div class="preloader-ambient-glow"></div>
+  <div class="preloader-content">
+    <div class="preloader-lens-wrap">
+      <div class="preloader-ring-outer"></div>
+      <div class="preloader-ring-inner"></div>
+      <div class="preloader-shutter-center">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+          <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>
+        </svg>
+      </div>
+    </div>
+    <div class="preloader-title">MLN Alliance</div>
+    <div class="preloader-badge">
+      <span class="preloader-dot"></span>
+      Member Pass • Generated
+    </div>
+    <div class="preloader-progress-track">
+      <div class="preloader-progress-line"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    function dismiss() {
+      var p = document.getElementById("sitePreloader");
+      if (p && !p.classList.contains("is-loaded")) {
+        p.classList.add("is-loaded");
+      }
+    }
+    if (document.readyState === "complete") {
+      setTimeout(dismiss, 80);
+    } else {
+      window.addEventListener("load", function(){ setTimeout(dismiss, 120); });
+      setTimeout(dismiss, 1000);
+    }
+    window.addEventListener("pageshow", function(e){ if (e.persisted) dismiss(); });
+  })();
+</script>
+
 <!-- Ambient Liquid Refraction Canvas -->
 <div class="liquid-ambient-canvas" aria-hidden="true">
   <div class="orb orb-1"></div>

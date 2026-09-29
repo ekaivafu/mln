@@ -15,29 +15,49 @@
 (function () {
   "use strict";
 
-  /* ---------- Smooth Page Transitions ---------- */
+  /* ---------- Cinematic Preloader & Page Transitions ---------- */
   function initPageTransitions() {
-    var beam = document.createElement("div");
-    beam.className = "page-transition-beam";
-    document.body.appendChild(beam);
+    var preloader = document.getElementById("sitePreloader");
+
+    function dismissPreloader() {
+      if (preloader && !preloader.classList.contains("is-loaded")) {
+        preloader.classList.add("is-loaded");
+        preloader.classList.remove("is-active");
+      }
+    }
+
+    if (document.readyState === "complete") {
+      setTimeout(dismissPreloader, 100);
+    } else {
+      window.addEventListener("load", function () {
+        setTimeout(dismissPreloader, 140);
+      });
+      setTimeout(dismissPreloader, 1000);
+    }
+
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) {
+        dismissPreloader();
+        document.body.classList.remove("page-leaving");
+      }
+    });
 
     document.querySelectorAll("a[href]").forEach(function (link) {
       link.addEventListener("click", function (e) {
         var href = link.getAttribute("href");
         if (!href) return;
 
-        // Skip in-page anchors, tel, mailto, target="_blank", or modifier keys
         if (
           href.startsWith("#") ||
           href.startsWith("mailto:") ||
           href.startsWith("tel:") ||
+          href.startsWith("javascript:") ||
           link.getAttribute("target") === "_blank" ||
           e.ctrlKey || e.metaKey || e.shiftKey || e.altKey
         ) {
           return;
         }
 
-        // Skip if anchor link on the current page (e.g. index.html#about when already on index.html)
         var currentFile = (window.location.pathname.split("/").pop() || "index.html").split("#")[0];
         if (href.indexOf("#") !== -1) {
           var targetFile = href.split("#")[0];
@@ -47,11 +67,14 @@
         }
 
         e.preventDefault();
-        beam.classList.add("active");
+        if (preloader) {
+          preloader.classList.remove("is-loaded");
+          preloader.classList.add("is-active");
+        }
         document.body.classList.add("page-leaving");
         setTimeout(function () {
           window.location.href = href;
-        }, 260);
+        }, 220);
       });
     });
   }
@@ -277,27 +300,12 @@
     });
   }
 
-  /* ---------- Mobile Tactile Touch Feedback (Haptic Visual Spring) ---------- */
+  /* ---------- Mobile Tactile Touch Feedback (Zero-Reflow GPU State) ---------- */
   function initMobileTouchFeedback() {
     var touchElements = document.querySelectorAll(".card, .dept-card, .pipeline-step, .btn, .hero-actions a, .pick-card, .form-step-card, .tab-btn, .portrait-dropzone, .btn-qr-color, .toggle-opt");
     touchElements.forEach(function (el) {
-      el.addEventListener("touchstart", function (e) {
-        if (!e.touches || !e.touches[0]) return;
-        var rect = el.getBoundingClientRect();
-        var touchX = e.touches[0].clientX - rect.left;
-        var touchY = e.touches[0].clientY - rect.top;
-        el.style.setProperty("--mouse-x", touchX + "px");
-        el.style.setProperty("--mouse-y", touchY + "px");
+      el.addEventListener("touchstart", function () {
         el.classList.add("touch-active");
-      }, { passive: true });
-
-      el.addEventListener("touchmove", function (e) {
-        if (!e.touches || !e.touches[0]) return;
-        var rect = el.getBoundingClientRect();
-        var touchX = e.touches[0].clientX - rect.left;
-        var touchY = e.touches[0].clientY - rect.top;
-        el.style.setProperty("--mouse-x", touchX + "px");
-        el.style.setProperty("--mouse-y", touchY + "px");
       }, { passive: true });
 
       el.addEventListener("touchend", function () {
@@ -310,8 +318,13 @@
     });
   }
 
-  /* ---------- Liquid Glass Card Cursor Spotlight (Throttled rAF) ---------- */
+  /* ---------- Liquid Glass Card Cursor Spotlight (Desktop Pointer Only) ---------- */
   function initCardGlow() {
+    // Only run on devices that support hover (desktops/mice), preventing mobile scroll lag
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
+
     var cards = document.querySelectorAll(".card, .dept-card, .bento-card, .cta-glass-banner, .pass-card, .form-step-card, .id-download-card");
     cards.forEach(function (card) {
       var rafId = null;
