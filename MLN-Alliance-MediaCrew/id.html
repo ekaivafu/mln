@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Official Member Portfolio — MLN Alliance MediaCrew</title>
+<meta name="description" content="Verified Member Digital Portfolio, Department Console & Official QR-ID Pass for MLN Alliance MediaCrew." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<style>
+/* ==========================================================================
+   STATE-OF-THE-ART FUTURISTIC LIQUID-OBSIDIAN MEMBER PORTFOLIO
+   Harmonized with Deep Obsidian Black, Cyber Coral, Mint & Liquid Glass
+   ========================================================================== */
+
+:root {
+  --port-bg: #060404;
+  --port-stage-bg: rgba(14, 10, 8, 0.76);
+  --port-glass: rgba(22, 16, 13, 0.72);
+  --port-glass-hover: rgba(32, 23, 19, 0.88);
+  --port-border: rgba(255, 224, 201, 0.12);
+  --port-border-strong: rgba(255, 224, 201, 0.28);
+  --port-border-glow: rgba(239, 118, 87, 0.55);
+  --port-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16);
+  --port-text-hi: #fff8f2;
+  --port-text-mid: #d1c5bb;
+  --port-text-low: #8e8076;
+  --port-coral: #ef7657;
+  --port-peach: #ff9a70;
+  --port-mint: #00f2a1;
+  --port-blue: #38bdf8;
+  --port-purple: #c084fc;
+}
+
+/* Department Theme Variants */
+body.theme-designing {
+  --port-coral: #00f2a1;
+  --port-peach: #5eead4;
+  --port-border-glow: rgba(0, 242, 161, 0.55);
+}
+body.theme-marketing {
+  --port-coral: #38bdf8;
+  --port-peach: #93c5fd;
+  --port-border-glow: rgba(56, 189, 248, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--port-bg);
+  color: var(--port-text-mid);
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==================== AMBIENT LIVING BACKGROUND CANVAS ==================== */
+#ambientBgCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* Animated Cyber Living Grid Backdrop - Continuous Top to Bottom */
+.perspective-grid-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, rgba(255, 224, 201, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 224, 201, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  animation: gridDriftMotion 25s linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes gridDriftMotion {
+  0% { background-position: 0 0; }
+  100% { background-position: 44px 44px; }
+}
+
+/* ==================== CENTERED PORTFOLIO STAGE ==================== */
+.portfolio-viewport {
+  width: 100%;
+  max-width: 520px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(14, 10, 8, 0.52) 0%, rgba(10, 7, 6, 0.62) 100%);
+  border-left: 1px solid var(--port-border);
+  border-right: 1px solid var(--port-border);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 120px;
+  box-shadow: 0 0 120px rgba(0, 0, 0, 0.85), 0 0 50px rgba(239, 118, 87, 0.15);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+@media (min-width: 620px) {
+  .portfolio-viewport {
+    margin: 24px auto 40px;
+    min-height: calc(100vh - 48px);
+    border-radius: 32px;
+    border: 1px solid var(--port-border);
+  }
+}
+
+/* ==================== FLOATING GLASS HEADER ==================== */
+.portfolio-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  position: sticky;
+  top: 0;
+  background: rgba(12, 9, 7, 0.9);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  z-index: 60;
+  border-bottom: 1px solid var(--port-border);
+  transition: all 0.3s ease;
+}
+
+.portfolio-back-btn,
+.portfolio-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: rgba(255, 224, 201, 0.05);
+  border: 1px solid var(--port-border);
+  color: var(--port-text-hi);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--port-specular);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.portfolio-back-btn:hover,
+.portfolio-share-btn:hover {
+  background: rgba(239, 118, 87, 0.18);
+  border-color: var(--port-coral);
+  color: var(--port-peach);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 118, 87, 0.35);
+}
+
+.portfolio-brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.portfolio-brand-badge .brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--port-coral), var(--port-peach));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25) inset, 0 6px 20px rgba(239, 118, 87, 0.4);
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.portfolio-brand-badge:hover .brand-mark {
+  transform: scale(1.06) rotate(-2deg);
+}
+.portfolio-brand-badge .brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.brand-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.brand-title-wrap .title-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--port-text-hi);
+  line-height: 1.1;
+}
+.brand-title-wrap .sub-brand {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--port-coral);
+  text-transform: uppercase;
+}
+
+/* ==================== HERO CUTOUT & EDITORIAL STAGE ==================== */
+.portfolio-hero-stage {
+  padding: 24px 22px 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Track / Category Tag */
+.hero-role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(239, 118, 87, 0.12);
+  border: 1px solid rgba(239, 118, 87, 0.4);
+  color: var(--port-peach);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(239, 118, 87, 0.25);
+  animation: pillEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-role-pill .pill-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--port-mint);
+  box-shadow: 0 0 10px var(--port-mint);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+@keyframes pillEntrance {
+  0% { opacity: 0; transform: translateY(-12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Large Editorial Display Name */
+.hero-display-name {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 2.85rem;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--port-text-hi);
+  margin-bottom: 20px;
+  animation: heroNameReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  opacity: 0;
+  transform: translateY(16px);
+}
+.hero-display-name span {
+  display: block;
+}
+
+@keyframes heroNameReveal {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== 3D INTERACTIVE CUTOUT STAGE ==================== */
+.hero-cutout-perspective-wrap {
+  perspective: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.hero-cutout-container {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+  cursor: grab;
+}
+
+/* Hologram Background Radial Pulse */
+.cutout-hologram-aura {
+  position: absolute;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239, 118, 87, 0.42) 0%, rgba(0, 242, 161, 0.22) 45%, transparent 75%);
+  filter: blur(42px);
+  top: 18%;
+  z-index: 1;
+  pointer-events: none;
+  animation: auraBreath 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes auraBreath {
+  0% { transform: scale(0.92); opacity: 0.65; }
+  100% { transform: scale(1.18); opacity: 1; filter: blur(48px); }
+}
+
+/* Rotating Futuristic Cyber-Rings (Dual-Direction) */
+.cutout-cyber-ring-outer {
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 224, 201, 0.28);
+  top: 14%;
+  z-index: 1;
+  pointer-events: none;
+  animation: ringRotateClockwise 26s linear infinite;
+}
+.cutout-cyber-ring-outer::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--port-mint);
+  box-shadow: 0 0 10px var(--port-mint);
+}
+
+.cutout-cyber-ring-inner {
+  position: absolute;
+  width: 275px;
+  height: 275px;
+  border-radius: 50%;
+  border: 1px dotted rgba(0, 242, 161, 0.35);
+  top: 20%;
+  z-index: 1;
+  pointer-events: none;
+  animation: ringRotateCounter 18s linear infinite;
+}
+
+@keyframes ringRotateClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes ringRotateCounter {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Scanning Cyber-Line */
+.cutout-scanner-line {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(239, 118, 87, 0.4) 20%, #00f2a1 50%, rgba(239, 118, 87, 0.4) 80%, transparent 100%);
+  box-shadow: 0 0 16px var(--port-mint), 0 0 6px #ffffff;
+  z-index: 4;
+  pointer-events: none;
+  animation: scannerScan 3.8s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+@keyframes scannerScan {
+  0% { top: 12%; opacity: 0; }
+  15% { opacity: 0.95; }
+  85% { opacity: 0.95; }
+  100% { top: 90%; opacity: 0; }
+}
+
+/* Cutout Image with 3D Depth */
+.hero-cutout-img {
+  position: relative;
+  z-index: 3;
+  width: 88%;
+  max-width: 325px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.92));
+  object-fit: contain;
+  transform: translateZ(40px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Floating HUD Tag Over Cutout */
+.cutout-hud-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  z-index: 5;
+  background: rgba(14, 10, 8, 0.88);
+  border: 1px solid var(--port-border-strong);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 12px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.65), var(--port-specular);
+  transform: translateZ(50px);
+}
+.cutout-hud-badge .hud-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--port-mint);
+  box-shadow: 0 0 8px var(--port-mint);
+}
+.cutout-hud-badge .hud-status-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--port-text-hi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ==================== CONTENT BODY & DETAILS ==================== */
+.portfolio-content-body {
+  padding: 10px 22px 28px;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-lead-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, #ff9a70 50%, #00f2a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.hero-lead-degree {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--port-text-hi);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.hero-lead-meta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--port-text-low);
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.verified-member-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 242, 161, 0.1);
+  border: 1px solid rgba(0, 242, 161, 0.35);
+  color: var(--port-mint);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+.verified-member-beacon .beacon-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--port-mint);
+  box-shadow: 0 0 8px var(--port-mint);
+}
+
+/* Smooth section scroll margin */
+#bentoLinksDeck,
+#gatePassCard {
+  scroll-margin-top: 86px;
+}
+
+/* ==================== BENTO INTERACTIVE CONNECT HUB ==================== */
+.bento-section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--port-text-low);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bento-section-title span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.gear-status {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--port-mint);
+  letter-spacing: 0.1em;
+}
+
+.bento-links-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.bento-links-deck::before {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 90%;
+  background: radial-gradient(ellipse at center, rgba(0, 242, 161, 0.08) 0%, rgba(239, 118, 87, 0.07) 50%, transparent 80%);
+  filter: blur(36px);
+  pointer-events: none;
+  z-index: 0;
+  animation: deckAuraBreath 7s ease-in-out infinite alternate;
+}
+
+@keyframes deckAuraBreath {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  100% { transform: scale(1.05); opacity: 1; filter: blur(42px); }
+}
+
+.bento-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--port-glass);
+  border: 1px solid var(--port-border);
+  border-radius: 18px;
+  text-decoration: none;
+  color: var(--port-text-hi);
+  box-shadow: var(--port-specular);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s, box-shadow 0.24s, background 0.24s;
+}
+
+.bento-link-row::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 120px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(239, 118, 87, 0.18), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.bento-link-row:hover::after {
+  opacity: 1;
+}
+
+.bento-link-row:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: var(--port-glass-hover);
+  border-color: var(--port-border-glow);
+  box-shadow: 0 12px 30px -10px rgba(239, 118, 87, 0.25), var(--port-specular);
+}
+
+.bento-link-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bento-link-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 224, 201, 0.08);
+  border: 1px solid var(--port-border);
+  color: var(--port-text-hi);
+  flex-shrink: 0;
+  transition: transform 0.2s, background 0.2s;
+}
+.bento-link-row:hover .bento-link-icon-box {
+  transform: scale(1.08);
+}
+
+.bento-link-row.instagram .bento-link-icon-box {
+  background: linear-gradient(135deg, rgba(225, 48, 108, 0.2), rgba(253, 29, 29, 0.2));
+  border-color: rgba(225, 48, 108, 0.4);
+  color: #fd1d1d;
+}
+.bento-link-row.linkedin .bento-link-icon-box {
+  background: linear-gradient(135deg, rgba(10, 102, 194, 0.2), rgba(0, 119, 181, 0.2));
+  border-color: rgba(10, 102, 194, 0.4);
+  color: #0a66c2;
+}
+.bento-link-row.whatsapp .bento-link-icon-box {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(18, 140, 126, 0.2));
+  border-color: rgba(37, 211, 102, 0.4);
+  color: #25d366;
+}
+.bento-link-row.portfolio .bento-link-icon-box {
+  background: linear-gradient(135deg, rgba(0, 242, 161, 0.2), rgba(56, 189, 248, 0.2));
+  border-color: rgba(0, 242, 161, 0.4);
+  color: #00f2a1;
+}
+.bento-link-row.email .bento-link-icon-box {
+  background: linear-gradient(135deg, rgba(239, 118, 87, 0.2), rgba(255, 154, 112, 0.2));
+  border-color: rgba(239, 118, 87, 0.4);
+  color: #ef7657;
+}
+
+.bento-link-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bento-link-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--port-text-hi);
+  transition: color 0.2s;
+}
+.bento-link-row:hover .bento-link-title {
+  color: var(--port-peach);
+}
+.bento-link-sub {
+  font-size: 0.76rem;
+  color: var(--port-text-low);
+  font-weight: 500;
+}
+
+.bento-link-arrow {
+  width: 22px;
+  height: 22px;
+  color: var(--port-text-low);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
+}
+.bento-link-row:hover .bento-link-arrow {
+  transform: translate(4px, -4px);
+  color: var(--port-mint);
+}
+
+
+
+/* ==================== HOLOGRAPHIC VIP OFFICIAL QR-ID CARD ==================== */
+.gate-pass-perspective-wrap {
+  perspective: 1200px;
+  width: 100%;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.gate-pass-perspective-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 34px;
+  background: radial-gradient(circle at 50% 50%, rgba(239, 118, 87, 0.25) 0%, rgba(0, 242, 161, 0.16) 45%, transparent 75%);
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 0;
+  animation: qrAuraPulse 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes qrAuraPulse {
+  0% { opacity: 0.5; transform: scale(0.96); }
+  100% { opacity: 0.95; transform: scale(1.03); filter: blur(34px); }
+}
+
+.gate-pass-card {
+  background: linear-gradient(145deg, rgba(28, 20, 17, 0.92) 0%, rgba(14, 10, 8, 0.98) 100%);
+  border: 1px solid var(--port-border-strong);
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.85), 0 0 35px rgba(239, 118, 87, 0.12);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out, box-shadow 0.2s;
+}
+
+/* Holographic Foil Shimmer Layer */
+.gate-pass-card::after {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(0, 242, 161, 0.25) 45%,
+    rgba(239, 118, 87, 0.25) 55%,
+    transparent 70%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: holoFoil 8s ease-in-out infinite;
+}
+
+@keyframes holoFoil {
+  0% { transform: translateY(-60%) rotate(25deg); }
+  50% { transform: translateY(60%) rotate(25deg); }
+  100% { transform: translateY(-60%) rotate(25deg); }
+}
+
+.gate-pass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+.gate-pass-header h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--port-text-hi);
+  text-transform: uppercase;
+}
+.qr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: rgba(0, 242, 161, 0.14);
+  border: 1px solid rgba(0, 242, 161, 0.4);
+  border-radius: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--port-mint);
+}
+.qr-badge .qr-badge-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--port-mint);
+  animation: pulseDot 1.5s infinite;
+}
+
+/* High-Contrast Crisp QR Viewfinder Frame */
+.gate-qr-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  background: rgba(10, 8, 7, 0.88);
+  border: 1px solid var(--port-border);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+#portfolioQrCode {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+#portfolioQrCode:hover {
+  transform: scale(1.03);
+}
+#portfolioQrCode canvas,
+#portfolioQrCode img {
+  display: block;
+  width: 170px !important;
+  height: 170px !important;
+}
+
+.gate-qr-note {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--port-text-low);
+  text-align: center;
+  max-width: 290px;
+  line-height: 1.45;
+}
+
+/* Tiny URL Tag */
+.gate-tiny-url-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 224, 201, 0.06);
+  border: 1px solid var(--port-border);
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: var(--port-peach);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.gate-tiny-url-badge:hover {
+  background: rgba(239, 118, 87, 0.18);
+}
+
+/* Action Buttons (Download & Save Contact) */
+.pass-action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.pass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 14px;
+  border-radius: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pass-btn.primary {
+  background: linear-gradient(135deg, var(--port-coral) 0%, var(--port-peach) 100%);
+  color: #0b0807;
+  box-shadow: 0 8px 24px -6px rgba(239, 118, 87, 0.5);
+}
+.pass-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(239, 118, 87, 0.75);
+  filter: brightness(1.08);
+}
+.pass-btn.secondary {
+  background: rgba(255, 224, 201, 0.08);
+  border: 1px solid var(--port-border-strong);
+  color: var(--port-text-hi);
+  box-shadow: var(--port-specular);
+}
+.pass-btn.secondary:hover {
+  background: rgba(255, 224, 201, 0.18);
+  border-color: var(--port-coral);
+  color: var(--port-peach);
+  transform: translateY(-2px);
+}
+
+
+
+/* ==================== FLOATING QUICK ASSISTANT DOCK ==================== */
+.floating-assistant-bot {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--port-coral) 0%, var(--port-peach) 100%);
+  color: #0b0807;
+  border: none;
+  box-shadow: 0 10px 30px rgba(239, 118, 87, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 90;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+}
+.floating-assistant-bot:hover {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: 0 14px 38px rgba(239, 118, 87, 0.75);
+}
+
+.action-quick-drawer {
+  position: fixed;
+  bottom: 92px;
+  right: 24px;
+  width: 250px;
+  background: rgba(22, 16, 13, 0.95);
+  border: 1px solid var(--port-border-strong);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), var(--port-specular);
+  z-index: 89;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.action-quick-drawer.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.drawer-action-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  color: var(--port-text-mid);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s, color 0.18s, transform 0.18s;
+}
+.drawer-action-item:hover {
+  background: rgba(239, 118, 87, 0.16);
+  color: var(--port-peach);
+  transform: translateX(4px);
+}
+.drawer-action-item svg {
+  color: var(--port-peach);
+  flex-shrink: 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Live Canvas Ambient Living Fluid & Dust Constellation -->
+<canvas id="ambientBgCanvas"></canvas>
+<div class="perspective-grid-backdrop"></div>
+
+<div class="portfolio-viewport">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="portfolio-topbar">
+    <a href="index.html" class="portfolio-back-btn" aria-label="Back to Home">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+
+    <a href="index.html" class="portfolio-brand-badge" aria-label="MLN Alliance MediaCrew Home">
+      <span class="brand-mark">
+        <img src="assets/images/logo.webp" alt="MLN Alliance MediaCrew logo" width="40" height="40">
+      </span>
+      <div class="brand-title-wrap">
+        <span class="title-brand">MLN ALLIANCE</span>
+        <span class="sub-brand">Member Profile</span>
+      </div>
+    </a>
+
+    <button type="button" class="portfolio-share-btn" id="topShareBtn" aria-label="Share Portfolio">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    </button>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="portfolio-hero-stage">
+    <div class="hero-role-pill" id="rolePill">
+      <span class="pill-live-dot"></span>
+      <span id="rolePillText">EXECUTIVE LEAD</span>
+    </div>
+
+    <h1 class="hero-display-name" id="heroDisplayName">
+      <span>ROHAN</span>
+      <span>SHARMA</span>
+    </h1>
+
+    <!-- 3D Interactive Cutout Stage -->
+    <div class="hero-cutout-perspective-wrap">
+      <div class="hero-cutout-container" id="heroCutoutContainer">
+        <div class="cutout-hologram-aura"></div>
+        <div class="cutout-cyber-ring-outer"></div>
+        <div class="cutout-cyber-ring-inner"></div>
+        <div class="cutout-scanner-line"></div>
+        <img src="assets/images/member-male-cutout.png" alt="Crew Member Portrait" id="memberCutoutImg" class="hero-cutout-img">
+        
+        <div class="cutout-hud-badge">
+          <span class="hud-status-dot"></span>
+          <span class="hud-status-text" id="hudPassId">#MLN-24BBA1042</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DETAILS & BENTO SHOWCASE ==================== -->
+  <section class="portfolio-content-body">
+    <div class="hero-lead-title" id="leadRoleTitle">MEDIA LEAD</div>
+    <div class="hero-lead-degree" id="leadDegree">BACHELOR OF BUSINESS ADMINISTRATION (BBA)</div>
+    <div class="hero-lead-meta">
+      <span id="leadBatchText">BATCH 2024 - 2027</span>
+      <span class="verified-member-beacon">
+        <span class="beacon-dot"></span>
+        <span id="memberIdTag">#MLN-24BBA1042 • 24BBA1042</span>
+      </span>
+    </div>
+    <!-- Social Profiles & Connect Hub -->
+    <div class="bento-section-title" style="margin-top: 24px;">
+      <span>SOCIAL PROFILES &amp; CONNECT</span>
+      <span class="gear-status">VERIFIED</span>
+    </div>
+    <div class="bento-links-deck" id="bentoLinksDeck">
+      
+      <!-- Instagram Link Card -->
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="bento-link-row instagram" id="linkInstagram">
+        <div class="bento-link-left">
+          <div class="bento-link-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div class="bento-link-texts">
+            <span class="bento-link-title">INSTAGRAM</span>
+            <span class="bento-link-sub" id="subInstagram">Visual Stories & Feed</span>
+          </div>
+        </div>
+        <svg class="bento-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+
+      <!-- LinkedIn Link Card -->
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="bento-link-row linkedin" id="linkLinkedin">
+        <div class="bento-link-left">
+          <div class="bento-link-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div class="bento-link-texts">
+            <span class="bento-link-title">LINKEDIN</span>
+            <span class="bento-link-sub">Professional Network & Endorsements</span>
+          </div>
+        </div>
+        <svg class="bento-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+
+      <!-- Portfolio / Website Card -->
+      <a href="functions.html" class="bento-link-row portfolio" id="linkPortfolio">
+        <div class="bento-link-left">
+          <div class="bento-link-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <div class="bento-link-texts">
+            <span class="bento-link-title" id="portfolioLinkTitle">PORTFOLIO & WORK</span>
+            <span class="bento-link-sub" id="portfolioLinkSub">Member Projects & Portfolio</span>
+          </div>
+        </div>
+        <svg class="bento-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+
+      <!-- WhatsApp Direct Card -->
+      <a href="https://wa.me/918307973507" target="_blank" rel="noopener noreferrer" class="bento-link-row whatsapp" id="linkWhatsapp">
+        <div class="bento-link-left">
+          <div class="bento-link-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <div class="bento-link-texts">
+            <span class="bento-link-title">DIRECT WHATSAPP</span>
+            <span class="bento-link-sub">Instant Member Connect</span>
+          </div>
+        </div>
+        <svg class="bento-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+
+      <!-- Email Connect Card -->
+      <a href="mailto:crew@mlncollege.edu" class="bento-link-row email" id="linkEmail">
+        <div class="bento-link-left">
+          <div class="bento-link-icon-box">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="bento-link-texts">
+            <span class="bento-link-title">OFFICIAL EMAIL</span>
+            <span class="bento-link-sub">Verified College Inquiries</span>
+          </div>
+        </div>
+        <svg class="bento-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+
+    </div>
+
+    <!-- Holographic VIP Official QR-ID Card -->
+    <div class="gate-pass-perspective-wrap">
+      <div class="gate-pass-card" id="gatePassCard">
+        <div class="gate-pass-header">
+          <h3>Official Member QR-ID</h3>
+          <span class="qr-badge">
+            <span class="qr-badge-pulse"></span>
+            <span>VERIFIED QR-ID</span>
+          </span>
+        </div>
+
+        <div class="gate-qr-frame">
+          <div id="portfolioQrCode"></div>
+          <span class="gate-tiny-url-badge" id="tinyUrlBadge" title="Click to copy canonical link">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span id="tinyUrlText">id.html?id=MLN-PASS</span>
+          </span>
+          <p class="gate-qr-note">Scan QR-ID with Google Lens or event attendance scanner for instant verified check-in</p>
+        </div>
+
+        <div class="pass-action-buttons">
+          <button type="button" class="pass-btn primary" id="downloadIdPngBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download e-ID</span>
+          </button>
+          <button type="button" class="pass-btn secondary" id="saveContactBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            <span>Save Contact</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- ==================== FLOATING ASSISTANT BOT ==================== -->
+<button type="button" class="floating-assistant-bot" id="floatingBotBtn" aria-label="Open Quick Menu">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="11" width="18" height="10" rx="2"/>
+    <circle cx="12" cy="5" r="2"/>
+    <path d="M12 7v4"/>
+    <line x1="8" y1="16" x2="8" y2="16"/>
+    <line x1="16" y1="16" x2="16" y2="16"/>
+  </svg>
+</button>
+
+<!-- Quick Action Drawer -->
+<div class="action-quick-drawer" id="actionQuickDrawer">
+  <button type="button" class="drawer-action-item" id="drawerScrollQr">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="3" height="3"/><rect x="14" y="7" width="3" height="3"/><rect x="7" y="14" width="3" height="3"/><rect x="14" y="14" width="3" height="3"/></svg>
+    <span>Show QR-ID</span>
+  </button>
+  <button type="button" class="drawer-action-item" id="drawerDownloadPng">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span>Download ID Card</span>
+  </button>
+  <button type="button" class="drawer-action-item" id="drawerShareLink">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    <span>Share Portfolio Link</span>
+  </button>
+</div>
+
+<!-- Firebase SDK & Config -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+
+<!-- QR Code Generator Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+/* ==========================================================================
+   AMBIENT CYBER CANVAS ANIMATION ENGINE (LIVING FLUID & CONSTELLATION)
+   High-performance volumetric plasma with interactive inertia and dust
+   ========================================================================== */
+(function initAmbientCanvas() {
+  var canvas = document.getElementById("ambientBgCanvas");
+  if (!canvas) return;
+  var ctx = canvas.getContext("2d");
+  var width, height;
+  var particles = [];
+  var shockwaves = [];
+  var mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  window.addEventListener("mousemove", function(e) {
+    mouse.targetX = e.clientX;
+    mouse.targetY = e.clientY;
+    document.documentElement.style.setProperty("--cursor-x", e.clientX + "px");
+    document.documentElement.style.setProperty("--cursor-y", e.clientY + "px");
+  });
+
+  window.addEventListener("click", function(e) {
+    shockwaves.push({
+      x: e.clientX,
+      y: e.clientY,
+      radius: 5,
+      maxRadius: 180,
+      alpha: 0.65
+    });
+  });
+
+  window.addEventListener("touchmove", function(e) {
+    if (e.touches && e.touches[0]) {
+      mouse.targetX = e.touches[0].clientX;
+      mouse.targetY = e.touches[0].clientY;
+      document.documentElement.style.setProperty("--cursor-x", e.touches[0].clientX + "px");
+      document.documentElement.style.setProperty("--cursor-y", e.touches[0].clientY + "px");
+    }
+  }, { passive: true });
+
+  // 120 Floating cosmic embers & constellations distributed top to bottom
+  var PARTICLE_COUNT = 120;
+  for (var i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 2.2 + 0.8,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: -Math.random() * 0.65 - 0.25,
+      alpha: Math.random() * 0.65 + 0.25,
+      color: Math.random() > 0.5 ? "239, 118, 87" : (Math.random() > 0.5 ? "0, 242, 161" : "255, 154, 112")
+    });
+  }
+
+  var t = 0;
+  function animate() {
+    t += 0.012;
+    mouse.x += (mouse.targetX - mouse.x) * 0.06;
+    mouse.y += (mouse.targetY - mouse.y) * 0.06;
+
+    ctx.clearRect(0, 0, width, height);
+
+    // 1. Large Breathing Multi-Orb Aurora (Full-Page Top to Bottom Coverage)
+    // Orb 1: Upper hero / cutout aura
+    var blob1X = width * 0.5 + Math.sin(t * 0.8) * 140;
+    var blob1Y = height * 0.18 + Math.cos(t * 0.6) * 90;
+    var grad1 = ctx.createRadialGradient(blob1X, blob1Y, 15, blob1X, blob1Y, 460);
+    grad1.addColorStop(0, "rgba(239, 118, 87, 0.25)");
+    grad1.addColorStop(0.5, "rgba(255, 154, 112, 0.1)");
+    grad1.addColorStop(1, "transparent");
+    ctx.fillStyle = grad1;
+    ctx.fillRect(0, 0, width, height);
+
+    // Orb 2: Mid-high credentials aura
+    var blob2X = width * 0.35 + Math.cos(t * 0.7) * 160;
+    var blob2Y = height * 0.38 + Math.sin(t * 0.9) * 120;
+    var grad2 = ctx.createRadialGradient(blob2X, blob2Y, 15, blob2X, blob2Y, 480);
+    grad2.addColorStop(0, "rgba(0, 242, 161, 0.18)");
+    grad2.addColorStop(0.5, "rgba(56, 189, 248, 0.08)");
+    grad2.addColorStop(1, "transparent");
+    ctx.fillStyle = grad2;
+    ctx.fillRect(0, 0, width, height);
+
+    // Orb 3: Central social profiles aura
+    var blob3X = width * 0.65 + Math.sin(t * 0.5) * 150;
+    var blob3Y = height * 0.58 + Math.cos(t * 0.4) * 110;
+    var grad3 = ctx.createRadialGradient(blob3X, blob3Y, 12, blob3X, blob3Y, 440);
+    grad3.addColorStop(0, "rgba(239, 118, 87, 0.18)");
+    grad3.addColorStop(0.5, "rgba(255, 154, 112, 0.07)");
+    grad3.addColorStop(1, "transparent");
+    ctx.fillStyle = grad3;
+    ctx.fillRect(0, 0, width, height);
+
+    // Orb 4: Lower-mid connect aura
+    var blob4X = width * 0.38 + Math.cos(t * 0.6) * 130;
+    var blob4Y = height * 0.76 + Math.sin(t * 0.7) * 100;
+    var grad4 = ctx.createRadialGradient(blob4X, blob4Y, 12, blob4X, blob4Y, 450);
+    grad4.addColorStop(0, "rgba(0, 242, 161, 0.16)");
+    grad4.addColorStop(0.5, "rgba(56, 189, 248, 0.08)");
+    grad4.addColorStop(1, "transparent");
+    ctx.fillStyle = grad4;
+    ctx.fillRect(0, 0, width, height);
+
+    // Orb 5: Bottom QR-ID Pass aura
+    var blob5X = width * 0.55 + Math.sin(t * 0.7) * 140;
+    var blob5Y = height * 0.92 + Math.cos(t * 0.5) * 90;
+    var grad5 = ctx.createRadialGradient(blob5X, blob5Y, 15, blob5X, blob5Y, 420);
+    grad5.addColorStop(0, "rgba(239, 118, 87, 0.22)");
+    grad5.addColorStop(0.5, "rgba(192, 132, 252, 0.09)");
+    grad5.addColorStop(1, "transparent");
+    ctx.fillStyle = grad5;
+    ctx.fillRect(0, 0, width, height);
+
+    // Interactive mouse cursor glow
+    if (mouse.x > 0 && mouse.y > 0) {
+      var mGrad = ctx.createRadialGradient(mouse.x, mouse.y, 8, mouse.x, mouse.y, 280);
+      mGrad.addColorStop(0, "rgba(255, 154, 112, 0.14)");
+      mGrad.addColorStop(1, "transparent");
+      ctx.fillStyle = mGrad;
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    // Shockwaves on tap/click
+    for (var s = shockwaves.length - 1; s >= 0; s--) {
+      var sw = shockwaves[s];
+      sw.radius += 4.5;
+      sw.alpha *= 0.94;
+      ctx.beginPath();
+      ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(0, 242, 161, " + sw.alpha + ")";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      if (sw.alpha < 0.02 || sw.radius > sw.maxRadius) {
+        shockwaves.splice(s, 1);
+      }
+    }
+
+    // 2. Cosmic Constellation & Floating Embers across Full Viewport
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.y < -20) p.y = height + 20;
+      if (p.y > height + 20) p.y = -20;
+      if (p.x < -20) p.x = width + 20;
+      if (p.x > width + 20) p.x = -20;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(" + p.color + "," + p.alpha + ")";
+      ctx.fill();
+
+      for (var j = i + 1; j < particles.length; j++) {
+        var p2 = particles[j];
+        var dx = p.x - p2.x;
+        var dy = p.y - p2.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 95) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = "rgba(255, 224, 201, " + ((1 - dist / 95) * 0.14) + ")";
+          ctx.lineWidth = 0.75;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ==========================================================================
+   INTERACTIVE 3D TILT PHYSICS & SPOTLIGHT CURSOR ENGINE
+   ========================================================================== */
+(function initTiltAndSpotlight() {
+  var cutoutContainer = document.getElementById("heroCutoutContainer");
+  var gatePassCard = document.getElementById("gatePassCard");
+  var bentoCards = document.querySelectorAll(".bento-link-row");
+
+  document.addEventListener("mousemove", function(e) {
+    bentoCards.forEach(function(card) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", x + "px");
+      card.style.setProperty("--mouse-y", y + "px");
+    });
+  });
+
+  if (cutoutContainer) {
+    window.addEventListener("mousemove", function(e) {
+      var rect = cutoutContainer.getBoundingClientRect();
+      var centerX = rect.left + rect.width / 2;
+      var centerY = rect.top + rect.height / 2;
+      var deltaX = (e.clientX - centerX) / (window.innerWidth / 2);
+      var deltaY = (e.clientY - centerY) / (window.innerHeight / 2);
+
+      var rotY = deltaX * 14;
+      var rotX = -deltaY * 12;
+
+      cutoutContainer.style.transform = "rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg)";
+    });
+
+    cutoutContainer.addEventListener("mouseleave", function() {
+      cutoutContainer.style.transform = "rotateX(0deg) rotateY(0deg)";
+    });
+  }
+
+  if (gatePassCard) {
+    gatePassCard.addEventListener("mousemove", function(e) {
+      var rect = gatePassCard.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var rotY = ((x / rect.width) - 0.5) * 16;
+      var rotX = -((y / rect.height) - 0.5) * 16;
+      gatePassCard.style.transform = "rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg)";
+    });
+    gatePassCard.addEventListener("mouseleave", function() {
+      gatePassCard.style.transform = "rotateX(0deg) rotateY(0deg)";
+    });
+  }
+
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", function(e) {
+      if (e.gamma !== null && e.beta !== null) {
+        var rotY = Math.max(-15, Math.min(15, e.gamma * 0.4));
+        var rotX = Math.max(-12, Math.min(12, (e.beta - 45) * 0.3));
+        if (cutoutContainer) {
+          cutoutContainer.style.transform = "rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg)";
+        }
+        if (gatePassCard) {
+          gatePassCard.style.transform = "rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg)";
+        }
+      }
+    });
+  }
+})();
+
+/* ==========================================================================
+   PROFILE STATE ENGINE & DATA RETRIEVAL
+   ========================================================================== */
+(function() {
+
+  var passId = "MLN-24BBA1042";
+  var roll = "24BBA1042";
+  var name = "ROHAN SHARMA";
+  var dept = "Production";
+  var act = "Cinematography & Lighting";
+  var cls = "Bachelor of Business Administration (BBA)";
+  var role = "MEDIA LEAD";
+  var photo = null;
+  var insta = "rohan_sharma_media";
+  var linkedin = "rohan-sharma-cinema";
+  var whatsapp = "918307973507";
+  var portfolioUrl = null;
+  var email = "rohan.sharma@mlncollege.edu";
+  var canonicalUrl = window.location.href;
+
+  function escapeHtml(val) {
+    return String(val || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function renderMemberProfile(data) {
+    if (!data) return;
+    if (data.id) passId = String(data.id).replace(/^#/, "");
+    if (data.rollNumber || data.roll) roll = data.rollNumber || data.roll;
+    if (data.name) name = data.name;
+    if (data.interest || data.dept) dept = data.interest || data.dept;
+    dept = dept ? (dept.charAt(0).toUpperCase() + dept.slice(1)) : "Production";
+    if (data.activity || data.act) act = data.activity || data.act;
+    if (data.className || data.cls) cls = data.className || data.cls;
+    role = data.role || (dept === "Production" ? "MEDIA LEAD" : (dept === "Designing" ? "DESIGN LEAD" : "MARKETING HEAD"));
+    if (data.photo !== undefined) photo = data.photo;
+    if (data.instagram !== undefined) insta = data.instagram;
+    else if (data.insta !== undefined) insta = data.insta;
+    if (data.linkedin !== undefined) linkedin = data.linkedin;
+    if (data.whatsapp !== undefined) whatsapp = data.whatsapp;
+    else if (data.wa !== undefined) whatsapp = data.wa;
+    if (data.portfolioUrl !== undefined) portfolioUrl = data.portfolioUrl;
+    else if (data.portfolio !== undefined) portfolioUrl = data.portfolio;
+    else if (data.showreel !== undefined) portfolioUrl = data.showreel;
+    if (data.email !== undefined) email = data.email;
+
+    // Apply Department Theme to Body
+    document.body.classList.remove("theme-production", "theme-designing", "theme-marketing");
+    if (dept === "Designing") document.body.classList.add("theme-designing");
+    else if (dept === "Marketing") document.body.classList.add("theme-marketing");
+
+    // 1. Role Pill
+    var rolePillText = document.getElementById("rolePillText");
+    if (rolePillText) rolePillText.textContent = (dept + " Division • " + role).toUpperCase();
+
+    // 2. Format Name for Editorial Display
+    var nameParts = name.trim().split(" ");
+    var heroHtml = "";
+    if (nameParts.length === 1) {
+      heroHtml = "<span>" + escapeHtml(nameParts[0].toUpperCase()) + "</span>";
+    } else {
+      heroHtml = "<span>" + escapeHtml(nameParts[0].toUpperCase()) + "</span><span>" + escapeHtml(nameParts.slice(1).join(" ").toUpperCase()) + "</span>";
+    }
+    document.getElementById("heroDisplayName").innerHTML = heroHtml;
+    document.getElementById("leadRoleTitle").textContent = role.toUpperCase();
+    document.getElementById("leadDegree").textContent = cls.toUpperCase();
+    document.getElementById("memberIdTag").textContent = "#" + passId + " • " + roll;
+    var hudPassId = document.getElementById("hudPassId");
+    if (hudPassId) hudPassId.textContent = "#" + passId;
+
+
+
+    // 5. Bento Social & Portfolio Links
+    var visibleLinksCount = 0;
+
+    // Instagram
+    var linkInstagram = document.getElementById("linkInstagram");
+    if (insta && insta.trim() !== "") {
+      var cleanInsta = insta.trim();
+      if (cleanInsta.startsWith("@")) cleanInsta = cleanInsta.substring(1);
+      var instaHref = cleanInsta.startsWith("http") ? cleanInsta : ("https://instagram.com/" + cleanInsta);
+      linkInstagram.href = instaHref;
+      linkInstagram.style.display = "flex";
+      var subInstagram = document.getElementById("subInstagram");
+      if (subInstagram) subInstagram.textContent = "@" + cleanInsta;
+      visibleLinksCount++;
+    } else {
+      linkInstagram.style.display = "none";
+    }
+
+    // LinkedIn
+    var linkLinkedin = document.getElementById("linkLinkedin");
+    if (linkedin && linkedin.trim() !== "") {
+      var cleanLinkedin = linkedin.trim();
+      linkLinkedin.href = cleanLinkedin.startsWith("http") ? cleanLinkedin : ("https://" + cleanLinkedin);
+      linkLinkedin.style.display = "flex";
+      visibleLinksCount++;
+    } else {
+      linkLinkedin.style.display = "none";
+    }
+
+    // Portfolio / Website
+    var linkPortfolio = document.getElementById("linkPortfolio");
+    if (portfolioUrl && portfolioUrl.trim() !== "") {
+      var cleanPort = portfolioUrl.trim();
+      linkPortfolio.href = cleanPort.startsWith("http") ? cleanPort : ("https://" + cleanPort);
+      linkPortfolio.style.display = "flex";
+      var pTitle = document.getElementById("portfolioLinkTitle");
+      if (pTitle) pTitle.textContent = "VERIFIED PORTFOLIO / WORK";
+      visibleLinksCount++;
+    } else {
+      linkPortfolio.style.display = "flex";
+      linkPortfolio.href = "functions.html";
+      var pTitleDef = document.getElementById("portfolioLinkTitle");
+      if (pTitleDef) pTitleDef.textContent = "EXPLORE " + dept.toUpperCase() + " TRACK";
+    }
+
+    // WhatsApp
+    var linkWhatsapp = document.getElementById("linkWhatsapp");
+    if (whatsapp && whatsapp.trim() !== "") {
+      var cleanWa = whatsapp.trim().replace(/\D/g, "");
+      if (cleanWa.length === 10) cleanWa = "91" + cleanWa;
+      linkWhatsapp.href = "https://wa.me/" + cleanWa;
+      linkWhatsapp.style.display = "flex";
+      visibleLinksCount++;
+    } else {
+      linkWhatsapp.style.display = "none";
+    }
+
+    // Email
+    var linkEmail = document.getElementById("linkEmail");
+    if (email && email.trim() !== "") {
+      linkEmail.href = "mailto:" + email.trim();
+      linkEmail.style.display = "flex";
+      visibleLinksCount++;
+    } else {
+      linkEmail.style.display = "none";
+    }
+
+    // 6. Photo Cutout Selection & Upload Loader
+    var maleCutout = "assets/images/member-male-cutout.png";
+    var femaleCutout = "assets/images/member-female-cutout.png";
+    var memberCutoutImg = document.getElementById("memberCutoutImg");
+
+    var resolvedPhoto = photo;
+    if (!resolvedPhoto && roll) {
+      try {
+        resolvedPhoto = localStorage.getItem("mln_photo_" + roll.trim().toUpperCase());
+      } catch(e) {}
+    }
+
+    if (resolvedPhoto && (resolvedPhoto.startsWith("data:") || resolvedPhoto.startsWith("http") || resolvedPhoto.startsWith("assets/"))) {
+      memberCutoutImg.src = resolvedPhoto;
+    } else if (photo === "female") {
+      memberCutoutImg.src = femaleCutout;
+    } else {
+      memberCutoutImg.src = maleCutout;
+    }
+
+
+
+    // 8. Canonical TINY QR URL (STABLE, MINIMAL & PERMANENT)
+    var pathDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/"));
+    canonicalUrl = window.location.origin + (pathDir ? pathDir : "") + "/id.html?id=" + encodeURIComponent(passId);
+
+    // Update Tiny URL badge text
+    var tinyUrlText = document.getElementById("tinyUrlText");
+    if (tinyUrlText) {
+      tinyUrlText.textContent = "id.html?id=" + passId;
+    }
+
+    // Render Crisp High-Contrast Attendance QR Code strictly encoding the tiny URL
+    var qrContainer = document.getElementById("portfolioQrCode");
+    if (qrContainer && typeof QRCode !== "undefined") {
+      qrContainer.innerHTML = "";
+      new QRCode(qrContainer, {
+        text: canonicalUrl,
+        width: 170,
+        height: 170,
+        colorDark: "#12100d",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    }
+  }
+
+  // Parse URL Parameters
+  var params = new URLSearchParams(window.location.search);
+  var passIdParam = (params.get("id") || "").replace(/^#/, "").trim();
+  var rollParam = (params.get("roll") || "").trim();
+  var emailParam = (params.get("email") || params.get("e") || "").trim().toLowerCase();
+  var targetLookup = passIdParam || rollParam || emailParam;
+
+  // 1. Initial State from localStorage (0ms instant display)
+  var initialData = null;
+  try {
+    var saved = localStorage.getItem("mln_last_pass");
+    if (saved) {
+      var p = JSON.parse(saved);
+      if (!targetLookup ||
+          (p.id && p.id.toUpperCase() === targetLookup.toUpperCase()) ||
+          (p.rollNumber && p.rollNumber.toUpperCase() === targetLookup.toUpperCase()) ||
+          (p.email && p.email.toLowerCase() === targetLookup.toLowerCase())) {
+        initialData = p;
+      }
+    }
+    if (!initialData && targetLookup) {
+      var rawStore = localStorage.getItem("mln_local_registrations");
+      if (rawStore) {
+        var list = JSON.parse(rawStore);
+        var found = list.find(function(item) {
+          return (item.id && item.id.toUpperCase() === targetLookup.toUpperCase()) ||
+                 (item.rollNumber && item.rollNumber.toUpperCase() === targetLookup.toUpperCase()) ||
+                 (item.email && item.email.toLowerCase() === targetLookup.toLowerCase());
+        });
+        if (found) initialData = found;
+      }
+    }
+  } catch (e) {}
+
+  if (!initialData && (params.get("name") || params.get("dept"))) {
+    initialData = {
+      id: passIdParam,
+      rollNumber: rollParam,
+      name: params.get("name"),
+      interest: params.get("dept"),
+      activity: params.get("act") || params.get("activity"),
+      className: params.get("cls") || params.get("class"),
+      photo: params.get("photo"),
+      instagram: params.get("insta") || params.get("instagram"),
+      linkedin: params.get("linkedin"),
+      whatsapp: params.get("whatsapp") || params.get("wa"),
+      portfolioUrl: params.get("portfolio") || params.get("showreel"),
+      email: emailParam
+    };
+  }
+
+  if (initialData) {
+    renderMemberProfile(initialData);
+  } else if (targetLookup) {
+    renderMemberProfile({ id: targetLookup });
+  } else {
+    renderMemberProfile({});
+  }
+
+  // 2. Fetch fresh record from Firebase Firestore
+  if (targetLookup) {
+    fetchFromFirestore(targetLookup);
+  }
+
+  function fetchFromFirestore(lookupId) {
+    function runQuery() {
+      if (!window.MLN_FIREBASE || !window.MLN_FIREBASE.isConfigured || !window.MLN_FIREBASE.db) return;
+      var db = window.MLN_FIREBASE.db;
+
+      db.collection("registrations").doc(lookupId).get()
+        .then(function(docSnap) {
+          if (docSnap.exists) {
+            var d = docSnap.data();
+            d.id = docSnap.id;
+            renderMemberProfile(d);
+            return;
+          }
+          return db.collection("registrations").where("id", "==", lookupId).limit(1).get()
+            .then(function(snap) {
+              if (!snap.empty) {
+                var d2 = snap.docs[0].data();
+                d2.id = snap.docs[0].id;
+                renderMemberProfile(d2);
+                return;
+              }
+              return db.collection("registrations").where("rollNumber", "==", lookupId).limit(1).get()
+                .then(function(snap2) {
+                  if (!snap2.empty) {
+                    var d3 = snap2.docs[0].data();
+                    d3.id = snap2.docs[0].id;
+                    renderMemberProfile(d3);
+                    return;
+                  }
+                  if (lookupId.indexOf("@") !== -1) {
+                    return db.collection("registrations").where("email", "==", lookupId.toLowerCase()).limit(1).get()
+                      .then(function(snap3) {
+                        if (!snap3.empty) {
+                          var d4 = snap3.docs[0].data();
+                          d4.id = snap3.docs[0].id;
+                          renderMemberProfile(d4);
+                        }
+                      });
+                  }
+                });
+            });
+        })
+        .catch(function(err) {
+          console.warn("Firestore profile fetch error:", err);
+        });
+    }
+
+    if (window.MLN_FIREBASE && window.MLN_FIREBASE.isConfigured && window.MLN_FIREBASE.db) {
+      runQuery();
+    } else {
+      var tries = 0;
+      var interval = setInterval(function() {
+        tries++;
+        if (window.MLN_FIREBASE && window.MLN_FIREBASE.isConfigured && window.MLN_FIREBASE.db) {
+          clearInterval(interval);
+          runQuery();
+        } else if (tries > 15) {
+          clearInterval(interval);
+        }
+      }, 200);
+    }
+  }
+
+
+
+  // Floating Action Assistant Drawer
+  var floatingBotBtn = document.getElementById("floatingBotBtn");
+  var actionQuickDrawer = document.getElementById("actionQuickDrawer");
+
+  floatingBotBtn.addEventListener("click", function(e) {
+    e.stopPropagation();
+    actionQuickDrawer.classList.toggle("is-open");
+  });
+
+  document.addEventListener("click", function(e) {
+    if (!actionQuickDrawer.contains(e.target) && e.target !== floatingBotBtn) {
+      actionQuickDrawer.classList.remove("is-open");
+    }
+  });
+
+  document.getElementById("drawerScrollQr").addEventListener("click", function() {
+    actionQuickDrawer.classList.remove("is-open");
+    document.getElementById("gatePassCard").scrollIntoView({ behavior: "smooth" });
+  });
+
+  function sharePortfolioLink() {
+    var shareUrl = canonicalUrl || window.location.href;
+    if (navigator.share) {
+      navigator.share({
+        title: name + " • MLN Alliance MediaCrew",
+        text: "Official digital member portfolio and verified credentials of " + name + " (" + role + ") at MLN Alliance MediaCrew.",
+        url: shareUrl
+      }).catch(function() {});
+    } else {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(function() {
+          if (window.showUiToast) {
+            window.showUiToast("success", "Link Copied", "Permanent QR-ID link copied to clipboard!");
+          }
+        }).catch(function() {});
+      } else if (window.showUiToast) {
+        window.showUiToast("success", "Link Copied", "Permanent QR-ID link: " + shareUrl);
+      }
+    }
+  }
+
+  var topShareBtn = document.getElementById("topShareBtn");
+  if (topShareBtn) topShareBtn.addEventListener("click", sharePortfolioLink);
+  document.getElementById("drawerShareLink").addEventListener("click", function() {
+    actionQuickDrawer.classList.remove("is-open");
+    sharePortfolioLink();
+  });
+
+  var tinyUrlBadge = document.getElementById("tinyUrlBadge");
+  if (tinyUrlBadge) {
+    tinyUrlBadge.addEventListener("click", sharePortfolioLink);
+  }
+
+  // Save Contact as vCard (.vcf)
+  document.getElementById("saveContactBtn").addEventListener("click", function() {
+    var vcard = "BEGIN:VCARD\nVERSION:3.0\n" +
+      "FN:" + name + "\n" +
+      "ORG:MLN Alliance MediaCrew\n" +
+      "TITLE:" + role + "\n" +
+      "NOTE:Roll No: " + roll + " - " + cls + "\n" +
+      "URL:" + (canonicalUrl || window.location.href) + "\n" +
+      "END:VCARD";
+    var blob = new Blob([vcard], { type: "text/vcard" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = name.replace(/\s+/g, "_") + "_MLN.vcf";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // High-Resolution Graphic Card Generator (PNG Download) in dark liquid obsidian theme
+  function downloadGraphicCard() {
+    var canvas = document.createElement("canvas");
+    canvas.width = 720;
+    canvas.height = 1080;
+    var ctx = canvas.getContext("2d");
+    var w = canvas.width;
+    var h = canvas.height;
+    var r = 36;
+
+    // Background gradient matching website
+    var bgGradient = ctx.createLinearGradient(0, 0, w, h);
+    bgGradient.addColorStop(0, "#130e0c");
+    bgGradient.addColorStop(0.5, "#1c1410");
+    bgGradient.addColorStop(1, "#0a0807");
+    ctx.fillStyle = bgGradient;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(0, 0, w, h, r);
+    else ctx.rect(0, 0, w, h);
+    ctx.fill();
+
+    // Specular border
+    ctx.strokeStyle = "rgba(255, 224, 201, 0.28)";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    // Corner cyber accents
+    ctx.fillStyle = "#ef7657";
+    ctx.fillRect(36, 36, 24, 4);
+    ctx.fillRect(36, 36, 4, 24);
+    ctx.fillRect(w - 60, 36, 24, 4);
+    ctx.fillRect(w - 40, 36, 4, 24);
+
+    // Header branding
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 28px 'Space Grotesk', sans-serif";
+    ctx.fillText("MLN ALLIANCE MEDIACREW", 48, 90);
+
+    ctx.fillStyle = "#ef7657";
+    ctx.font = "bold 13px 'Space Grotesk', sans-serif";
+    ctx.letterSpacing = "3px";
+    ctx.fillText("OFFICIAL VERIFIED MEMBER QR-ID", 48, 116);
+
+    // Divider Line
+    ctx.strokeStyle = "rgba(255, 224, 201, 0.15)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(48, 138);
+    ctx.lineTo(w - 48, 138);
+    ctx.stroke();
+
+    // Member Name & Role
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 38px 'Space Grotesk', sans-serif";
+    ctx.fillText(name.toUpperCase(), 48, 190);
+
+    ctx.fillStyle = "#00f2a1";
+    ctx.font = "bold 20px 'Space Grotesk', sans-serif";
+    ctx.fillText((dept + " Division • " + role).toUpperCase(), 48, 224);
+
+    // Degree & Roll
+    ctx.fillStyle = "#a89c92";
+    ctx.font = "16px 'Plus Jakarta Sans', sans-serif";
+    ctx.fillText(cls + "  •  Roll: " + roll, 48, 252);
+
+    // Draw Cutout Image if loaded
+    var cutoutEl = document.getElementById("memberCutoutImg");
+    if (cutoutEl && cutoutEl.complete) {
+      try {
+        ctx.drawImage(cutoutEl, 40, 270, 360, 480);
+      } catch(e) {}
+    }
+
+    // QR Box Area on the Right
+    var qrX = 440;
+    var qrY = 320;
+    var qrSize = 230;
+    ctx.fillStyle = "#ffffff";
+    if (ctx.roundRect) ctx.roundRect(qrX, qrY, qrSize, qrSize + 60, 20);
+    else ctx.rect(qrX, qrY, qrSize, qrSize + 60);
+    ctx.fill();
+
+    var qrImg = document.querySelector("#portfolioQrCode canvas") || document.querySelector("#portfolioQrCode img");
+    if (qrImg) {
+      ctx.drawImage(qrImg, qrX + 25, qrY + 25, 180, 180);
+    }
+
+    ctx.fillStyle = "#12100d";
+    ctx.font = "bold 12px 'Space Grotesk', sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("OFFICIAL ATTENDANCE QR-ID", qrX + (qrSize / 2), qrY + 235);
+    ctx.textAlign = "left";
+
+    // Security Footer
+    ctx.fillStyle = "rgba(239, 118, 87, 0.15)";
+    if (ctx.roundRect) ctx.roundRect(48, 940, w - 96, 68, 16);
+    else ctx.rect(48, 940, w - 96, 68);
+    ctx.fill();
+    ctx.strokeStyle = "rgba(239, 118, 87, 0.4)";
+    ctx.stroke();
+
+    ctx.fillStyle = "#ff9a70";
+    ctx.font = "bold 14px 'Space Grotesk', sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("VERIFIED DIGITAL PORTFOLIO CREDENTIAL • QR-ID: #" + passId, w / 2, 980);
+    ctx.textAlign = "left";
+
+    // Trigger download
+    var link = document.createElement("a");
+    link.download = "MLN-QR-ID-" + roll.replace(/[^a-zA-Z0-9_-]/g, "") + ".png";
+    link.href = canvas.toDataURL("image/png");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  document.getElementById("downloadIdPngBtn").addEventListener("click", downloadGraphicCard);
+  document.getElementById("drawerDownloadPng").addEventListener("click", function() {
+    actionQuickDrawer.classList.remove("is-open");
+    downloadGraphicCard();
+  });
+
+})();
+</script>
+</body>
+</html>

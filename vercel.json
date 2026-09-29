@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/MLN-Alliance-MediaCrew/index.html" },
+    { "source": "/index.html", "destination": "/MLN-Alliance-MediaCrew/index.html" },
+    { "source": "/id", "destination": "/MLN-Alliance-MediaCrew/id.html" },
+    { "source": "/id.html", "destination": "/MLN-Alliance-MediaCrew/id.html" },
+    { "source": "/register", "destination": "/MLN-Alliance-MediaCrew/register.html" },
+    { "source": "/register.html", "destination": "/MLN-Alliance-MediaCrew/register.html" },
+    { "source": "/functions", "destination": "/MLN-Alliance-MediaCrew/functions.html" },
+    { "source": "/functions.html", "destination": "/MLN-Alliance-MediaCrew/functions.html" },
+    { "source": "/thankyou", "destination": "/MLN-Alliance-MediaCrew/thankyou.html" },
+    { "source": "/thankyou.html", "destination": "/MLN-Alliance-MediaCrew/thankyou.html" },
+    { "source": "/records", "destination": "/MLN-Alliance-MediaCrew/records.html" },
+    { "source": "/records.html", "destination": "/MLN-Alliance-MediaCrew/records.html" },
+    { "source": "/records-dashboard", "destination": "/MLN-Alliance-MediaCrew/records.html" },
+    { "source": "/records-dashboard/", "destination": "/MLN-Alliance-MediaCrew/records.html" },
+    { "source": "/records-dashboard/records.html", "destination": "/MLN-Alliance-MediaCrew/records.html" },
+    { "source": "/records.css", "destination": "/MLN-Alliance-MediaCrew/records.css" },
+    { "source": "/records.js", "destination": "/MLN-Alliance-MediaCrew/records.js" },
+    { "source": "/assets/(.*)", "destination": "/MLN-Alliance-MediaCrew/assets/$1" },
+    { "source": "/css/(.*)", "destination": "/MLN-Alliance-MediaCrew/css/$1" },
+    { "source": "/js/(.*)", "destination": "/MLN-Alliance-MediaCrew/js/$1" }
+  ]
+}

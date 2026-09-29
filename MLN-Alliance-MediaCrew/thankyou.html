@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Official Member Pass — MLN Alliance MediaCrew</title>
+<meta name="description" content="Your official registration and event attendance QR pass for MLN Alliance MediaCrew." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Ambient Liquid Refraction Canvas -->
+<div class="liquid-ambient-canvas" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+</div>
+
+<!-- ============================= HEADER ============================= -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="MLN Alliance MediaCrew Home">
+      <span class="brand-mark">
+        <img src="assets/images/logo.webp" alt="MLN Alliance MediaCrew logo" width="42" height="42">
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">MLN Alliance MediaCrew</span>
+        <span class="brand-tag">Create. Capture. Design. Market.</span>
+      </span>
+    </a>
+
+    <div class="header-right">
+      <a href="index.html" class="btn btn-sm btn-ghost">&larr; Back to Home</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================= THANK YOU & DIGITAL PASS ============================= -->
+<section class="thanks-shell">
+  <div class="container">
+    <div class="thanks-card glass reveal is-visible">
+      <div class="thanks-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h1>You're in the crew!</h1>
+      <p>Your registration is confirmed. Here is your official Digital Member Pass with your personal attendance QR code.</p>
+
+      <!-- Digital Pass Ticket Container -->
+      <div class="pass-wrapper">
+        <div class="pass-card" id="digitalPassCard">
+          <div class="pass-head">
+            <div class="pass-brand">
+              <div class="pass-brand-logo-frame">
+                <img src="assets/images/logo_light.webp" alt="MLN Logo" width="36" height="36">
+              </div>
+              <div>
+                <strong style="display:block; font-size:0.92rem; color:var(--text-hi); letter-spacing:-0.01em;">MLN Alliance MediaCrew</strong>
+                <small style="color:var(--cyan-400); font-size:0.72rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">Official Member Pass</small>
+              </div>
+            </div>
+            <span class="pass-badge">Verified Member</span>
+          </div>
+
+          <div class="pass-body">
+            <div>
+              <div class="pass-field-label">Member Name</div>
+              <h2 class="pass-name" id="passName">Registered Member</h2>
+            </div>
+
+            <div class="pass-grid">
+              <div>
+                <div class="pass-field-label">Department</div>
+                <div class="pass-field-val" id="passDept">Production</div>
+              </div>
+              <div>
+                <div class="pass-field-label">Activity Track</div>
+                <div class="pass-field-val" id="passActivity">Videography</div>
+              </div>
+              <div>
+                <div class="pass-field-label">Roll Number</div>
+                <div class="pass-field-val" id="passRoll">2026-MC</div>
+              </div>
+              <div>
+                <div class="pass-field-label">Pass ID</div>
+                <div class="pass-id" id="passId">#MLN-PASS</div>
+              </div>
+            </div>
+
+            <div class="pass-qr-container">
+              <div class="pass-qr-code" id="passQrCode"></div>
+              <p class="pass-qr-note">Dual-Purpose Pass: Scan via Google Lens to view your Digital ID, or at college events for attendance check-in</p>
+            </div>
+
+            <!-- Transparent QR Download Panel (Pure Alpha Background) -->
+            <div class="qr-download-panel">
+              <div class="qr-download-header">
+                <div class="qr-download-title">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3z"/><path d="M20 14v3h-3"/><path d="M14 20h7"/></svg>
+                  <span>Download QR Only</span>
+                </div>
+                <span class="qr-download-badge">No Background</span>
+              </div>
+              <p class="qr-download-note">Export high-resolution transparent QR with zero background for posters, merchandise, or print:</p>
+              <div class="qr-color-btn-row">
+                <button type="button" class="btn-qr-color btn-qr-black" id="btnDownloadQrBlack" title="Download Black QR with Pure Transparent Background">
+                  <span class="qr-swatch-dot black"></span>
+                  <span>Black QR (.png)</span>
+                </button>
+                <button type="button" class="btn-qr-color btn-qr-white" id="btnDownloadQrWhite" title="Download White QR with Pure Transparent Background">
+                  <span class="qr-swatch-dot white"></span>
+                  <span>White QR (.png)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pass-actions-console">
+          <a href="id.html" target="_blank" class="btn btn-primary btn-action-hero" id="viewDigitalIdLink">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>View Live Digital ID & Portfolio</span>
+          </a>
+
+          <div class="pass-actions-grid">
+            <button type="button" class="btn btn-ghost" id="downloadThankYouPngBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download e-ID (PNG)</span>
+            </button>
+            <button type="button" class="btn btn-ghost" id="printPassBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              <span>Print / Save PDF</span>
+            </button>
+            <button type="button" class="btn btn-ghost" id="sharePassBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span>Share via WhatsApp</span>
+            </button>
+            <a href="index.html" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>Back to Home</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark">
+            <img src="assets/images/logo.webp" alt="MLN Alliance MediaCrew logo" width="36" height="36">
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">MLN Alliance MediaCrew</span>
+          </span>
+        </a>
+        <p>The student media house for production, design and marketing. Create. Capture. Design. Market.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="functions.html">Our Functions</a></li>
+          <li><a href="register.html">Register / ID</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Departments</h4>
+        <ul>
+          <li><a href="functions.html#production">Production</a></li>
+          <li><a href="functions.html#designing">Designing</a></li>
+          <li><a href="functions.html#marketing">Marketing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li class="foot-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"/></svg>
+            <a href="tel:+918307973507">83079 73507</a>
+          </li>
+          <li class="foot-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+            <a href="mailto:mlnalliancemediacrew@gmail.com">mlnalliancemediacrew@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> MLN Alliance MediaCrew. All Rights Reserved.</span>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/mln_alliance_mediacrew/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function() {
+  "use strict";
+
+  // Parse parameters from URL or read fallback from localStorage
+  var urlParams = new URLSearchParams(window.location.search);
+  var passId = urlParams.get("id");
+  var passName = urlParams.get("name");
+  var passDept = urlParams.get("dept");
+  var passActivity = urlParams.get("activity");
+  var passRoll = urlParams.get("roll");
+  var passClass = urlParams.get("cls") || urlParams.get("class") || "";
+  var passInsta = urlParams.get("insta") || urlParams.get("instagram") || "";
+  var passLinkedin = urlParams.get("linkedin") || "";
+  var passWhatsapp = urlParams.get("whatsapp") || "";
+  var passPortfolio = urlParams.get("portfolio") || "";
+  var passPhoto = urlParams.get("photo") || "";
+
+  if (!passId || !passName || !passInsta) {
+    try {
+      var saved = localStorage.getItem("mln_last_pass");
+      if (saved) {
+        var data = JSON.parse(saved);
+        passId = passId || data.id;
+        passName = passName || data.name;
+        passDept = passDept || data.interest;
+        passActivity = passActivity || data.activity;
+        passRoll = passRoll || data.rollNumber;
+        passClass = passClass || data.className || "";
+        passInsta = passInsta || data.instagram || "";
+        passLinkedin = passLinkedin || data.linkedin || "";
+        passWhatsapp = passWhatsapp || data.whatsapp || "";
+        passPortfolio = passPortfolio || data.portfolioUrl || "";
+        passPhoto = passPhoto || data.photo || "";
+      }
+    } catch (e) {}
+  }
+
+  passId = passId || "MLN-" + Math.floor(100000 + Math.random() * 900000);
+  passName = passName || "Crew Member";
+  passDept = passDept ? (passDept.charAt(0).toUpperCase() + passDept.slice(1)) : "Production";
+  passActivity = passActivity || "General Track";
+  passRoll = passRoll || "2026";
+
+  // Build canonical dual-purpose digital ID URL (TINY & PERMANENT)
+  var pathDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/"));
+  var baseUrl = window.location.origin + (pathDir ? pathDir : "") + "/id.html";
+  var digitalIdUrl = baseUrl + "?id=" + encodeURIComponent(passId);
+
+  // Populate elements
+  document.getElementById("passName").textContent = passName;
+  document.getElementById("passDept").textContent = passDept;
+  document.getElementById("passActivity").textContent = passActivity;
+  document.getElementById("passRoll").textContent = passRoll;
+  document.getElementById("passId").textContent = "#" + passId;
+
+  var viewDigitalIdLink = document.getElementById("viewDigitalIdLink");
+  if (viewDigitalIdLink) {
+    viewDigitalIdLink.href = digitalIdUrl;
+  }
+
+  // Generate Dual-Purpose QR Code (Google Lens opens digital ID; Record site marks attendance)
+  var qrContainer = document.getElementById("passQrCode");
+  if (typeof QRCode !== "undefined") {
+    new QRCode(qrContainer, {
+      text: digitalIdUrl,
+      width: 170,
+      height: 170,
+      colorDark: "#12100d",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  } else {
+    // Graceful fallback if CDN fails
+    qrContainer.innerHTML = "<div style='padding:20px; font-family:monospace; text-align:center;'>PASS ID<br><strong>" + passId + "</strong></div>";
+  }
+
+  // Print button
+  document.getElementById("printPassBtn").addEventListener("click", function() {
+    window.print();
+  });
+
+  // Transparent QR-Only Exporter (Zero Background, Pure Alpha)
+  function downloadQrOnly(color) {
+    var qrCanvas = document.querySelector("#passQrCode canvas");
+    var qrImg = document.querySelector("#passQrCode img");
+    var srcElem = qrCanvas || qrImg;
+
+    if (!srcElem) {
+      if (window.showUiToast) {
+        window.showUiToast("info", "Generating QR", "QR code is still generating, please wait a moment.");
+      } else {
+        alert("QR code is still generating, please wait a moment.");
+      }
+      return;
+    }
+
+    var srcW = srcElem.naturalWidth || srcElem.width || 170;
+    var srcH = srcElem.naturalHeight || srcElem.height || 170;
+
+    // Temporary canvas to read source pixels
+    var tempCanvas = document.createElement("canvas");
+    tempCanvas.width = srcW;
+    tempCanvas.height = srcH;
+    var tempCtx = tempCanvas.getContext("2d");
+    tempCtx.drawImage(srcElem, 0, 0, srcW, srcH);
+
+    var imgData = tempCtx.getImageData(0, 0, srcW, srcH);
+    var pixels = imgData.data;
+    var isWhite = (color === "white");
+
+    // Pixel-level alpha transparency manipulation
+    for (var i = 0; i < pixels.length; i += 4) {
+      var r = pixels[i];
+      var g = pixels[i + 1];
+      var b = pixels[i + 2];
+      var a = pixels[i + 3];
+      var lum = 0.299 * r + 0.587 * g + 0.114 * b;
+
+      // Dark QR modules: set target color with 100% opacity
+      // Light background: set alpha = 0 (100% pure transparent background)
+      if (a > 30 && lum < 140) {
+        if (isWhite) {
+          pixels[i] = 255;
+          pixels[i + 1] = 255;
+          pixels[i + 2] = 255;
+          pixels[i + 3] = 255;
+        } else {
+          pixels[i] = 0;
+          pixels[i + 1] = 0;
+          pixels[i + 2] = 0;
+          pixels[i + 3] = 255;
+        }
+      } else {
+        pixels[i] = 0;
+        pixels[i + 1] = 0;
+        pixels[i + 2] = 0;
+        pixels[i + 3] = 0; // Pure Transparent!
+      }
+    }
+
+    tempCtx.putImageData(imgData, 0, 0);
+
+    // High-resolution 1000x1000 export with nearest-neighbor for razor sharpness
+    var exportSize = 1000;
+    var exportCanvas = document.createElement("canvas");
+    exportCanvas.width = exportSize;
+    exportCanvas.height = exportSize;
+    var exportCtx = exportCanvas.getContext("2d");
+    exportCtx.imageSmoothingEnabled = false;
+    exportCtx.clearRect(0, 0, exportSize, exportSize);
+    exportCtx.drawImage(tempCanvas, 0, 0, exportSize, exportSize);
+
+    var cleanRoll = (passRoll || "pass").replace(/[^a-zA-Z0-9_-]/g, "");
+    var link = document.createElement("a");
+    link.download = "MLN-QR-" + (isWhite ? "White" : "Black") + "-Transparent-" + cleanRoll + ".png";
+    link.href = exportCanvas.toDataURL("image/png");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  var btnQrBlack = document.getElementById("btnDownloadQrBlack");
+  if (btnQrBlack) {
+    btnQrBlack.addEventListener("click", function() {
+      downloadQrOnly("black");
+    });
+  }
+
+  var btnQrWhite = document.getElementById("btnDownloadQrWhite");
+  if (btnQrWhite) {
+    btnQrWhite.addEventListener("click", function() {
+      downloadQrOnly("white");
+    });
+  }
+
+  // Luxury Executive Member ID Card Canvas Generator (800 x 1280 px)
+  function downloadIdCardAsPng(data) {
+    if (!data) return;
+
+    var canvas = document.createElement("canvas");
+    var w = 800;
+    var h = 1280;
+    canvas.width = w;
+    canvas.height = h;
+    var ctx = canvas.getContext("2d");
+
+    function loadImage(src) {
+      return new Promise(function(resolve) {
+        if (!src) return resolve(null);
+        var img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = function() { resolve(img); };
+        img.onerror = function() { resolve(null); };
+        img.src = src;
+      });
+    }
+
+    var qrElem = document.querySelector("#passQrCode canvas") || document.querySelector("#passQrCode img");
+    var photoSrc = data.photo || passPhoto || "";
+
+    Promise.all([
+      loadImage("assets/images/logo_light.png"),
+      loadImage(photoSrc),
+      qrElem ? (qrElem.tagName === "CANVAS" ? Promise.resolve(qrElem) : loadImage(qrElem.src)) : Promise.resolve(null)
+    ]).then(function(images) {
+      var logoImg = images[0];
+      var memberPhotoImg = images[1];
+      var qrImg = images[2];
+
+      // 1. Deep Obsidian Card Fill
+      var bgGradient = ctx.createLinearGradient(0, 0, w, h);
+      bgGradient.addColorStop(0, "#140e0c");
+      bgGradient.addColorStop(0.4, "#1d1410");
+      bgGradient.addColorStop(1, "#0a0706");
+      ctx.fillStyle = bgGradient;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(0, 0, w, h, 36);
+      else ctx.rect(0, 0, w, h);
+      ctx.fill();
+
+      // Ambient Orbs
+      var radialTop = ctx.createRadialGradient(160, 160, 20, 160, 160, 340);
+      radialTop.addColorStop(0, "rgba(239, 118, 87, 0.22)");
+      radialTop.addColorStop(1, "rgba(239, 118, 87, 0)");
+      ctx.fillStyle = radialTop;
+      ctx.fillRect(0, 0, w, h);
+
+      var radialBottom = ctx.createRadialGradient(w - 140, h - 260, 20, w - 140, h - 260, 380);
+      radialBottom.addColorStop(0, "rgba(0, 242, 161, 0.16)");
+      radialBottom.addColorStop(1, "rgba(0, 242, 161, 0)");
+      ctx.fillStyle = radialBottom;
+      ctx.fillRect(0, 0, w, h);
+
+      // Outer Border
+      var borderGrad = ctx.createLinearGradient(0, 0, w, h);
+      borderGrad.addColorStop(0, "rgba(255, 224, 201, 0.55)");
+      borderGrad.addColorStop(0.35, "rgba(239, 118, 87, 0.5)");
+      borderGrad.addColorStop(0.7, "rgba(0, 242, 161, 0.45)");
+      borderGrad.addColorStop(1, "rgba(255, 176, 137, 0.35)");
+      ctx.strokeStyle = borderGrad;
+      ctx.lineWidth = 3.5;
+      ctx.stroke();
+
+      // 2. Lanyard Clip Slot
+      var slotW = 130;
+      var slotH = 14;
+      var slotX = (w - slotW) / 2;
+      var slotY = 24;
+      ctx.fillStyle = "#070504";
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(slotX, slotY, slotW, slotH, 7);
+      else ctx.rect(slotX, slotY, slotW, slotH);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255, 224, 201, 0.3)";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // 3. Top Accent Bar
+      var barGrad = ctx.createLinearGradient(40, 0, w - 40, 0);
+      barGrad.addColorStop(0, "#ef7657");
+      barGrad.addColorStop(0.4, "#ff9a70");
+      barGrad.addColorStop(0.7, "#00f2a1");
+      barGrad.addColorStop(1, "#f5b276");
+      ctx.fillStyle = barGrad;
+      ctx.fillRect(40, 56, w - 80, 4);
+
+      // 4. Header Bar
+      var headerY = 78;
+      if (logoImg) {
+        ctx.fillStyle = "rgba(239, 118, 87, 0.15)";
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(44, headerY, 46, 46, 12);
+        else ctx.rect(44, headerY, 46, 46);
+        ctx.fill();
+        ctx.strokeStyle = "rgba(255, 224, 201, 0.4)";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.drawImage(logoImg, 49, headerY + 5, 36, 36);
+      }
+
+      ctx.textAlign = "left";
+      ctx.fillStyle = "#fff8f2";
+      ctx.font = "bold 21px 'Space Grotesk', -apple-system, sans-serif";
+      ctx.fillText("MLN ALLIANCE MEDIACREW", logoImg ? 104 : 44, headerY + 24);
+
+      ctx.fillStyle = "#ff9a70";
+      ctx.font = "600 12px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("OFFICIAL EXECUTIVE MEMBER CREDENTIAL • 2026-2027", logoImg ? 104 : 44, headerY + 42);
+
+      // Verified Badge Pill
+      var badgeW = 126;
+      var badgeH = 34;
+      var badgeX = w - 44 - badgeW;
+      var badgeY = headerY + 6;
+      ctx.fillStyle = "rgba(0, 242, 161, 0.14)";
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 17);
+      else ctx.rect(badgeX, badgeY, badgeW, badgeH);
+      ctx.fill();
+      ctx.strokeStyle = "#00f2a1";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.fillStyle = "#00f2a1";
+      ctx.font = "bold 12px 'Plus Jakarta Sans', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("● VERIFIED", badgeX + badgeW / 2, badgeY + 22);
+
+      // Divider
+      ctx.strokeStyle = "rgba(255, 224, 201, 0.12)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(44, 142);
+      ctx.lineTo(w - 44, 142);
+      ctx.stroke();
+
+      // 5. Member Portrait Stage
+      var photoCenterX = w / 2;
+      var photoCenterY = 240;
+      var photoRadius = 78;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(photoCenterX, photoCenterY, photoRadius + 6, 0, Math.PI * 2);
+      var haloGrad = ctx.createLinearGradient(photoCenterX - photoRadius, photoCenterY - photoRadius, photoCenterX + photoRadius, photoCenterY + photoRadius);
+      haloGrad.addColorStop(0, "#ef7657");
+      haloGrad.addColorStop(0.5, "#ff9a70");
+      haloGrad.addColorStop(1, "#00f2a1");
+      ctx.strokeStyle = haloGrad;
+      ctx.lineWidth = 4;
+      ctx.shadowColor = "rgba(239, 118, 87, 0.6)";
+      ctx.shadowBlur = 18;
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(photoCenterX, photoCenterY, photoRadius, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+
+      if (memberPhotoImg && memberPhotoImg.width > 0) {
+        var pW = memberPhotoImg.width;
+        var pH = memberPhotoImg.height;
+        var aspect = pW / pH;
+        var drawW, drawH, drawX, drawY;
+        if (aspect > 1) {
+          drawH = photoRadius * 2;
+          drawW = drawH * aspect;
+          drawX = photoCenterX - drawW / 2;
+          drawY = photoCenterY - photoRadius;
+        } else {
+          drawW = photoRadius * 2;
+          drawH = drawW / aspect;
+          drawX = photoCenterX - photoRadius;
+          drawY = photoCenterY - drawH / 2;
+        }
+        ctx.drawImage(memberPhotoImg, drawX, drawY, drawW, drawH);
+      } else {
+        var avatarBg = ctx.createLinearGradient(photoCenterX - photoRadius, photoCenterY - photoRadius, photoCenterX + photoRadius, photoCenterY + photoRadius);
+        avatarBg.addColorStop(0, "#2c1c17");
+        avatarBg.addColorStop(1, "#18110e");
+        ctx.fillStyle = avatarBg;
+        ctx.fillRect(photoCenterX - photoRadius, photoCenterY - photoRadius, photoRadius * 2, photoRadius * 2);
+
+        var initials = ((data.name || "Crew").split(" ").map(function(s) { return s[0]; }).slice(0, 2).join("")).toUpperCase();
+        ctx.fillStyle = "#ff9a70";
+        ctx.font = "bold 52px 'Space Grotesk', sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(initials, photoCenterX, photoCenterY);
+      }
+      ctx.restore();
+
+      // 6. Member Name & Hierarchy
+      ctx.textAlign = "center";
+      ctx.textBaseline = "alphabetic";
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 34px 'Space Grotesk', -apple-system, sans-serif";
+      ctx.fillText((data.name || "Crew Member").toUpperCase(), photoCenterX, 360);
+
+      // Track Tag Pill
+      var trackText = ((data.activity || "GENERAL TRACK") + " • " + (data.dept || "PRODUCTION").toUpperCase());
+      ctx.font = "bold 13px 'Plus Jakarta Sans', sans-serif";
+      var trackW = ctx.measureText(trackText).width + 36;
+      var trackH = 32;
+      var trackX = (w - trackW) / 2;
+      var trackY = 378;
+
+      ctx.fillStyle = "rgba(239, 118, 87, 0.16)";
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(trackX, trackY, trackW, trackH, 16);
+      else ctx.rect(trackX, trackY, trackW, trackH);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255, 154, 112, 0.45)";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.fillStyle = "#ff9a70";
+      ctx.fillText(trackText, photoCenterX, trackY + 21);
+
+      // Degree Tag
+      var degreeText = (data.className || passClass || "BACHELOR OF BUSINESS ADMINISTRATION (BBA)").toUpperCase();
+      ctx.fillStyle = "#a89c93";
+      ctx.font = "600 12px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText(degreeText + " • MLN ALLIANCE COLLEGE", photoCenterX, 432);
+
+      // 7. Bento Metadata Matrix
+      var matrixY = 456;
+      var bentoW = (w - 88 - 16) / 2;
+      var bentoH = 78;
+
+      function drawBentoCard(label, val, x, y, valColor) {
+        ctx.fillStyle = "rgba(255, 255, 255, 0.035)";
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(x, y, bentoW, bentoH, 14);
+        else ctx.rect(x, y, bentoW, bentoH);
+        ctx.fill();
+        ctx.strokeStyle = "rgba(255, 224, 201, 0.15)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.textAlign = "left";
+        ctx.fillStyle = "#8a7e75";
+        ctx.font = "600 11px 'Plus Jakarta Sans', sans-serif";
+        ctx.fillText(label.toUpperCase(), x + 16, y + 26);
+
+        ctx.fillStyle = valColor || "#fff8f2";
+        ctx.font = "bold 18px 'Space Grotesk', sans-serif";
+        ctx.fillText(val || "—", x + 16, y + 54);
+      }
+
+      var col1X = 44;
+      var col2X = 44 + bentoW + 16;
+      var row1Y = matrixY;
+      var row2Y = matrixY + bentoH + 12;
+
+      drawBentoCard("Department", data.dept || "Production", col1X, row1Y, "#fff8f2");
+      drawBentoCard("Roll Number", data.roll || data.rollNumber || "—", col2X, row1Y, "#ff9a70");
+      drawBentoCard("Academic Batch", "Batch 2024 - 2027", col1X, row2Y, "#cfc4bb");
+      drawBentoCard("Official Pass ID", "#" + (data.id || "MLN-PASS"), col2X, row2Y, "#00f2a1");
+
+      // 8. Scannable QR Code Stage (White Card)
+      var qrPlateW = 280;
+      var qrPlateH = 280;
+      var qrPlateX = (w - qrPlateW) / 2;
+      var qrPlateY = 648;
+
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(qrPlateX, qrPlateY, qrPlateW, qrPlateH, 22);
+      else ctx.rect(qrPlateX, qrPlateY, qrPlateW, qrPlateH);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255, 224, 201, 0.4)";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      if (qrImg) {
+        ctx.drawImage(qrImg, qrPlateX + 25, qrPlateY + 25, 230, 230);
+      }
+
+      // QR Instructions
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#00f2a1";
+      ctx.font = "bold 13px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("DUAL-PURPOSE ATTENDANCE & DIGITAL ID PASS", photoCenterX, 958);
+
+      ctx.fillStyle = "#a89c93";
+      ctx.font = "500 12px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("Scan with Google Lens to view live portfolio, or tap at campus events", photoCenterX, 980);
+
+      // 9. Bottom Security Banner
+      var bannerY = 1010;
+      var bannerW = w - 88;
+      var bannerH = 68;
+      var bannerX = 44;
+
+      ctx.fillStyle = "rgba(22, 16, 14, 0.85)";
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(bannerX, bannerY, bannerW, bannerH, 14);
+      else ctx.rect(bannerX, bannerY, bannerW, bannerH);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255, 224, 201, 0.22)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.fillStyle = "#ff9a70";
+      ctx.font = "bold 12px 'Space Grotesk', sans-serif";
+      ctx.fillText("SECURE DIGITALLY SIGNED CREDENTIAL • MLN ALLIANCE COLLEGE", photoCenterX, bannerY + 28);
+
+      ctx.fillStyle = "#6d6259";
+      ctx.font = "11px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("Official MediaCrew Property • Non-Transferable • ID: #" + (data.id || "MLN-PASS"), photoCenterX, bannerY + 48);
+
+      // 10. Bottom Micro-Bar
+      ctx.fillStyle = barGrad;
+      ctx.fillRect(44, h - 34, w - 88, 3);
+
+      // Trigger high-res PNG download
+      var cleanRoll = (data.roll || data.rollNumber || "Member").replace(/[^a-zA-Z0-9_-]/g, "");
+      var link = document.createElement("a");
+      link.download = "MLN-ID-" + cleanRoll + ".png";
+      link.href = canvas.toDataURL("image/png");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }).catch(function(err) {
+      console.error("ID Generation Error:", err);
+    });
+  }
+
+  var downloadBtn = document.getElementById("downloadThankYouPngBtn");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", function() {
+      downloadIdCardAsPng({
+        name: passName,
+        dept: passDept,
+        activity: passActivity,
+        roll: passRoll,
+        id: passId,
+        photo: passPhoto,
+        className: passClass
+      });
+    });
+  }
+
+  // WhatsApp share button
+  var shareBtn = document.getElementById("sharePassBtn");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", function() {
+      var shareText = "🎉 I just registered for MLN Alliance MediaCrew! Here is my official member pass (#" + passId + ") for " + passActivity + " (" + passDept + "). Join the crew at: " + window.location.origin + "/MLN-Alliance-MediaCrew/index.html";
+      window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText), "_blank");
+    });
+  }
+})();
+</script>
+</body>
+</html>

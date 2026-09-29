@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/id", "destination": "/id.html" },
+    { "source": "/register", "destination": "/register.html" },
+    { "source": "/functions", "destination": "/functions.html" },
+    { "source": "/thankyou", "destination": "/thankyou.html" },
+    { "source": "/records", "destination": "/records.html" }
+  ]
+}

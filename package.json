@@ -1,0 +1,12 @@
+{
+  "name": "mln-alliance-mediacrew",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "python dev-server.py"
+  },
+  "dependencies": {
+    "nodemailer": "^6.10.1"
+  }
+}

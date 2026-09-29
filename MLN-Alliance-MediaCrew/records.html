@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="records.css">
+</head>
+<body>
+
+<!-- Ambient Liquid Refraction Canvas -->
+<div class="liquid-ambient-canvas" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+</div>
+
+<main>
+  <header class="intro-wrap">
+    <div class="intro">
+      <span class="eyebrow">MLN Alliance MediaCrew</span>
+      <h1>Registration Records & Attendance</h1>
+      <p>Live administrative console. Scan student QR passes for real-time check-in, filter database records, or export view to Excel.</p>
+    </div>
+    <div class="header-actions">
+      <a href="index.html" class="button ghost">← View Website</a>
+    </div>
+  </header>
+
+  <!-- Event Session Command Deck -->
+  <div class="event-session-deck">
+    <div class="event-session-header">
+      <div class="event-badge">
+        <span class="live-dot"></span>
+        <span>EVENT ATTENDANCE SESSION</span>
+      </div>
+      <div class="event-selector-cluster">
+        <div class="event-select-wrap">
+          <svg class="event-select-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <select id="eventSelect" aria-label="Select Active Event"></select>
+        </div>
+        <button type="button" class="button" id="openCreateEventBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>+ Create Event</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="event-meta-card">
+      <div class="event-meta-item">
+        <span class="meta-label">Selected Event</span>
+        <strong id="activeEventTitle">—</strong>
+      </div>
+      <div class="event-meta-item">
+        <span class="meta-label">Date & Time</span>
+        <strong id="activeEventDate">—</strong>
+      </div>
+      <div class="event-meta-item">
+        <span class="meta-label">Venue</span>
+        <strong id="activeEventVenue">—</strong>
+      </div>
+      <div class="event-meta-item">
+        <span class="meta-label">Category</span>
+        <strong id="activeEventCategory">—</strong>
+      </div>
+      <div class="event-meta-item">
+        <span class="meta-label">Tracking Mode</span>
+        <span class="mock-badge">● Mock In-Memory (No DB writes)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Metrics Deck -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <span class="metric-label">Total Registrations</span>
+      <div class="metric-val" id="metricTotal">0</div>
+      <span class="metric-sub">Across all departments</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Verified Present</span>
+      <div class="metric-val text-mint" id="metricPresent">0</div>
+      <span class="metric-sub">Checked-in via pass QR</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Attendance Rate</span>
+      <div class="metric-val text-peach" id="metricRate">0%</div>
+      <span class="metric-sub">Event turnout ratio</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Top Department</span>
+      <div class="metric-val text-sm" id="metricTopTrack">—</div>
+      <span class="metric-sub">Highest registration volume</span>
+    </div>
+  </div>
+
+  <div id="recordsStatus" class="status" role="status"></div>
+
+  <section>
+    <div class="toolbar">
+      <div>
+        <h2>All registrations</h2>
+        <div class="counts-row">
+          <span id="recordsCount">0 records</span>
+          <span class="count-divider">•</span>
+          <span id="attendanceCount" class="present-stat">0 present</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="button primary" id="openScannerBtn" type="button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><rect x="7" y="7" width="10" height="10" rx="1"/></svg>
+          <span>Scan Attendance (QR)</span>
+        </button>
+        <button class="button" id="exportRecords" type="button">Export Excel</button>
+      </div>
+    </div>
+
+    <div class="filters">
+      <label>Search<input id="filterSearch" type="search" placeholder="Name, email, roll number or activity"></label>
+      <label>Department<select id="filterInterest"><option value="">All departments</option><option value="production">Production</option><option value="designing">Designing</option><option value="marketing">Marketing</option></select></label>
+      <label>Experience<select id="filterExperience"><option value="">All experience levels</option><option value="fresher">Fresher</option><option value="experienced">Experienced</option></select></label>
+      <label>Attendance<select id="filterAttendance"><option value="">All attendance</option><option value="present">Present only</option><option value="unmarked">Unmarked only</option></select></label>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Department / activity</th>
+            <th>Class / roll no.</th>
+            <th>Contact / experience</th>
+            <th>Registered</th>
+            <th>Attendance</th>
+          </tr>
+        </thead>
+        <tbody id="recordsTableBody"></tbody>
+      </table>
+      <p id="recordsEmpty" class="empty" hidden>No registrations match these filters.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ============================= CREATE EVENT MODAL ============================= -->
+<div id="createEventModal" class="scanner-modal" hidden>
+  <div class="scanner-modal-backdrop" id="createEventBackdrop"></div>
+  <div class="scanner-modal-dialog create-event-dialog">
+    <div class="scanner-modal-head">
+      <div>
+        <h3>Create New Event Session</h3>
+        <p>Set up an event or audition session to test attendance tracking</p>
+      </div>
+      <button class="scanner-close-btn" id="closeCreateEventBtn" type="button" aria-label="Close modal">&times;</button>
+    </div>
+
+    <form id="createEventForm" class="create-event-form">
+      <div class="event-form-grid">
+        <div class="event-form-group full-width">
+          <label for="newEventTitle">Event Title / Session Name *</label>
+          <input type="text" id="newEventTitle" required placeholder="e.g. MediaCrew Induction & Auditions 2026">
+        </div>
+        <div class="event-form-group">
+          <label for="newEventCategory">Category / Department</label>
+          <select id="newEventCategory">
+            <option value="All Departments">All Departments (General)</option>
+            <option value="Production">Production & Cinematography</option>
+            <option value="Designing">Designing & UI/UX</option>
+            <option value="Marketing">Marketing & PR</option>
+            <option value="Campus Fest">Annual Cultural Fest</option>
+          </select>
+        </div>
+        <div class="event-form-group">
+          <label for="newEventVenue">Venue / Hall *</label>
+          <input type="text" id="newEventVenue" required placeholder="e.g. Auditorium Hall B">
+        </div>
+        <div class="event-form-group">
+          <label for="newEventDate">Date & Time *</label>
+          <input type="datetime-local" id="newEventDate" required>
+        </div>
+        <div class="event-form-group">
+          <label for="newEventNotes">Session Purpose / Notes</label>
+          <input type="text" id="newEventNotes" placeholder="e.g. Mandatory attendance for crew recruits">
+        </div>
+      </div>
+
+      <div class="create-event-foot">
+        <button type="button" class="button" id="cancelCreateEventBtn">Cancel</button>
+        <button type="submit" class="button primary">Create Event & Start Tracking</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============================= QR SCANNER MODAL ============================= -->
+<div id="scannerModal" class="scanner-modal" hidden>
+  <div class="scanner-modal-backdrop" id="scannerBackdrop"></div>
+  <div class="scanner-modal-dialog">
+    <div class="scanner-modal-head">
+      <div>
+        <h3>Event Attendance QR Scanner</h3>
+        <p id="scannerEventSubtitle">Recording attendance for: <strong id="scannerActiveEventName">Active Session</strong></p>
+      </div>
+      <button class="scanner-close-btn" id="closeScannerBtn" type="button" aria-label="Close scanner">&times;</button>
+    </div>
+
+    <div id="scannerFeedback" class="scanner-feedback" hidden></div>
+
+    <div class="scanner-view-wrap">
+      <div id="qrReader" class="scanner-reader"></div>
+    </div>
+
+    <div id="scanResultCard" class="scan-result-card" hidden></div>
+
+    <div class="scanner-modal-foot">
+      <span id="scanCountInfo" class="scanner-stat">Ready to scan...</span>
+      <div class="actions">
+        <button id="switchCameraBtn" class="button" type="button">Flip Camera</button>
+        <button id="stopScannerBtn" class="button primary" type="button">Done Scanning</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="records.js"></script>
+</body>
+</html>
