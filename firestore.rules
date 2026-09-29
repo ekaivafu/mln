@@ -1,0 +1,23 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /registrations/{registrationId} {
+      allow create: if request.resource.data.keys().hasAll([
+        'interest', 'activity', 'name', 'className', 'email',
+        'mobile', 'rollNumber', 'experience', 'registeredAt'
+      ])
+      && request.resource.data.email is string
+      && request.resource.data.rollNumber is string;
+
+      allow read: if true;
+
+      // Allow marking attendance from the records dashboard
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['attended', 'attendedAt'])
+        || (request.auth != null && request.auth.token.admin == true);
+
+      allow delete: if request.auth != null
+        && request.auth.token.admin == true;
+    }
+  }
+}

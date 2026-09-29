@@ -111,20 +111,36 @@ def send_real_email_smtp(email, otp):
 
 
 REWRITES = {
-    "/": "/MLN-Alliance-MediaCrew/index.html",
-    "/index.html": "/MLN-Alliance-MediaCrew/index.html",
-    "/id": "/MLN-Alliance-MediaCrew/id.html",
-    "/id.html": "/MLN-Alliance-MediaCrew/id.html",
-    "/register": "/MLN-Alliance-MediaCrew/register.html",
-    "/register.html": "/MLN-Alliance-MediaCrew/register.html",
-    "/functions": "/MLN-Alliance-MediaCrew/functions.html",
-    "/functions.html": "/MLN-Alliance-MediaCrew/functions.html",
-    "/thankyou": "/MLN-Alliance-MediaCrew/thankyou.html",
-    "/thankyou.html": "/MLN-Alliance-MediaCrew/thankyou.html",
-    "/records": "/MLN-Alliance-MediaCrew/records.html",
-    "/records.html": "/MLN-Alliance-MediaCrew/records.html",
-    "/records-dashboard": "/MLN-Alliance-MediaCrew/records.html",
-    "/records-dashboard/records.html": "/MLN-Alliance-MediaCrew/records.html"
+    "/": "/index.html",
+    "/index": "/index.html",
+    "/index.html": "/index.html",
+    "/id": "/id.html",
+    "/id.html": "/id.html",
+    "/register": "/register.html",
+    "/register.html": "/register.html",
+    "/functions": "/functions.html",
+    "/functions.html": "/functions.html",
+    "/thankyou": "/thankyou.html",
+    "/thankyou.html": "/thankyou.html",
+    "/records": "/records.html",
+    "/records.html": "/records.html",
+    "/records-dashboard": "/records.html",
+    "/records-dashboard/": "/records.html",
+    "/records-dashboard/records.html": "/records.html",
+    "/MLN-Alliance-MediaCrew": "/index.html",
+    "/MLN-Alliance-MediaCrew/": "/index.html",
+    "/MLN-Alliance-MediaCrew/index": "/index.html",
+    "/MLN-Alliance-MediaCrew/index.html": "/index.html",
+    "/MLN-Alliance-MediaCrew/register": "/register.html",
+    "/MLN-Alliance-MediaCrew/register.html": "/register.html",
+    "/MLN-Alliance-MediaCrew/id": "/id.html",
+    "/MLN-Alliance-MediaCrew/id.html": "/id.html",
+    "/MLN-Alliance-MediaCrew/functions": "/functions.html",
+    "/MLN-Alliance-MediaCrew/functions.html": "/functions.html",
+    "/MLN-Alliance-MediaCrew/records": "/records.html",
+    "/MLN-Alliance-MediaCrew/records.html": "/records.html",
+    "/MLN-Alliance-MediaCrew/thankyou": "/thankyou.html",
+    "/MLN-Alliance-MediaCrew/thankyou.html": "/thankyou.html"
 }
 
 class VercelLikeHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -146,12 +162,10 @@ class VercelLikeHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             target = REWRITES[path]
             query = f"?{parsed.query}" if parsed.query else ""
             self.path = target + query
-        elif path.startswith("/assets/"):
-            self.path = "/MLN-Alliance-MediaCrew" + self.path
-        elif path.startswith("/css/"):
-            self.path = "/MLN-Alliance-MediaCrew" + self.path
-        elif path.startswith("/js/"):
-            self.path = "/MLN-Alliance-MediaCrew" + self.path
+        elif path.startswith("/MLN-Alliance-MediaCrew/"):
+            stripped = path.replace("/MLN-Alliance-MediaCrew", "")
+            query = f"?{parsed.query}" if parsed.query else ""
+            self.path = stripped + query
 
         return super().do_GET()
 

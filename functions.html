@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Functions — MLN Alliance MediaCrew</title>
+<meta name="description" content="Explore Production, Designing and Marketing activities at MLN Alliance MediaCrew and see what you'll learn in each." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Ambient Liquid Refraction Canvas -->
+<div class="liquid-ambient-canvas" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+</div>
+
+<!-- ============================= HEADER ============================= -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="MLN Alliance MediaCrew Home">
+      <span class="brand-mark">
+        <img src="assets/images/logo.webp" alt="MLN Alliance MediaCrew logo" width="42" height="42">
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">MLN Alliance MediaCrew</span>
+        <span class="brand-tag">Create. Capture. Design. Market.</span>
+      </span>
+    </a>
+
+    <div class="header-right">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Us</a>
+        <a href="functions.html" class="active">Our Functions</a>
+        <a href="register.html" class="nav-cta">Register / ID</a>
+        <a href="index.html#contact">Contact Us</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ============================= PAGE BANNER ============================= -->
+<section class="page-banner">
+  <div class="container">
+    <span class="eyebrow">Our Functions</span>
+    <h1>Choose a department, discover its activities</h1>
+    <p>Every department runs its own set of hands-on activities. Pick one to see exactly what you'll do and learn.</p>
+  </div>
+</section>
+
+<!-- ============================= DEPARTMENT SELECT ============================= -->
+<section class="section" id="deptSelectSection">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Step One</span>
+      <h2>Select Your Area of Interest</h2>
+      <p>Click a department card to reveal its activities below.</p>
+    </div>
+
+    <div class="dept-select-grid reveal-stagger">
+      <button type="button" class="dept-select-card" data-dept="production" tabindex="0">
+        <span class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h1.5l1-1.5h9l1 1.5H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/><circle cx="12" cy="13" r="3.4"/></svg>
+        </span>
+        <h3>Production</h3>
+        <p>Videography, photography, video editing and photo editing.</p>
+        <span class="dept-count">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span class="dept-count-num">4</span> activities
+        </span>
+      </button>
+
+      <button type="button" class="dept-select-card" data-dept="designing" tabindex="0">
+        <span class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 14.5L4 20"/><path d="M9.5 14.5c-1.2-1.2-1.2-3 0-4.2l7-7c1-1 2.6-1 3.5 0 .9.9.9 2.5 0 3.5l-7 7c-1.2 1.2-3 1.2-4.2 0z"/></svg>
+        </span>
+        <h3>Designing</h3>
+        <p>Graphic designing, poster making, thumbnail and cover page design.</p>
+        <span class="dept-count">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span class="dept-count-num">4</span> activities
+        </span>
+      </button>
+
+      <button type="button" class="dept-select-card" data-dept="marketing" tabindex="0">
+        <span class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        </span>
+        <h3>Marketing</h3>
+        <p>Digital marketing, Instagram handling, content strategy and blogging.</p>
+        <span class="dept-count">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span class="dept-count-num">4</span> activities
+        </span>
+      </button>
+    </div>
+
+    <!-- ============================= ACTIVITY DETAIL (shown dynamically) ============================= -->
+    <div class="dept-detail" id="deptDetail">
+      <div class="dept-detail-head">
+        <div>
+          <span class="eyebrow">Step Two</span>
+          <h2 id="deptDetailTitle">Department Activities</h2>
+          <p id="deptDetailSubtitle" style="margin-bottom:0;"></p>
+        </div>
+        <button type="button" class="back-link" id="backToDepts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to departments
+        </button>
+      </div>
+
+      <div class="activity-grid" id="activityGrid">
+        <!-- Activity cards are injected here by js/functions.js -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CTA STRIP ============================= -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="card reveal" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; padding:44px;">
+      <div>
+        <h3 style="font-size:1.5rem; margin-bottom:8px;">Found your activity?</h3>
+        <p style="margin-bottom:0;">Lock in your spot — registration takes less than two minutes.</p>
+      </div>
+      <a href="register.html" class="btn btn-primary">Register / ID</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#04060d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h1.5l1-1.5h9l1 1.5H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/><circle cx="12" cy="13" r="3.4"/></svg>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">MLN Alliance MediaCrew</span>
+          </span>
+        </a>
+        <p>The student media house for production, design and marketing. Create. Capture. Design. Market.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="functions.html">Our Functions</a></li>
+          <li><a href="register.html">Register / ID</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Departments</h4>
+        <ul>
+          <li><a href="functions.html#production">Production</a></li>
+          <li><a href="functions.html#designing">Designing</a></li>
+          <li><a href="functions.html#marketing">Marketing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li class="foot-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"/></svg>
+            <a href="tel:+918307973507">83079 73507</a>
+          </li>
+          <li class="foot-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+            <a href="mailto:mlnalliancemediacrew@gmail.com">mlnalliancemediacrew@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> MLN Alliance MediaCrew. All Rights Reserved.</span>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/mln_alliance_mediacrew/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/functions.js"></script>
+</body>
+</html>
