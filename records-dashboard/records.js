@@ -51,186 +51,9 @@
     }
   ];
 
-  /* ---------- Default Mock Member Registrations (BBA College) ---------- */
-  var DEFAULT_RECORDS = [
-    {
-      id: "MLN-24BBA1042",
-      name: "Rohan Sharma",
-      rollNumber: "24BBA1042",
-      className: "BBA - 2nd Year (Semester 3)",
-      email: "rohan.sharma@mlncollege.edu",
-      mobile: "9876543210",
-      interest: "production",
-      activity: "Cinematography & Lighting",
-      experience: "experienced",
-      experienceDuration: "1.5 Years",
-      registeredAt: "2026-09-20T10:14:00.000Z"
-    },
-    {
-      id: "MLN-24BBA2018",
-      name: "Priya Patel",
-      rollNumber: "24BBA2018",
-      className: "BBA - 1st Year (Semester 1)",
-      email: "priya.patel@mlncollege.edu",
-      mobile: "9812345678",
-      interest: "designing",
-      activity: "UI/UX & Digital Graphics",
-      experience: "fresher",
-      experienceDuration: "",
-      registeredAt: "2026-09-20T11:30:00.000Z"
-    },
-    {
-      id: "MLN-23BBA3011",
-      name: "Aarav Mehta",
-      rollNumber: "23BBA3011",
-      className: "BBA - 3rd Year (Marketing)",
-      email: "aarav.mehta@mlncollege.edu",
-      mobile: "9765432109",
-      interest: "marketing",
-      activity: "Social Media Strategy",
-      experience: "experienced",
-      experienceDuration: "2 Years",
-      registeredAt: "2026-09-21T09:00:00.000Z"
-    },
-    {
-      id: "MLN-24BBA1089",
-      name: "Sneha Verma",
-      rollNumber: "24BBA1089",
-      className: "BBA - 1st Year (Semester 2)",
-      email: "sneha.verma@mlncollege.edu",
-      mobile: "9988776655",
-      interest: "production",
-      activity: "Video Editing & Post",
-      experience: "fresher",
-      experienceDuration: "",
-      registeredAt: "2026-09-21T14:22:00.000Z"
-    },
-    {
-      id: "MLN-24BBA2045",
-      name: "Kabir Kapoor",
-      rollNumber: "24BBA2045",
-      className: "BBA - 2nd Year (Event Mgt)",
-      email: "kabir.kapoor@mlncollege.edu",
-      mobile: "9823456781",
-      interest: "production",
-      activity: "Photography & Framing",
-      experience: "experienced",
-      experienceDuration: "1 Year",
-      registeredAt: "2026-09-21T16:45:00.000Z"
-    },
-    {
-      id: "MLN-24BBA1012",
-      name: "Ananya Gupta",
-      rollNumber: "24BBA1012",
-      className: "BBA - 2nd Year (Branding)",
-      email: "ananya.gupta@mlncollege.edu",
-      mobile: "9711223344",
-      interest: "designing",
-      activity: "Visual Identity & Branding",
-      experience: "experienced",
-      experienceDuration: "8 Months",
-      registeredAt: "2026-09-22T08:15:00.000Z"
-    },
-    {
-      id: "MLN-23BBA4090",
-      name: "Aditya Singh",
-      rollNumber: "23BBA4090",
-      className: "BBA - 3rd Year (PR & Comms)",
-      email: "aditya.singh@mlncollege.edu",
-      mobile: "9655443322",
-      interest: "marketing",
-      activity: "PR & Campus Outreach",
-      experience: "experienced",
-      experienceDuration: "2.5 Years",
-      registeredAt: "2026-09-22T12:00:00.000Z"
-    },
-    {
-      id: "MLN-24BBA2055",
-      name: "Tanvi Malhotra",
-      rollNumber: "24BBA2055",
-      className: "BBA - 1st Year (Semester 1)",
-      email: "tanvi.m@mlncollege.edu",
-      mobile: "9544332211",
-      interest: "designing",
-      activity: "Motion Graphics & Reels",
-      experience: "fresher",
-      experienceDuration: "",
-      registeredAt: "2026-09-22T17:40:00.000Z"
-    },
-    {
-      id: "MLN-24BBA1023",
-      name: "Harsh Vardhan",
-      rollNumber: "24BBA1023",
-      className: "BBA - 2nd Year (Media Studies)",
-      email: "harsh.v@mlncollege.edu",
-      mobile: "9433221100",
-      interest: "production",
-      activity: "Sound & Audio Engineering",
-      experience: "fresher",
-      experienceDuration: "",
-      registeredAt: "2026-09-23T09:30:00.000Z"
-    },
-    {
-      id: "MLN-23BBA3078",
-      name: "Ishita Roy",
-      rollNumber: "23BBA3078",
-      className: "BBA - 3rd Year (Strategy)",
-      email: "ishita.roy@mlncollege.edu",
-      mobile: "9322110099",
-      interest: "marketing",
-      activity: "Event Strategy & Sponsorship",
-      experience: "experienced",
-      experienceDuration: "1 Year",
-      registeredAt: "2026-09-23T13:10:00.000Z"
-    },
-    {
-      id: "MLN-24BBA1102",
-      name: "Devansh Joshi",
-      rollNumber: "24BBA1102",
-      className: "BBA - 1st Year (Semester 2)",
-      email: "devansh.j@mlncollege.edu",
-      mobile: "9211009988",
-      interest: "production",
-      activity: "Direction & Storyboarding",
-      experience: "fresher",
-      experienceDuration: "",
-      registeredAt: "2026-09-23T15:50:00.000Z"
-    },
-    {
-      id: "MLN-24BBA2019",
-      name: "Riya Chawla",
-      rollNumber: "24BBA2019",
-      className: "BBA - 2nd Year (Creative Mgt)",
-      email: "riya.chawla@mlncollege.edu",
-      mobile: "9100998877",
-      interest: "designing",
-      activity: "3D Set Design & VFX",
-      experience: "experienced",
-      experienceDuration: "1.5 Years",
-      registeredAt: "2026-09-23T18:05:00.000Z"
-    }
-  ];
-
-  /* ---------- Seed Mock Attendance per Event ---------- */
-  var DEFAULT_ATTENDANCE = {
-    "evt_induction_2026": {
-      "MLN-24BBA1042": { attendedAt: "2026-09-24T10:05:00.000Z", source: "qr" },
-      "MLN-24BBA2018": { attendedAt: "2026-09-24T10:08:00.000Z", source: "qr" },
-      "MLN-23BBA3011": { attendedAt: "2026-09-24T10:12:00.000Z", source: "manual" },
-      "MLN-24BBA1089": { attendedAt: "2026-09-24T10:15:00.000Z", source: "qr" },
-      "MLN-24BBA2045": { attendedAt: "2026-09-24T10:20:00.000Z", source: "manual" }
-    },
-    "evt_cinematography": {
-      "MLN-24BBA1042": { attendedAt: "2026-09-26T14:02:00.000Z", source: "qr" },
-      "MLN-24BBA2045": { attendedAt: "2026-09-26T14:06:00.000Z", source: "qr" },
-      "MLN-24BBA1023": { attendedAt: "2026-09-26T14:10:00.000Z", source: "manual" }
-    },
-    "evt_design_sprint": {
-      "MLN-24BBA2018": { attendedAt: "2026-09-28T11:35:00.000Z", source: "qr" },
-      "MLN-24BBA1012": { attendedAt: "2026-09-28T11:40:00.000Z", source: "manual" }
-    },
-    "evt_fest_coverage": {}
-  };
+  /* ---------- Member Registrations & Attendance (Strictly Live from Firebase) ---------- */
+  var DEFAULT_RECORDS = [];
+  var DEFAULT_ATTENDANCE = {};
 
   /* ---------- State Variables ---------- */
   var records = [];
@@ -386,19 +209,19 @@
 
   function loadAttendance() {
     try {
-      var saved = localStorage.getItem("mln_mock_event_attendance");
+      var saved = localStorage.getItem("mln_event_attendance");
       if (saved) {
         eventAttendance = JSON.parse(saved);
         return;
       }
     } catch (e) {}
-    eventAttendance = JSON.parse(JSON.stringify(DEFAULT_ATTENDANCE));
+    eventAttendance = {};
     saveAttendance();
   }
 
   function saveAttendance() {
     try {
-      localStorage.setItem("mln_mock_event_attendance", JSON.stringify(eventAttendance));
+      localStorage.setItem("mln_event_attendance", JSON.stringify(eventAttendance));
     } catch (e) {}
   }
 
@@ -573,7 +396,15 @@
     }).join("");
 
     count.textContent = filtered.length + " of " + records.length + " records";
-    empty.hidden = filtered.length !== 0;
+    if (records.length === 0) {
+      empty.textContent = "No registrations found in Firebase yet. Once candidates register, their profiles will appear here.";
+      empty.hidden = false;
+    } else if (filtered.length === 0) {
+      empty.textContent = "No registrations match these filters.";
+      empty.hidden = false;
+    } else {
+      empty.hidden = true;
+    }
 
     // Attach click listeners to manual check-in buttons
     tableBody.querySelectorAll(".mark-attendance-btn").forEach(function (btn) {
@@ -874,9 +705,8 @@
       if (rawLocal) localStore = JSON.parse(rawLocal);
     } catch (e) {}
 
-    // Initial base records: merge default mock students with any local registrations
+    // Base records strictly from real registrations
     var baseMap = {};
-    DEFAULT_RECORDS.forEach(function (r) { baseMap[r.id] = r; });
     if (Array.isArray(localStore)) {
       localStore.forEach(function (r) {
         if (r && r.id) baseMap[r.id] = r;
