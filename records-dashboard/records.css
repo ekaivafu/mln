@@ -947,12 +947,7 @@ td small {
   transform: scale(1.03) !important;
   visibility: hidden !important;
   pointer-events: none !important;
-}
-.site-preloader.is-active {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
+  display: none !important;
 }
 .preloader-ambient-glow {
   position: absolute;

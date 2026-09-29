@@ -38,17 +38,22 @@
   (function(){
     function dismiss() {
       var p = document.getElementById("sitePreloader");
-      if (p && !p.classList.contains("is-loaded")) {
+      if (p) {
         p.classList.add("is-loaded");
+        p.classList.remove("is-active");
+      }
+      if (document.body) {
+        document.body.classList.remove("page-leaving");
       }
     }
     if (document.readyState === "complete") {
-      setTimeout(dismiss, 80);
+      setTimeout(dismiss, 60);
     } else {
-      window.addEventListener("load", function(){ setTimeout(dismiss, 120); });
-      setTimeout(dismiss, 1000);
+      window.addEventListener("load", function(){ setTimeout(dismiss, 80); });
+      setTimeout(dismiss, 600);
     }
-    window.addEventListener("pageshow", function(e){ if (e.persisted) dismiss(); });
+    window.addEventListener("pageshow", dismiss);
+    window.addEventListener("pagehide", dismiss);
   })();
 </script>
 

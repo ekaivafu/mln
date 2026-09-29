@@ -94,44 +94,21 @@ body{
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  animation: pageEntrance 300ms var(--ease-out) forwards;
-  transition: opacity 220ms var(--ease-out);
+  animation: pageEntrance 250ms var(--ease-out) forwards;
 }
 
 body.page-leaving{
-  opacity: 0 !important;
   pointer-events: none;
 }
 
 /* Top Liquid Glass Transition Beam */
 .page-transition-beam{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: linear-gradient(90deg, #ef7657, #ff9a70, #00f2a1);
-  box-shadow: 0 0 16px rgba(239, 118, 87, 0.8), 0 0 8px rgba(0, 242, 161, 0.6);
-  z-index: 99999;
-  pointer-events: none;
-  transition: width 280ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.page-transition-beam.active{
-  width: 100%;
+  display: none !important;
 }
 
-/* Top Scroll Progress Bar */
+/* Top Scroll Progress Bar (Disabled to prevent user confusion with page reloading) */
 .scroll-progress-bar{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: linear-gradient(90deg, #ef7657, #ff9a70, #00f2a1, #f5b276);
-  z-index: 1001;
-  pointer-events: none;
-  transition: width 60ms linear;
-  box-shadow: 0 0 14px rgba(239, 118, 87, 0.85);
+  display: none !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1820,8 +1797,14 @@ body.register-page {
 }
 
 .register-page .liquid-ambient-canvas {
-  opacity: 0.45;
-  filter: blur(48px);
+  opacity: 0.35;
+  filter: none !important;
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .register-page .liquid-ambient-canvas {
+    display: none !important;
+  }
 }
 .register-page .orb-1 {
   width: 460px;
@@ -4617,13 +4600,7 @@ body.register-page {
   transform: scale(1.03) !important;
   visibility: hidden !important;
   pointer-events: none !important;
-}
-
-.site-preloader.is-active {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
+  display: none !important;
 }
 
 .preloader-ambient-glow {

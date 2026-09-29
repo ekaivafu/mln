@@ -997,12 +997,7 @@ body {
   transform: scale(1.03) !important;
   visibility: hidden !important;
   pointer-events: none !important;
-}
-.site-preloader.is-active {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
+  display: none !important;
 }
 .preloader-ambient-glow {
   position: absolute;
@@ -1173,29 +1168,19 @@ body {
   (function(){
     function dismiss() {
       var p = document.getElementById("sitePreloader");
-      if (p && !p.classList.contains("is-loaded")) {
+      if (p) {
         p.classList.add("is-loaded");
+        p.classList.remove("is-active");
       }
     }
     if (document.readyState === "complete") {
-      setTimeout(dismiss, 100);
+      setTimeout(dismiss, 60);
     } else {
-      window.addEventListener("load", function(){ setTimeout(dismiss, 120); });
-      setTimeout(dismiss, 1000);
+      window.addEventListener("load", function(){ setTimeout(dismiss, 90); });
+      setTimeout(dismiss, 700);
     }
-    window.addEventListener("pageshow", function(e){ if (e.persisted) dismiss(); });
-    // Back navigation smoothly triggers preloader
-    document.querySelectorAll(".portfolio-back-btn, a[href]").forEach(function(link){
-      link.addEventListener("click", function(e){
-        var href = link.getAttribute("href");
-        if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
-        var p = document.getElementById("sitePreloader");
-        if (p) {
-          p.classList.remove("is-loaded");
-          p.classList.add("is-active");
-        }
-      });
-    });
+    window.addEventListener("pageshow", dismiss);
+    window.addEventListener("pagehide", dismiss);
   })();
 </script>
 

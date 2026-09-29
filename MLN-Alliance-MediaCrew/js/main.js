@@ -15,76 +15,40 @@
 (function () {
   "use strict";
 
-  /* ---------- Cinematic Preloader & Page Transitions ---------- */
+  /* ---------- Cinematic Preloader (Zero Navigation Trap) ---------- */
   function initPageTransitions() {
     var preloader = document.getElementById("sitePreloader");
 
     function dismissPreloader() {
-      if (preloader && !preloader.classList.contains("is-loaded")) {
+      if (preloader) {
         preloader.classList.add("is-loaded");
         preloader.classList.remove("is-active");
       }
+      document.body.classList.remove("page-leaving");
     }
 
+    // Dismiss as soon as ready
     if (document.readyState === "complete") {
-      setTimeout(dismissPreloader, 100);
+      setTimeout(dismissPreloader, 60);
     } else {
       window.addEventListener("load", function () {
-        setTimeout(dismissPreloader, 140);
+        setTimeout(dismissPreloader, 90);
       });
-      setTimeout(dismissPreloader, 1000);
+      setTimeout(dismissPreloader, 600);
     }
 
-    window.addEventListener("pageshow", function (e) {
-      if (e.persisted) {
-        dismissPreloader();
-        document.body.classList.remove("page-leaving");
-      }
+    // Always dismiss immediately on Back/Forward navigation without condition
+    window.addEventListener("pageshow", function () {
+      dismissPreloader();
     });
 
-    document.querySelectorAll("a[href]").forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        var href = link.getAttribute("href");
-        if (!href) return;
-
-        if (
-          href.startsWith("#") ||
-          href.startsWith("mailto:") ||
-          href.startsWith("tel:") ||
-          href.startsWith("javascript:") ||
-          link.getAttribute("target") === "_blank" ||
-          e.ctrlKey || e.metaKey || e.shiftKey || e.altKey
-        ) {
-          return;
-        }
-
-        var currentFile = (window.location.pathname.split("/").pop() || "index.html").split("#")[0];
-        if (href.indexOf("#") !== -1) {
-          var targetFile = href.split("#")[0];
-          if (targetFile === "" || targetFile === currentFile) {
-            return;
-          }
-        }
-
-        e.preventDefault();
-        if (preloader) {
-          preloader.classList.remove("is-loaded");
-          preloader.classList.add("is-active");
-        }
-        document.body.classList.add("page-leaving");
-        setTimeout(function () {
-          window.location.href = href;
-        }, 220);
-      });
+    window.addEventListener("pagehide", function () {
+      dismissPreloader();
     });
   }
 
   /* ---------- Unified 120fps Scroll Engine (Zero Reflows / Zero Jitter) ---------- */
   function initScrollEngine() {
-    var progressBar = document.createElement("div");
-    progressBar.className = "scroll-progress-bar";
-    document.body.appendChild(progressBar);
-
     var header = document.querySelector(".site-header");
     var rig = document.querySelector(".lens-rig");
     var aboutSection = document.getElementById("about");
@@ -114,11 +78,7 @@
     function onFrame() {
       var scrollY = window.scrollY || window.pageYOffset || 0;
 
-      // 1. Progress Bar
-      var progress = docH > 0 ? (scrollY / docH) * 100 : 0;
-      progressBar.style.width = Math.min(progress, 100) + "%";
-
-      // 2. Header State
+      // Header State
       if (header) {
         header.classList.toggle("is-scrolled", scrollY > 24);
       }
@@ -272,8 +232,9 @@
   }
 
   /* ---------- Scroll Focus Engine (Dynamic Phone & Desktop Active Response) ---------- */
+  /* ---------- Scroll Focus Engine (Zero Animation Jank) ---------- */
   function initScrollFocusEngine() {
-    var focalElements = document.querySelectorAll(".card, .dept-card, .pipeline-step, .cta-glass-banner, .about-visual, .form-step-card, .pass-card, .id-download-card");
+    var focalElements = document.querySelectorAll(".card, .dept-card, .pipeline-step, .cta-glass-banner, .about-visual");
     if (!focalElements.length || !("IntersectionObserver" in window)) return;
 
     var focusObserver = new IntersectionObserver(
@@ -281,16 +242,13 @@
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-focused");
-            if (!entry.target.classList.contains("light-swept")) {
-              entry.target.classList.add("light-swept");
-            }
           } else {
             entry.target.classList.remove("is-focused");
           }
         });
       },
       {
-        threshold: 0.05,
+        threshold: 0.1,
         rootMargin: "-10% 0px -10% 0px"
       }
     );
