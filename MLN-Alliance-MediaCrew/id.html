@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Official Member Portfolio — MLN Alliance MediaCrew</title>
-<meta name="description" content="Verified Member Digital Portfolio, Department Console & Official QR-ID Pass for MLN Alliance MediaCrew." />
+<meta name="description" content="Verified Member Digital Portfolio, Department Console & Official QR-ID for MLN Alliance MediaCrew." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -76,6 +76,28 @@ body {
   filter: none !important;
 }
 
+/* ==================== HARDWARE-ACCELERATED AMBIENT MESH GLOWS (ZERO-CPU COMPOSITOR LAYER) ==================== */
+.ambient-mesh-glows {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background: 
+    radial-gradient(circle 520px at 50% 16%, rgba(239, 118, 87, 0.22) 0%, rgba(255, 154, 112, 0.08) 45%, transparent 75%),
+    radial-gradient(circle 480px at 32% 38%, rgba(0, 242, 161, 0.16) 0%, rgba(56, 189, 248, 0.06) 45%, transparent 75%),
+    radial-gradient(circle 460px at 68% 58%, rgba(239, 118, 87, 0.16) 0%, rgba(255, 154, 112, 0.06) 45%, transparent 75%),
+    radial-gradient(circle 450px at 38% 76%, rgba(0, 242, 161, 0.14) 0%, rgba(56, 189, 248, 0.05) 45%, transparent 75%),
+    radial-gradient(circle 460px at 52% 92%, rgba(239, 118, 87, 0.18) 0%, rgba(192, 132, 252, 0.06) 45%, transparent 75%);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
 /* ==================== AMBIENT LIVING BACKGROUND CANVAS (FIXED IN VIEWPORT) ==================== */
 #ambientBgCanvas {
   position: fixed !important;
@@ -86,7 +108,7 @@ body {
   width: 100vw !important;
   height: 100vh !important;
   height: 100dvh !important;
-  z-index: 0 !important;
+  z-index: 1 !important;
   pointer-events: none !important;
   opacity: 0.95;
   transform: none !important;
@@ -119,7 +141,7 @@ body {
   max-width: 520px;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(180deg, rgba(14, 10, 8, 0.65) 0%, rgba(10, 7, 6, 0.78) 100%);
+  background: linear-gradient(180deg, rgba(14, 10, 8, 0.82) 0%, rgba(10, 7, 6, 0.92) 100%);
   border-left: 1px solid var(--port-border);
   border-right: 1px solid var(--port-border);
   position: relative;
@@ -128,8 +150,7 @@ body {
   flex-direction: column;
   padding-bottom: 120px;
   box-shadow: 0 0 120px rgba(0, 0, 0, 0.85), 0 0 50px rgba(239, 118, 87, 0.15);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  contain: layout style;
 }
 
 @media (min-width: 620px) {
@@ -320,7 +341,6 @@ body {
   justify-content: center;
   align-items: flex-end;
   transform-style: preserve-3d;
-  transition: transform 0.15s ease-out;
   cursor: grab;
 }
 
@@ -331,16 +351,17 @@ body {
   height: 310px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(239, 118, 87, 0.42) 0%, rgba(0, 242, 161, 0.22) 45%, transparent 75%);
-  filter: blur(42px);
+  filter: blur(40px);
   top: 18%;
   z-index: 1;
   pointer-events: none;
+  will-change: transform, opacity;
   animation: auraBreath 4.5s ease-in-out infinite alternate;
 }
 
 @keyframes auraBreath {
   0% { transform: scale(0.92); opacity: 0.65; }
-  100% { transform: scale(1.18); opacity: 1; filter: blur(48px); }
+  100% { transform: scale(1.15); opacity: 0.95; }
 }
 
 /* Rotating Futuristic Cyber-Rings (Dual-Direction) */
@@ -422,7 +443,6 @@ body {
     drop-shadow(calc(var(--hero-shadow-x, 0px) * 0.45) calc(var(--hero-shadow-y, 22px) * 0.45) 12px rgba(0, 0, 0, 0.72));
   object-fit: contain;
   transform: translateZ(44px);
-  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), filter 0.15s ease-out;
   user-select: none;
   -webkit-user-drag: none;
 }
@@ -455,7 +475,6 @@ body {
   filter: blur(20px);
   transform-origin: center bottom;
   transform: translateX(calc(-50% + var(--shadow-parallax-x, 0px))) translateY(var(--shadow-parallax-y, 8px)) translateZ(8px) scale(0.96);
-  transition: transform 0.1s ease-out;
   opacity: 0.88;
 }
 
@@ -480,7 +499,6 @@ body {
   z-index: 2;
   transform-origin: center center;
   transform: translateX(calc(-50% + var(--shadow-parallax-x, 0px))) translateZ(4px) scaleX(var(--floor-scale-x, 1)) skewX(var(--floor-skew-x, 0deg));
-  transition: transform 0.1s ease-out;
 }
 
 /* Floating HUD Tag Over Cutout */
@@ -625,15 +643,16 @@ body {
   width: 80%;
   height: 90%;
   background: radial-gradient(ellipse at center, rgba(0, 242, 161, 0.08) 0%, rgba(239, 118, 87, 0.07) 50%, transparent 80%);
-  filter: blur(36px);
+  filter: blur(34px);
   pointer-events: none;
   z-index: 0;
+  will-change: transform, opacity;
   animation: deckAuraBreath 7s ease-in-out infinite alternate;
 }
 
 @keyframes deckAuraBreath {
-  0% { transform: scale(0.95); opacity: 0.6; }
-  100% { transform: scale(1.05); opacity: 1; filter: blur(42px); }
+  0% { transform: scale(0.96); opacity: 0.6; }
+  100% { transform: scale(1.04); opacity: 0.95; }
 }
 
 .bento-link-row {
@@ -641,14 +660,12 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  background: var(--port-glass);
+  background: rgba(22, 17, 14, 0.94);
   border: 1px solid var(--port-border);
   border-radius: 18px;
   text-decoration: none;
   color: var(--port-text-hi);
   box-shadow: var(--port-specular);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   position: relative;
   overflow: hidden;
   transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s, box-shadow 0.24s, background 0.24s;
@@ -776,16 +793,17 @@ body {
   filter: blur(28px);
   pointer-events: none;
   z-index: 0;
+  will-change: transform, opacity;
   animation: qrAuraPulse 5.5s ease-in-out infinite alternate;
 }
 
 @keyframes qrAuraPulse {
-  0% { opacity: 0.5; transform: scale(0.96); }
-  100% { opacity: 0.95; transform: scale(1.03); filter: blur(34px); }
+  0% { opacity: 0.5; transform: scale(0.97); }
+  100% { opacity: 0.92; transform: scale(1.03); }
 }
 
 .gate-pass-card {
-  background: linear-gradient(145deg, rgba(28, 20, 17, 0.92) 0%, rgba(14, 10, 8, 0.98) 100%);
+  background: linear-gradient(145deg, rgba(28, 20, 17, 0.94) 0%, rgba(14, 10, 8, 0.98) 100%);
   border: 1px solid var(--port-border-strong);
   border-radius: 26px;
   padding: 24px;
@@ -793,7 +811,6 @@ body {
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
-  transition: transform 0.2s ease-out, box-shadow 0.2s;
 }
 
 /* Holographic Foil Shimmer Layer */
@@ -1262,9 +1279,10 @@ body {
   })();
 </script>
 
-<!-- Live Canvas Ambient Living Fluid & Dust Constellation -->
+<!-- Hardware-Accelerated Ambient Mesh Glows & Living Canvas -->
+<div class="ambient-mesh-glows" aria-hidden="true"></div>
 <canvas id="ambientBgCanvas"></canvas>
-<div class="perspective-grid-backdrop"></div>
+<div class="perspective-grid-backdrop" aria-hidden="true"></div>
 
 <div class="portfolio-viewport">
 
@@ -1425,9 +1443,9 @@ body {
           <div id="portfolioQrCode"></div>
           <span class="gate-tiny-url-badge" id="tinyUrlBadge" title="Click to copy canonical link">
             <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-            <span id="tinyUrlText">id.html?id=MLN-PASS</span>
+            <span id="tinyUrlText">id.html?id=MLN-ID</span>
           </span>
-          <p class="gate-qr-note">Scan QR-ID with Google Lens or event attendance scanner for instant verified check-in</p>
+          <p class="gate-qr-note">Scan to verify</p>
         </div>
 
         <div class="pass-action-buttons">
@@ -1537,83 +1555,50 @@ body {
     }
   }, { passive: true });
 
-  // Adaptive particle count with calm 360-degree floating drift (not rushing upwards)
-  var PARTICLE_COUNT = (window.innerWidth < 768) ? 32 : 58;
+  // Global Scroll State Detection for 120Hz silky scrolling
+  window.__isPageScrolling = false;
+  var scrollTimeout = null;
+  window.addEventListener("scroll", function() {
+    window.__isPageScrolling = true;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(function() {
+      window.__isPageScrolling = false;
+    }, 90);
+  }, { passive: true });
+
+  // Adaptive particle count: Lightweight on mobile (16 embers) to protect 120Hz refresh rate
+  var isMobile = (window.innerWidth < 768);
+  var PARTICLE_COUNT = isMobile ? 16 : 42;
   for (var i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 1.8 + 0.6,
-      vx: (Math.random() - 0.5) * 0.26,
-      vy: (Math.random() - 0.5) * 0.26,
-      alpha: Math.random() * 0.60 + 0.20,
+      radius: Math.random() * 1.6 + 0.6,
+      vx: (Math.random() - 0.5) * 0.22,
+      vy: (Math.random() - 0.5) * 0.22,
+      alpha: Math.random() * 0.55 + 0.20,
       color: Math.random() > 0.5 ? "239, 118, 87" : (Math.random() > 0.5 ? "0, 242, 161" : "255, 154, 112")
     });
   }
 
   var t = 0;
   function animate() {
+    // If user is scrolling, yield entire rendering budget to browser compositor for 120 FPS
+    if (window.__isPageScrolling) {
+      requestAnimationFrame(animate);
+      return;
+    }
+
     t += 0.012;
     mouse.x += (mouse.targetX - mouse.x) * 0.06;
     mouse.y += (mouse.targetY - mouse.y) * 0.06;
 
     ctx.clearRect(0, 0, width, height);
 
-    // 1. Large Breathing Multi-Orb Aurora (Full-Page Top to Bottom Coverage)
-    // Orb 1: Upper hero / cutout aura
-    var blob1X = width * 0.5 + Math.sin(t * 0.8) * 140;
-    var blob1Y = height * 0.18 + Math.cos(t * 0.6) * 90;
-    var grad1 = ctx.createRadialGradient(blob1X, blob1Y, 15, blob1X, blob1Y, 460);
-    grad1.addColorStop(0, "rgba(239, 118, 87, 0.25)");
-    grad1.addColorStop(0.5, "rgba(255, 154, 112, 0.1)");
-    grad1.addColorStop(1, "transparent");
-    ctx.fillStyle = grad1;
-    ctx.fillRect(0, 0, width, height);
-
-    // Orb 2: Mid-high credentials aura
-    var blob2X = width * 0.35 + Math.cos(t * 0.7) * 160;
-    var blob2Y = height * 0.38 + Math.sin(t * 0.9) * 120;
-    var grad2 = ctx.createRadialGradient(blob2X, blob2Y, 15, blob2X, blob2Y, 480);
-    grad2.addColorStop(0, "rgba(0, 242, 161, 0.18)");
-    grad2.addColorStop(0.5, "rgba(56, 189, 248, 0.08)");
-    grad2.addColorStop(1, "transparent");
-    ctx.fillStyle = grad2;
-    ctx.fillRect(0, 0, width, height);
-
-    // Orb 3: Central social profiles aura
-    var blob3X = width * 0.65 + Math.sin(t * 0.5) * 150;
-    var blob3Y = height * 0.58 + Math.cos(t * 0.4) * 110;
-    var grad3 = ctx.createRadialGradient(blob3X, blob3Y, 12, blob3X, blob3Y, 440);
-    grad3.addColorStop(0, "rgba(239, 118, 87, 0.18)");
-    grad3.addColorStop(0.5, "rgba(255, 154, 112, 0.07)");
-    grad3.addColorStop(1, "transparent");
-    ctx.fillStyle = grad3;
-    ctx.fillRect(0, 0, width, height);
-
-    // Orb 4: Lower-mid connect aura
-    var blob4X = width * 0.38 + Math.cos(t * 0.6) * 130;
-    var blob4Y = height * 0.76 + Math.sin(t * 0.7) * 100;
-    var grad4 = ctx.createRadialGradient(blob4X, blob4Y, 12, blob4X, blob4Y, 450);
-    grad4.addColorStop(0, "rgba(0, 242, 161, 0.16)");
-    grad4.addColorStop(0.5, "rgba(56, 189, 248, 0.08)");
-    grad4.addColorStop(1, "transparent");
-    ctx.fillStyle = grad4;
-    ctx.fillRect(0, 0, width, height);
-
-    // Orb 5: Bottom QR-ID Pass aura
-    var blob5X = width * 0.55 + Math.sin(t * 0.7) * 140;
-    var blob5Y = height * 0.92 + Math.cos(t * 0.5) * 90;
-    var grad5 = ctx.createRadialGradient(blob5X, blob5Y, 15, blob5X, blob5Y, 420);
-    grad5.addColorStop(0, "rgba(239, 118, 87, 0.22)");
-    grad5.addColorStop(0.5, "rgba(192, 132, 252, 0.09)");
-    grad5.addColorStop(1, "transparent");
-    ctx.fillStyle = grad5;
-    ctx.fillRect(0, 0, width, height);
-
-    // Interactive mouse cursor glow
-    if (mouse.x > 0 && mouse.y > 0) {
-      var mGrad = ctx.createRadialGradient(mouse.x, mouse.y, 8, mouse.x, mouse.y, 280);
-      mGrad.addColorStop(0, "rgba(255, 154, 112, 0.14)");
+    // Interactive mouse cursor glow on desktop
+    if (!isMobile && mouse.x > 0 && mouse.y > 0) {
+      var mGrad = ctx.createRadialGradient(mouse.x, mouse.y, 8, mouse.x, mouse.y, 260);
+      mGrad.addColorStop(0, "rgba(255, 154, 112, 0.12)");
       mGrad.addColorStop(1, "transparent");
       ctx.fillStyle = mGrad;
       ctx.fillRect(0, 0, width, height);
@@ -1634,7 +1619,7 @@ body {
       }
     }
 
-    // 2. Cosmic Constellation & Floating Embers (Optimized O(N) spatial pruning)
+    // Floating Embers (Hardware-friendly zero-fillrate overhead)
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
       p.x += p.vx;
@@ -1650,20 +1635,23 @@ body {
       ctx.fillStyle = "rgba(" + p.color + "," + p.alpha + ")";
       ctx.fill();
 
-      for (var j = i + 1; j < particles.length; j++) {
-        var p2 = particles[j];
-        var dx = p.x - p2.x;
-        if (Math.abs(dx) > 85) continue;
-        var dy = p.y - p2.y;
-        if (Math.abs(dy) > 85) continue;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 85) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = "rgba(255, 224, 201, " + ((1 - dist / 85) * 0.12) + ")";
-          ctx.lineWidth = 0.75;
-          ctx.stroke();
+      // Constellation lines strictly enabled on desktop fine pointer
+      if (!isMobile) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var p2 = particles[j];
+          var dx = p.x - p2.x;
+          if (Math.abs(dx) > 80) continue;
+          var dy = p.y - p2.y;
+          if (Math.abs(dy) > 80) continue;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 80) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = "rgba(255, 224, 201, " + ((1 - dist / 80) * 0.10) + ")";
+            ctx.lineWidth = 0.7;
+            ctx.stroke();
+          }
         }
       }
     }
@@ -1774,6 +1762,8 @@ body {
 
   function updateTransforms() {
     isTicking = false;
+    if (window.__isPageScrolling) return;
+
     // Silky lerp interpolation optimized for 120Hz screens (Poco F6)
     curRotX += (targetRotX - curRotX) * 0.16;
     curRotY += (targetRotY - curRotY) * 0.16;
@@ -1833,7 +1823,7 @@ body {
     targetRotY = Math.max(-20, Math.min(20, deltaGamma * 0.85));
     targetRotX = Math.max(-18, Math.min(18, -deltaBeta * 0.75));
 
-    if (!isTicking) {
+    if (!isTicking && !window.__isPageScrolling) {
       isTicking = true;
       requestAnimationFrame(updateTransforms);
     }
@@ -1851,11 +1841,15 @@ body {
 
     cutoutContainer.addEventListener("touchmove", function(e) {
       if (e.touches && e.touches[0]) {
-        var dx = (e.touches[0].clientX - touchStartX) / (window.innerWidth / 2);
-        var dy = (e.touches[0].clientY - touchStartY) / 160;
-        targetRotY = Math.max(-22, Math.min(22, dx * 18));
-        targetRotX = Math.max(-18, Math.min(18, -dy * 16));
-        if (!isTicking) {
+        var dx = e.touches[0].clientX - touchStartX;
+        var dy = e.touches[0].clientY - touchStartY;
+        // If scrolling vertically, let native scroll handle it smoothly
+        if (Math.abs(dy) > Math.abs(dx) * 1.2) return;
+        var normX = dx / (window.innerWidth / 2);
+        var normY = dy / 160;
+        targetRotY = Math.max(-22, Math.min(22, normX * 18));
+        targetRotX = Math.max(-18, Math.min(18, -normY * 16));
+        if (!isTicking && !window.__isPageScrolling) {
           isTicking = true;
           requestAnimationFrame(updateTransforms);
         }

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Register / Member ID — MLN Alliance MediaCrew</title>
-<meta name="description" content="Register for MLN Alliance MediaCrew or download your official digital member pass and ID card." />
+<meta name="description" content="Register for MLN Alliance MediaCrew or download your official digital member ID card and profile." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -152,7 +152,7 @@
         <span>SYSTEM ACTIVE • OFFICIAL MEMBER PORTAL</span>
       </div>
       <h1 id="pageTitle">Register / Member ID</h1>
-      <p id="pageSubtitle">Join MLN Alliance MediaCrew as an official creator or retrieve your verified digital ID pass.</p>
+      <p id="pageSubtitle">Join MLN Alliance MediaCrew as an official creator or retrieve your verified digital member ID.</p>
 
       <!-- Segmented Mode Switcher -->
       <div class="view-mode-tabs" role="tablist">
@@ -425,7 +425,7 @@
                 <!-- Portrait Photo Upload -->
                 <fieldset class="field-group" id="photoUploadSection" style="margin-top:16px; margin-bottom:0;">
                   <div class="portrait-header-bar">
-                    <label style="margin:0;">Portrait Pass Photo</label>
+                    <label style="margin:0;">Portrait Member Photo</label>
                     <span class="portrait-rec-badge">📸 Recommended: Clear portrait</span>
                   </div>
 
@@ -443,7 +443,7 @@
                       <img src="" id="portraitThumbnail" alt="Member Photo Preview" />
                       <div class="preview-meta">
                         <span class="preview-filename" id="portraitFileName">photo.jpg</span>
-                        <span class="preview-status">✓ Ready &amp; Framed for ID Pass</span>
+                        <span class="preview-status">✓ Ready &amp; Framed for Member ID</span>
                         <button type="button" class="btn btn-sm btn-ghost" id="btnRemovePortrait" style="align-self:flex-start; margin-top:6px;">Change Photo</button>
                       </div>
                     </div>
@@ -501,7 +501,7 @@
               <!-- Submit Console Card -->
               <div class="submit-action-card">
                 <button type="submit" class="btn btn-primary btn-submit-hero" id="submitBtn">
-                  <span>Submit Registration &amp; Generate Pass</span>
+                  <span>Submit Registration &amp; Generate ID</span>
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </button>
                 <div class="submit-trust-line">
@@ -513,10 +513,10 @@
           </div>
         </div>
 
-        <!-- Right Column: Real-Time Holographic Member Pass Preview -->
-        <aside class="live-pass-sidebar" aria-label="Live Pass Preview">
+        <!-- Right Column: Real-Time Holographic Member ID Preview -->
+        <aside class="live-pass-sidebar" aria-label="Live ID Preview">
           <div class="live-pass-badge">
-            <span class="dot"></span> Live Pass Preview
+            <span class="dot"></span> Live ID Preview
           </div>
 
           <div class="pass-card">
@@ -525,14 +525,14 @@
                 <img src="assets/images/logo.webp" alt="MLN logo" width="34" height="34">
                 <div>
                   <strong style="color:var(--text-hi); font-size:0.92rem; display:block;">MLN MediaCrew</strong>
-                  <span style="color:var(--cyan-400); font-size:0.72rem;" id="previewPassModeBadge">Official Pass</span>
+                  <span style="color:var(--cyan-400); font-size:0.72rem;" id="previewPassModeBadge">Official ID</span>
                 </div>
               </div>
               <span class="pass-badge" id="previewPassStatusBadge">Pending Submit</span>
             </div>
 
             <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
-              <img src="assets/images/member-male-cutout.png" alt="Pass Member Photo" id="previewPassPhoto" style="width:52px; height:68px; object-fit:cover; border-radius:8px; border:1px solid var(--line-strong); background:rgba(0,0,0,0.4);" />
+              <img src="assets/images/member-male-cutout.png" alt="Member Photo" id="previewPassPhoto" style="width:52px; height:68px; object-fit:cover; border-radius:8px; border:1px solid var(--line-strong); background:rgba(0,0,0,0.4);" />
               <div>
                 <div class="pass-name" id="previewPassName" style="margin-bottom:2px; font-size:1.25rem;">Your Name</div>
                 <div style="font-size:0.76rem; color:var(--text-low);" id="previewPassRole">BBA • CREW MEMBER</div>
@@ -553,7 +553,7 @@
                 <div class="pass-field-val" id="previewPassRoll">XXXXXX</div>
               </div>
               <div>
-                <div class="pass-field-label">Pass Status</div>
+                <div class="pass-field-label">ID Status</div>
                 <div class="pass-field-val" style="color:var(--cyan-400);">Instant Issue</div>
               </div>
             </div>
@@ -637,18 +637,18 @@
                     <div class="pass-field-val" id="retrievedClass">—</div>
                   </div>
                   <div>
-                    <div class="pass-field-label">Official Pass ID</div>
-                    <div class="pass-id" id="retrievedPassId">#MLN-PASS</div>
+                    <div class="pass-field-label">Official Member ID</div>
+                    <div class="pass-id" id="retrievedPassId">#MLN-ID</div>
                   </div>
                   <div>
-                    <div class="pass-field-label">Pass Status</div>
+                    <div class="pass-field-label">ID Status</div>
                     <div class="pass-field-val" style="color:var(--cyan-400);">● Active Member 2026</div>
                   </div>
                 </div>
 
                 <div class="pass-qr-container">
                   <div class="pass-qr-code" id="retrievedQrCode"></div>
-                  <p class="pass-qr-note">Dual-Purpose Pass: Scan with Google Lens to inspect digital ID credential, or at college events for attendance check-in.</p>
+                  <p class="pass-qr-note">Scan to verify profile or event attendance</p>
                 </div>
 
                 <!-- Transparent QR Download Panel (Zero Background) -->
