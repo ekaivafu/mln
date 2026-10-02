@@ -72,7 +72,7 @@
   <div class="header-inner">
     <a href="index.html" class="brand" aria-label="MLN Alliance MediaCrew Home">
       <span class="brand-mark">
-        <img src="assets/images/logo.webp" alt="MLN Alliance MediaCrew logo" width="42" height="42">
+        <img src="assets/images/logo_light.webp" alt="MLN Alliance MediaCrew logo" width="42" height="42">
       </span>
       <span class="brand-text">
         <span class="brand-name">MLN Alliance MediaCrew</span>
@@ -203,7 +203,7 @@
       <div class="footer-brand">
         <a href="index.html" class="brand">
           <span class="brand-mark">
-            <img src="assets/images/logo.webp" alt="MLN Alliance MediaCrew logo" width="36" height="36">
+            <img src="assets/images/logo_light.webp" alt="MLN Alliance MediaCrew logo" width="36" height="36">
           </span>
           <span class="brand-text">
             <span class="brand-name">MLN Alliance MediaCrew</span>
@@ -327,7 +327,7 @@
       text: digitalIdUrl,
       width: 170,
       height: 170,
-      colorDark: "#12100d",
+      colorDark: "#000000",
       colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.M
     });
@@ -471,9 +471,9 @@
 
       // 1. Deep Obsidian Card Fill
       var bgGradient = ctx.createLinearGradient(0, 0, w, h);
-      bgGradient.addColorStop(0, "#140e0c");
-      bgGradient.addColorStop(0.4, "#1d1410");
-      bgGradient.addColorStop(1, "#0a0706");
+      bgGradient.addColorStop(0, "#09090b");
+      bgGradient.addColorStop(0.4, "#18181b");
+      bgGradient.addColorStop(1, "#000000");
       ctx.fillStyle = bgGradient;
       ctx.beginPath();
       if (ctx.roundRect) ctx.roundRect(0, 0, w, h, 36);
@@ -482,23 +482,23 @@
 
       // Ambient Orbs
       var radialTop = ctx.createRadialGradient(160, 160, 20, 160, 160, 340);
-      radialTop.addColorStop(0, "rgba(239, 118, 87, 0.22)");
-      radialTop.addColorStop(1, "rgba(239, 118, 87, 0)");
+      radialTop.addColorStop(0, "rgba(255, 255, 255, 0.08)");
+      radialTop.addColorStop(1, "rgba(255, 255, 255, 0)");
       ctx.fillStyle = radialTop;
       ctx.fillRect(0, 0, w, h);
 
       var radialBottom = ctx.createRadialGradient(w - 140, h - 260, 20, w - 140, h - 260, 380);
-      radialBottom.addColorStop(0, "rgba(0, 242, 161, 0.16)");
-      radialBottom.addColorStop(1, "rgba(0, 242, 161, 0)");
+      radialBottom.addColorStop(0, "rgba(255, 255, 255, 0.06)");
+      radialBottom.addColorStop(1, "rgba(255, 255, 255, 0)");
       ctx.fillStyle = radialBottom;
       ctx.fillRect(0, 0, w, h);
 
       // Outer Border
       var borderGrad = ctx.createLinearGradient(0, 0, w, h);
-      borderGrad.addColorStop(0, "rgba(255, 224, 201, 0.55)");
-      borderGrad.addColorStop(0.35, "rgba(239, 118, 87, 0.5)");
-      borderGrad.addColorStop(0.7, "rgba(0, 242, 161, 0.45)");
-      borderGrad.addColorStop(1, "rgba(255, 176, 137, 0.35)");
+      borderGrad.addColorStop(0, "rgba(255, 255, 255, 0.45)");
+      borderGrad.addColorStop(0.35, "rgba(228, 228, 231, 0.35)");
+      borderGrad.addColorStop(0.7, "rgba(212, 212, 216, 0.30)");
+      borderGrad.addColorStop(1, "rgba(161, 161, 170, 0.25)");
       ctx.strokeStyle = borderGrad;
       ctx.lineWidth = 3.5;
       ctx.stroke();
@@ -508,44 +508,44 @@
       var slotH = 14;
       var slotX = (w - slotW) / 2;
       var slotY = 24;
-      ctx.fillStyle = "#070504";
+      ctx.fillStyle = "#000000";
       ctx.beginPath();
       if (ctx.roundRect) ctx.roundRect(slotX, slotY, slotW, slotH, 7);
       else ctx.rect(slotX, slotY, slotW, slotH);
       ctx.fill();
-      ctx.strokeStyle = "rgba(255, 224, 201, 0.3)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
       ctx.lineWidth = 1.5;
       ctx.stroke();
 
       // 3. Top Accent Bar
       var barGrad = ctx.createLinearGradient(40, 0, w - 40, 0);
-      barGrad.addColorStop(0, "#ef7657");
-      barGrad.addColorStop(0.4, "#ff9a70");
-      barGrad.addColorStop(0.7, "#00f2a1");
-      barGrad.addColorStop(1, "#f5b276");
+      barGrad.addColorStop(0, "#ffffff");
+      barGrad.addColorStop(0.4, "#e4e4e7");
+      barGrad.addColorStop(0.7, "#a1a1aa");
+      barGrad.addColorStop(1, "#71717a");
       ctx.fillStyle = barGrad;
       ctx.fillRect(40, 56, w - 80, 4);
 
       // 4. Header Bar
       var headerY = 78;
       if (logoImg) {
-        ctx.fillStyle = "rgba(239, 118, 87, 0.15)";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
         ctx.beginPath();
         if (ctx.roundRect) ctx.roundRect(44, headerY, 46, 46, 12);
         else ctx.rect(44, headerY, 46, 46);
         ctx.fill();
-        ctx.strokeStyle = "rgba(255, 224, 201, 0.4)";
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
         ctx.lineWidth = 1.5;
         ctx.stroke();
         ctx.drawImage(logoImg, 49, headerY + 5, 36, 36);
       }
 
       ctx.textAlign = "left";
-      ctx.fillStyle = "#fff8f2";
+      ctx.fillStyle = "#ffffff";
       ctx.font = "bold 21px 'Space Grotesk', -apple-system, sans-serif";
       ctx.fillText("MLN ALLIANCE MEDIACREW", logoImg ? 104 : 44, headerY + 24);
 
-      ctx.fillStyle = "#ff9a70";
+      ctx.fillStyle = "#a1a1aa";
       ctx.font = "600 12px 'Plus Jakarta Sans', sans-serif";
       ctx.fillText("OFFICIAL EXECUTIVE MEMBER CREDENTIAL • 2026-2027", logoImg ? 104 : 44, headerY + 42);
 
@@ -554,21 +554,21 @@
       var badgeH = 34;
       var badgeX = w - 44 - badgeW;
       var badgeY = headerY + 6;
-      ctx.fillStyle = "rgba(0, 242, 161, 0.14)";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
       ctx.beginPath();
       if (ctx.roundRect) ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 17);
       else ctx.rect(badgeX, badgeY, badgeW, badgeH);
       ctx.fill();
-      ctx.strokeStyle = "#00f2a1";
+      ctx.strokeStyle = "#ffffff";
       ctx.lineWidth = 1.5;
       ctx.stroke();
-      ctx.fillStyle = "#00f2a1";
+      ctx.fillStyle = "#ffffff";
       ctx.font = "bold 12px 'Plus Jakarta Sans', sans-serif";
       ctx.textAlign = "center";
       ctx.fillText("● VERIFIED", badgeX + badgeW / 2, badgeY + 22);
 
       // Divider
-      ctx.strokeStyle = "rgba(255, 224, 201, 0.12)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(44, 142);
@@ -584,12 +584,12 @@
       ctx.beginPath();
       ctx.arc(photoCenterX, photoCenterY, photoRadius + 6, 0, Math.PI * 2);
       var haloGrad = ctx.createLinearGradient(photoCenterX - photoRadius, photoCenterY - photoRadius, photoCenterX + photoRadius, photoCenterY + photoRadius);
-      haloGrad.addColorStop(0, "#ef7657");
-      haloGrad.addColorStop(0.5, "#ff9a70");
-      haloGrad.addColorStop(1, "#00f2a1");
+      haloGrad.addColorStop(0, "#ffffff");
+      haloGrad.addColorStop(0.5, "#e4e4e7");
+      haloGrad.addColorStop(1, "#a1a1aa");
       ctx.strokeStyle = haloGrad;
       ctx.lineWidth = 4;
-      ctx.shadowColor = "rgba(239, 118, 87, 0.6)";
+      ctx.shadowColor = "rgba(255, 255, 255, 0.35)";
       ctx.shadowBlur = 18;
       ctx.stroke();
       ctx.restore();
@@ -619,13 +619,13 @@
         ctx.drawImage(memberPhotoImg, drawX, drawY, drawW, drawH);
       } else {
         var avatarBg = ctx.createLinearGradient(photoCenterX - photoRadius, photoCenterY - photoRadius, photoCenterX + photoRadius, photoCenterY + photoRadius);
-        avatarBg.addColorStop(0, "#2c1c17");
-        avatarBg.addColorStop(1, "#18110e");
+        avatarBg.addColorStop(0, "#18181b");
+        avatarBg.addColorStop(1, "#09090b");
         ctx.fillStyle = avatarBg;
         ctx.fillRect(photoCenterX - photoRadius, photoCenterY - photoRadius, photoRadius * 2, photoRadius * 2);
 
         var initials = ((data.name || "Crew").split(" ").map(function(s) { return s[0]; }).slice(0, 2).join("")).toUpperCase();
-        ctx.fillStyle = "#ff9a70";
+        ctx.fillStyle = "#a1a1aa";
         ctx.font = "bold 52px 'Space Grotesk', sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -648,21 +648,21 @@
       var trackX = (w - trackW) / 2;
       var trackY = 378;
 
-      ctx.fillStyle = "rgba(239, 118, 87, 0.16)";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
       ctx.beginPath();
       if (ctx.roundRect) ctx.roundRect(trackX, trackY, trackW, trackH, 16);
       else ctx.rect(trackX, trackY, trackW, trackH);
       ctx.fill();
-      ctx.strokeStyle = "rgba(255, 154, 112, 0.45)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
       ctx.lineWidth = 1.5;
       ctx.stroke();
 
-      ctx.fillStyle = "#ff9a70";
+      ctx.fillStyle = "#a1a1aa";
       ctx.fillText(trackText, photoCenterX, trackY + 21);
 
       // Degree Tag
       var degreeText = (data.className || passClass || "BACHELOR OF BUSINESS ADMINISTRATION (BBA)").toUpperCase();
-      ctx.fillStyle = "#a89c93";
+      ctx.fillStyle = "#71717a";
       ctx.font = "600 12px 'Plus Jakarta Sans', sans-serif";
       ctx.fillText(degreeText + " • MLN ALLIANCE COLLEGE", photoCenterX, 432);
 
@@ -677,16 +677,16 @@
         if (ctx.roundRect) ctx.roundRect(x, y, bentoW, bentoH, 14);
         else ctx.rect(x, y, bentoW, bentoH);
         ctx.fill();
-        ctx.strokeStyle = "rgba(255, 224, 201, 0.15)";
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
         ctx.lineWidth = 1;
         ctx.stroke();
 
         ctx.textAlign = "left";
-        ctx.fillStyle = "#8a7e75";
+        ctx.fillStyle = "#71717a";
         ctx.font = "600 11px 'Plus Jakarta Sans', sans-serif";
         ctx.fillText(label.toUpperCase(), x + 16, y + 26);
 
-        ctx.fillStyle = valColor || "#fff8f2";
+        ctx.fillStyle = valColor || "#ffffff";
         ctx.font = "bold 18px 'Space Grotesk', sans-serif";
         ctx.fillText(val || "—", x + 16, y + 54);
       }
@@ -696,10 +696,10 @@
       var row1Y = matrixY;
       var row2Y = matrixY + bentoH + 12;
 
-      drawBentoCard("Department", data.dept || "Production", col1X, row1Y, "#fff8f2");
-      drawBentoCard("Roll Number", data.roll || data.rollNumber || "—", col2X, row1Y, "#ff9a70");
-      drawBentoCard("Academic Batch", "Batch 2024 - 2027", col1X, row2Y, "#cfc4bb");
-      drawBentoCard("Official Pass ID", "#" + (data.id || "MLN-PASS"), col2X, row2Y, "#00f2a1");
+      drawBentoCard("Department", data.dept || "Production", col1X, row1Y, "#ffffff");
+      drawBentoCard("Roll Number", data.roll || data.rollNumber || "—", col2X, row1Y, "#ffffff");
+      drawBentoCard("Academic Batch", "Batch 2024 - 2027", col1X, row2Y, "#a1a1aa");
+      drawBentoCard("Official Pass ID", "#" + (data.id || "MLN-PASS"), col2X, row2Y, "#ffffff");
 
       // 8. Scannable QR Code Stage (White Card)
       var qrPlateW = 280;
@@ -712,7 +712,7 @@
       if (ctx.roundRect) ctx.roundRect(qrPlateX, qrPlateY, qrPlateW, qrPlateH, 22);
       else ctx.rect(qrPlateX, qrPlateY, qrPlateW, qrPlateH);
       ctx.fill();
-      ctx.strokeStyle = "rgba(255, 224, 201, 0.4)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
       ctx.lineWidth = 1.5;
       ctx.stroke();
 
@@ -722,11 +722,11 @@
 
       // QR Instructions
       ctx.textAlign = "center";
-      ctx.fillStyle = "#00f2a1";
+      ctx.fillStyle = "#ffffff";
       ctx.font = "bold 13px 'Plus Jakarta Sans', sans-serif";
       ctx.fillText("DUAL-PURPOSE ATTENDANCE & DIGITAL ID PASS", photoCenterX, 958);
 
-      ctx.fillStyle = "#a89c93";
+      ctx.fillStyle = "#71717a";
       ctx.font = "500 12px 'Plus Jakarta Sans', sans-serif";
       ctx.fillText("Scan with Google Lens to view live portfolio, or tap at campus events", photoCenterX, 980);
 
@@ -736,20 +736,20 @@
       var bannerH = 68;
       var bannerX = 44;
 
-      ctx.fillStyle = "rgba(22, 16, 14, 0.85)";
+      ctx.fillStyle = "rgba(18, 18, 20, 0.85)";
       ctx.beginPath();
       if (ctx.roundRect) ctx.roundRect(bannerX, bannerY, bannerW, bannerH, 14);
       else ctx.rect(bannerX, bannerY, bannerW, bannerH);
       ctx.fill();
-      ctx.strokeStyle = "rgba(255, 224, 201, 0.22)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.20)";
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      ctx.fillStyle = "#ff9a70";
+      ctx.fillStyle = "#a1a1aa";
       ctx.font = "bold 12px 'Space Grotesk', sans-serif";
       ctx.fillText("SECURE DIGITALLY SIGNED CREDENTIAL • MLN ALLIANCE COLLEGE", photoCenterX, bannerY + 28);
 
-      ctx.fillStyle = "#6d6259";
+      ctx.fillStyle = "#71717a";
       ctx.font = "11px 'Plus Jakarta Sans', sans-serif";
       ctx.fillText("Official MediaCrew Property • Non-Transferable • ID: #" + (data.id || "MLN-PASS"), photoCenterX, bannerY + 48);
 
