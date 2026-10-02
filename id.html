@@ -16,22 +16,22 @@
    ========================================================================== */
 
 :root {
-  --port-bg: #000000;
-  --port-stage-bg: rgba(12, 12, 14, 0.85);
-  --port-glass: rgba(18, 18, 20, 0.85);
-  --port-glass-hover: rgba(28, 28, 32, 0.90);
-  --port-border: rgba(255, 255, 255, 0.12);
-  --port-border-strong: rgba(255, 255, 255, 0.28);
-  --port-border-glow: rgba(255, 255, 255, 0.40);
-  --port-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16);
-  --port-text-hi: #ffffff;
-  --port-text-mid: #a1a1aa;
+  --port-bg: #f4f4f5;
+  --port-stage-bg: #ffffff;
+  --port-glass: #ffffff;
+  --port-glass-hover: #f8f9fa;
+  --port-border: #e4e4e7;
+  --port-border-strong: #d4d4d8;
+  --port-border-glow: rgba(0, 0, 0, 0.12);
+  --port-specular: inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  --port-text-hi: #09090b;
+  --port-text-mid: #52525b;
   --port-text-low: #71717a;
-  --port-coral: #ffffff;
-  --port-peach: #e4e4e7;
-  --port-mint: #ffffff;
-  --port-blue: #d4d4d8;
-  --port-purple: #a1a1aa;
+  --port-coral: #09090b;
+  --port-peach: #27272a;
+  --port-mint: #09090b;
+  --port-blue: #09090b;
+  --port-purple: #52525b;
 }
 
 /* Department Theme Variants */
@@ -59,8 +59,8 @@ html {
 }
 
 body {
-  background: var(--port-bg);
-  color: var(--port-text-mid);
+  background: #f4f4f5;
+  color: #52525b;
   font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
   min-height: 100vh;
   min-height: 100dvh;
@@ -89,13 +89,9 @@ body {
   z-index: 0 !important;
   pointer-events: none !important;
   background: 
-    radial-gradient(circle 520px at 50% 16%, rgba(255, 255, 255, 0.10) 0%, rgba(212, 212, 216, 0.03) 45%, transparent 75%),
-    radial-gradient(circle 480px at 32% 38%, rgba(255, 255, 255, 0.07) 0%, rgba(161, 161, 170, 0.02) 45%, transparent 75%),
-    radial-gradient(circle 460px at 68% 58%, rgba(255, 255, 255, 0.08) 0%, rgba(212, 212, 216, 0.03) 45%, transparent 75%),
-    radial-gradient(circle 450px at 38% 76%, rgba(255, 255, 255, 0.06) 0%, rgba(161, 161, 170, 0.02) 45%, transparent 75%),
-    radial-gradient(circle 460px at 52% 92%, rgba(255, 255, 255, 0.09) 0%, rgba(212, 212, 216, 0.03) 45%, transparent 75%);
+    radial-gradient(circle 520px at 50% 16%, rgba(0, 0, 0, 0.02) 0%, transparent 70%),
+    radial-gradient(circle 480px at 32% 38%, rgba(0, 0, 0, 0.015) 0%, transparent 70%);
   transform: translateZ(0);
-  will-change: transform;
 }
 
 /* ==================== AMBIENT LIVING BACKGROUND CANVAS (FIXED IN VIEWPORT) ==================== */
@@ -127,12 +123,11 @@ body {
   z-index: 1 !important;
   pointer-events: none !important;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 44px 44px;
   background-attachment: fixed !important;
   opacity: 0.85;
-  transform: none !important;
 }
 
 /* ==================== CENTERED PORTFOLIO STAGE ==================== */
@@ -141,15 +136,15 @@ body {
   max-width: 520px;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(180deg, rgba(12, 12, 14, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
-  border-left: 1px solid var(--port-border);
-  border-right: 1px solid var(--port-border);
+  background: #ffffff;
+  border-left: 1px solid #e4e4e7;
+  border-right: 1px solid #e4e4e7;
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   padding-bottom: 120px;
-  box-shadow: 0 0 120px rgba(0, 0, 0, 0.95), 0 0 50px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
   contain: layout style;
 }
 
@@ -158,7 +153,7 @@ body {
     margin: 24px auto 40px;
     min-height: calc(100vh - 48px);
     border-radius: 32px;
-    border: 1px solid var(--port-border);
+    border: 1px solid #e4e4e7;
   }
 }
 
@@ -170,11 +165,11 @@ body {
   padding: 16px 22px;
   position: sticky;
   top: 0;
-  background: rgba(9, 9, 11, 0.96);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   z-index: 60;
-  border-bottom: 1px solid var(--port-border);
+  border-bottom: 1px solid #e4e4e7;
   transition: all 0.3s ease;
 }
 
@@ -186,9 +181,9 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--port-border);
-  color: var(--port-text-hi);
+  background: #f4f4f5;
+  border: 1px solid #e4e4e7;
+  color: #09090b;
   text-decoration: none;
   cursor: pointer;
   box-shadow: var(--port-specular);
@@ -240,7 +235,7 @@ body {
   font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: var(--port-text-hi);
+  color: #09090b;
   line-height: 1.1;
 }
 .brand-title-wrap .sub-brand {
@@ -266,19 +261,17 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 18px;
+  padding: 6px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: var(--port-peach);
+  background: #f4f4f5;
+  border: 1px solid #e4e4e7;
+  color: #52525b;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
-  animation: pillEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  margin: 18px auto 14px;
 }
 .hero-role-pill .pill-live-dot {
   width: 7px;
@@ -302,16 +295,23 @@ body {
 /* Large Editorial Display Name */
 .hero-display-name {
   font-family: 'Space Grotesk', -apple-system, sans-serif;
-  font-size: 2.85rem;
+  font-size: clamp(2.2rem, 9.5vw, 3.4rem);
   font-weight: 800;
-  line-height: 1.02;
+  line-height: 0.95;
   letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: var(--port-text-hi);
-  margin-bottom: 20px;
-  animation: heroNameReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-  opacity: 0;
-  transform: translateY(16px);
+  color: #09090b;
+  text-align: center;
+  margin: 0 auto 16px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-display-name span {
+  display: block;
+}
+.hero-display-name span {
+  display: block;
 }
 .hero-display-name span {
   display: block;
@@ -350,13 +350,11 @@ body {
   width: 310px;
   height: 310px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.22) 45%, transparent 75%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
   filter: blur(40px);
   top: 18%;
   z-index: 1;
   pointer-events: none;
-  will-change: transform, opacity;
-  animation: auraBreath 4.5s ease-in-out infinite alternate;
 }
 
 @keyframes auraBreath {
@@ -370,7 +368,7 @@ body {
   width: 330px;
   height: 330px;
   border-radius: 50%;
-  border: 1px dashed rgba(255, 255, 255, 0.28);
+  border: 1px dashed rgba(0, 0, 0, 0.06);
   top: 14%;
   z-index: 1;
   pointer-events: none;
@@ -393,7 +391,7 @@ body {
   width: 275px;
   height: 275px;
   border-radius: 50%;
-  border: 1px dotted rgba(255, 255, 255, 0.35);
+  border: 1px dotted rgba(0, 0, 0, 0.07);
   top: 20%;
   z-index: 1;
   pointer-events: none;
@@ -412,15 +410,15 @@ body {
 /* Scanning Cyber-Line */
 .cutout-scanner-line {
   position: absolute;
-  left: 8%;
-  right: 8%;
-  height: 2.5px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 20%, #ffffff 50%, rgba(255, 255, 255, 0.4) 80%, transparent 100%);
-  box-shadow: 0 0 16px var(--port-mint), 0 0 6px #ffffff;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.15) 20%, #000000 50%, rgba(0, 0, 0, 0.15) 80%, transparent 100%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 4;
-  pointer-events: none;
-  animation: scannerScan 3.8s ease-in-out infinite;
-  opacity: 0.85;
+  opacity: 0.7;
+  animation: scanCutout 4.5s ease-in-out infinite;
 }
 
 @keyframes scannerScan {
@@ -439,8 +437,8 @@ body {
   height: auto;
   display: block;
   filter: 
-    drop-shadow(var(--hero-shadow-x, 0px) var(--hero-shadow-y, 22px) var(--hero-shadow-blur, 32px) rgba(0, 0, 0, 0.94))
-    drop-shadow(calc(var(--hero-shadow-x, 0px) * 0.45) calc(var(--hero-shadow-y, 22px) * 0.45) 12px rgba(0, 0, 0, 0.72));
+    drop-shadow(var(--hero-shadow-x, 0px) var(--hero-shadow-y, 22px) var(--hero-shadow-blur, 32px) rgba(0, 0, 0, 0.16))
+    drop-shadow(calc(var(--hero-shadow-x, 0px) * 0.45) calc(var(--hero-shadow-y, 22px) * 0.45) 12px rgba(0, 0, 0, 0.08));
   object-fit: contain;
   transform: translateZ(44px);
   user-select: none;
@@ -449,11 +447,11 @@ body {
 
 .hero-cutout-img.is-custom-photo {
   border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(0, 0, 0, 0.10);
   filter: none;
   box-shadow: 
     var(--hero-shadow-x, 0px) var(--hero-shadow-y, 24px) var(--hero-shadow-blur, 36px) rgba(0, 0, 0, 0.92),
-    calc(var(--hero-shadow-x, 0px) * 0.4) calc(var(--hero-shadow-y, 24px) * 0.4) 14px rgba(0, 0, 0, 0.72),
+    calc(var(--hero-shadow-x, 0px) * 0.4) calc(var(--hero-shadow-y, 24px) * 0.4) 14px rgba(0, 0, 0, 0.08),
     inset 0 1px 1px rgba(255, 255, 255, 0.35),
     0 0 45px rgba(255, 255, 255, 0.25);
   max-height: 380px;
@@ -463,38 +461,38 @@ body {
 /* Dimension-matched Dynamic Projected Shadow Behind Image */
 .cutout-depth-projection {
   position: absolute;
-  bottom: 4px;
+  top: 0;
   left: 50%;
-  width: var(--cutout-actual-w, 86%);
+  width: var(--cutout-actual-w, 88%);
   max-width: 325px;
   height: var(--cutout-actual-h, 94%);
   pointer-events: none;
   z-index: 2;
   border-radius: 32px;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.94) 0%, rgba(12, 8, 7, 0.55) 54%, transparent 78%);
-  filter: blur(20px);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.03) 54%, transparent 78%);
+  filter: blur(16px);
   transform-origin: center bottom;
   transform: translateX(calc(-50% + var(--shadow-parallax-x, 0px))) translateY(var(--shadow-parallax-y, 8px)) translateZ(8px) scale(0.96);
-  opacity: 0.88;
+  opacity: 0.5;
 }
 
 .cutout-depth-projection.is-custom-photo {
   border-radius: 28px;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(12, 12, 14, 0.65) 56%, transparent 80%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 56%, transparent 80%);
   filter: blur(22px);
 }
 
 /* Ground Pedestal Floor Shadow Under Cutout */
 .cutout-ground-shadow {
   position: absolute;
-  bottom: -10px;
+  bottom: -6px;
   left: 50%;
   width: var(--ground-shadow-w, 78%);
   max-width: 280px;
-  height: 24px;
+  height: 20px;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.96) 0%, rgba(12, 12, 14, 0.55) 45%, transparent 75%);
-  filter: blur(8px);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.06) 45%, transparent 75%);
+  filter: blur(7px);
   pointer-events: none;
   z-index: 2;
   transform-origin: center center;
@@ -502,22 +500,41 @@ body {
 }
 
 /* Floating HUD Tag Over Cutout */
-.cutout-hud-badge {
+.cutout-floating-action-btn {
   position: absolute;
   bottom: 12px;
-  left: 16px;
-  z-index: 5;
-  background: rgba(12, 12, 14, 0.88);
-  border: 1px solid var(--port-border-strong);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 12px;
-  padding: 6px 12px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #09090b;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   display: flex;
   align-items: center;
-  gap: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.65), var(--port-specular);
-  transform: translateZ(50px);
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+.cutout-floating-action-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
+}
+.cutout-hud-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #e4e4e7;
+  border-radius: 999px;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  z-index: 5;
 }
 .cutout-hud-badge .hud-status-dot {
   width: 8px;
@@ -530,7 +547,7 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--port-text-hi);
+  color: #09090b;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -543,22 +560,20 @@ body {
 }
 
 .hero-lead-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.15rem;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 2.2rem;
   font-weight: 800;
-  line-height: 1.08;
   letter-spacing: -0.03em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #ffffff 0%, #e4e4e7 50%, #ffffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 6px;
+  color: #09090b;
+  text-align: center;
+  margin-top: 24px;
+  line-height: 1.1;
 }
 
 .hero-lead-degree {
   font-size: 0.94rem;
   font-weight: 700;
-  color: var(--port-text-hi);
+  color: #09090b;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 8px;
@@ -660,15 +675,19 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  background: rgba(22, 17, 14, 0.94);
-  border: 1px solid var(--port-border);
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
   border-radius: 18px;
   text-decoration: none;
-  color: var(--port-text-hi);
-  box-shadow: var(--port-specular);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s, box-shadow 0.24s, background 0.24s;
+  color: #09090b;
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 12px;
+}
+.bento-link-row:hover {
+  border-color: #09090b;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
 }
 
 .bento-link-row::after {
@@ -705,8 +724,8 @@ body {
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--port-border);
-  color: var(--port-text-hi);
+  border: 1px solid #e4e4e7;
+  color: #09090b;
   flex-shrink: 0;
   transition: transform 0.2s, background 0.2s;
 }
@@ -751,7 +770,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--port-text-hi);
+  color: #09090b;
   transition: color 0.2s;
 }
 .bento-link-row:hover .bento-link-title {
@@ -850,7 +869,7 @@ body {
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -0.01em;
-  color: var(--port-text-hi);
+  color: #09090b;
   text-transform: uppercase;
 }
 .qr-badge {
@@ -882,7 +901,7 @@ body {
   align-items: center;
   padding: 24px 16px;
   background: rgba(10, 8, 7, 0.88);
-  border: 1px solid var(--port-border);
+  border: 1px solid #e4e4e7;
   border-radius: 20px;
   margin-bottom: 20px;
   position: relative;
@@ -927,7 +946,7 @@ body {
   padding: 4px 12px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--port-border);
+  border: 1px solid #e4e4e7;
   font-family: monospace;
   font-size: 0.72rem;
   color: var(--port-peach);
@@ -975,7 +994,7 @@ body {
 .pass-btn.secondary {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--port-border-strong);
-  color: var(--port-text-hi);
+  color: #09090b;
   box-shadow: var(--port-specular);
 }
 .pass-btn.secondary:hover {
@@ -1016,7 +1035,7 @@ body {
   bottom: 92px;
   right: 24px;
   width: 250px;
-  background: rgba(18, 18, 20, 0.95);
+  background: rgba(255, 255, 255, 0.95); border-top: 1px solid #e4e4e7;
   border: 1px solid var(--port-border-strong);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
@@ -1294,7 +1313,7 @@ body {
 
     <a href="index.html" class="portfolio-brand-badge" aria-label="MLN Alliance MediaCrew Home">
       <span class="brand-mark">
-        <img src="assets/images/logo_light.webp" alt="MLN Alliance MediaCrew logo" width="40" height="40">
+        <img src="assets/images/logo.webp" alt="MLN Alliance MediaCrew logo" width="40" height="40">
       </span>
       <div class="brand-title-wrap">
         <span class="title-brand">MLN ALLIANCE</span>
@@ -1330,6 +1349,9 @@ body {
         <div class="cutout-ground-shadow" id="cutoutGroundShadow" aria-hidden="true"></div>
         <img src="assets/images/member-male-cutout.png" alt="Crew Member Portrait" id="memberCutoutImg" class="hero-cutout-img">
         
+        <button type="button" class="cutout-floating-action-btn" id="floatingQuickActionBtn" aria-label="Open Actions">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </button>
         <div class="cutout-hud-badge">
           <span class="hud-status-dot"></span>
           <span class="hud-status-text" id="hudPassId">#MLN-24BBA1042</span>
@@ -2321,9 +2343,9 @@ body {
 
     // Background gradient matching website
     var bgGradient = ctx.createLinearGradient(0, 0, w, h);
-    bgGradient.addColorStop(0, "#09090b");
-    bgGradient.addColorStop(0.5, "#18181b");
-    bgGradient.addColorStop(1, "#000000");
+    bgGradient.addColorStop(0, "#ffffff");
+    bgGradient.addColorStop(0.5, "#fafafa");
+    bgGradient.addColorStop(1, "#f4f4f5");
     ctx.fillStyle = bgGradient;
     ctx.beginPath();
     if (ctx.roundRect) ctx.roundRect(0, 0, w, h, r);
@@ -2331,7 +2353,7 @@ body {
     ctx.fill();
 
     // Specular border
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.28)";
+    ctx.strokeStyle = "rgba(0, 0, 0, 0.12)";
     ctx.lineWidth = 3;
     ctx.stroke();
 
@@ -2343,7 +2365,7 @@ body {
     ctx.fillRect(w - 40, 36, 4, 24);
 
     // Header branding
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#09090b";
     ctx.font = "bold 28px 'Space Grotesk', sans-serif";
     ctx.fillText("MLN ALLIANCE MEDIACREW", 48, 90);
 
@@ -2361,7 +2383,7 @@ body {
     ctx.stroke();
 
     // Member Name & Role
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#09090b";
     ctx.font = "bold 38px 'Space Grotesk', sans-serif";
     ctx.fillText(name.toUpperCase(), 48, 190);
 

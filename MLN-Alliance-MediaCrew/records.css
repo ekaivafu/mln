@@ -6,24 +6,24 @@
    ========================================================================== */
 
 :root {
-  --bg: #000000;
-  --bg-deep: #09090b;
-  --panel: rgba(18, 18, 20, 0.75);
-  --panel-soft: rgba(24, 24, 27, 0.85);
-  --line: rgba(255, 255, 255, 0.10);
-  --line-strong: rgba(255, 255, 255, 0.22);
-  --text: #ffffff;
-  --muted: #a1a1aa;
+  --bg: #ffffff;
+  --bg-deep: #f8f9fa;
+  --panel: #ffffff;
+  --panel-soft: #f4f4f5;
+  --line: rgba(0, 0, 0, 0.08);
+  --line-strong: rgba(0, 0, 0, 0.16);
+  --text: #09090b;
+  --muted: #52525b;
   --low: #71717a;
-  --accent: #ffffff;
-  --accent-secondary: #d4d4d8;
-  --accent-glow: rgba(255, 255, 255, 0.30);
-  --mint: #ffffff;
-  --mint-bg: rgba(255, 255, 255, 0.08);
-  --mint-border: rgba(255, 255, 255, 0.35);
-  --input-bg: rgba(12, 12, 14, 0.70);
-  --header-bg: rgba(12, 12, 14, 0.80);
-  --card-shadow: 0 25px 65px -20px rgba(0, 0, 0, 0.85);
+  --accent: #000000;
+  --accent-secondary: #27272a;
+  --accent-glow: rgba(0, 0, 0, 0.12);
+  --mint: #09090b;
+  --mint-bg: #f4f4f5;
+  --mint-border: #d4d4d8;
+  --input-bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
   --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.20);
 }
 
