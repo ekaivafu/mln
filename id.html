@@ -417,12 +417,70 @@ body {
   max-width: 325px;
   height: auto;
   display: block;
-  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.92));
+  filter: 
+    drop-shadow(var(--hero-shadow-x, 0px) var(--hero-shadow-y, 22px) var(--hero-shadow-blur, 32px) rgba(0, 0, 0, 0.94))
+    drop-shadow(calc(var(--hero-shadow-x, 0px) * 0.45) calc(var(--hero-shadow-y, 22px) * 0.45) 12px rgba(0, 0, 0, 0.72));
   object-fit: contain;
-  transform: translateZ(40px);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s;
+  transform: translateZ(44px);
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), filter 0.15s ease-out;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+.hero-cutout-img.is-custom-photo {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 224, 201, 0.28);
+  filter: none;
+  box-shadow: 
+    var(--hero-shadow-x, 0px) var(--hero-shadow-y, 24px) var(--hero-shadow-blur, 36px) rgba(0, 0, 0, 0.92),
+    calc(var(--hero-shadow-x, 0px) * 0.4) calc(var(--hero-shadow-y, 24px) * 0.4) 14px rgba(0, 0, 0, 0.72),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    0 0 45px rgba(239, 118, 87, 0.25);
+  max-height: 380px;
+  object-fit: cover;
+}
+
+/* Dimension-matched Dynamic Projected Shadow Behind Image */
+.cutout-depth-projection {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: var(--cutout-actual-w, 86%);
+  max-width: 325px;
+  height: var(--cutout-actual-h, 94%);
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 32px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.94) 0%, rgba(12, 8, 7, 0.55) 54%, transparent 78%);
+  filter: blur(20px);
+  transform-origin: center bottom;
+  transform: translateX(calc(-50% + var(--shadow-parallax-x, 0px))) translateY(var(--shadow-parallax-y, 8px)) translateZ(8px) scale(0.96);
+  transition: transform 0.1s ease-out;
+  opacity: 0.88;
+}
+
+.cutout-depth-projection.is-custom-photo {
+  border-radius: 28px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(14, 10, 8, 0.65) 56%, transparent 80%);
+  filter: blur(22px);
+}
+
+/* Ground Pedestal Floor Shadow Under Cutout */
+.cutout-ground-shadow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: var(--ground-shadow-w, 78%);
+  max-width: 280px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.96) 0%, rgba(14, 10, 8, 0.55) 45%, transparent 75%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 2;
+  transform-origin: center center;
+  transform: translateX(calc(-50% + var(--shadow-parallax-x, 0px))) translateZ(4px) scaleX(var(--floor-scale-x, 1)) skewX(var(--floor-skew-x, 0deg));
+  transition: transform 0.1s ease-out;
 }
 
 /* Floating HUD Tag Over Cutout */
@@ -1250,6 +1308,8 @@ body {
         <div class="cutout-cyber-ring-outer"></div>
         <div class="cutout-cyber-ring-inner"></div>
         <div class="cutout-scanner-line"></div>
+        <div class="cutout-depth-projection" id="cutoutDepthProjection" aria-hidden="true"></div>
+        <div class="cutout-ground-shadow" id="cutoutGroundShadow" aria-hidden="true"></div>
         <img src="assets/images/member-male-cutout.png" alt="Crew Member Portrait" id="memberCutoutImg" class="hero-cutout-img">
         
         <div class="cutout-hud-badge">
@@ -1648,10 +1708,34 @@ body {
       var rotX = -deltaY * 12;
 
       cutoutContainer.style.transform = "rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg)";
+
+      // Realistic Dynamic Lighting: Shadow casts opposite to tilt
+      var shadowX = (-rotY * 1.6).toFixed(2);
+      var shadowY = (22 - rotX * 1.4).toFixed(2);
+      var shadowBlur = (30 + Math.abs(rotX) * 0.4 + Math.abs(rotY) * 0.4).toFixed(1);
+      var parallaxX = (-rotY * 1.1).toFixed(2);
+      var parallaxY = (6 - rotX * 0.9).toFixed(2);
+      var floorScaleX = (1.0 + Math.abs(rotY) * 0.015).toFixed(3);
+      var floorSkewX = (-rotY * 0.8).toFixed(2);
+
+      cutoutContainer.style.setProperty("--hero-shadow-x", shadowX + "px");
+      cutoutContainer.style.setProperty("--hero-shadow-y", shadowY + "px");
+      cutoutContainer.style.setProperty("--hero-shadow-blur", shadowBlur + "px");
+      cutoutContainer.style.setProperty("--shadow-parallax-x", parallaxX + "px");
+      cutoutContainer.style.setProperty("--shadow-parallax-y", parallaxY + "px");
+      cutoutContainer.style.setProperty("--floor-scale-x", floorScaleX);
+      cutoutContainer.style.setProperty("--floor-skew-x", floorSkewX + "deg");
     });
 
     cutoutContainer.addEventListener("mouseleave", function() {
       cutoutContainer.style.transform = "rotateX(0deg) rotateY(0deg)";
+      cutoutContainer.style.setProperty("--hero-shadow-x", "0px");
+      cutoutContainer.style.setProperty("--hero-shadow-y", "22px");
+      cutoutContainer.style.setProperty("--hero-shadow-blur", "32px");
+      cutoutContainer.style.setProperty("--shadow-parallax-x", "0px");
+      cutoutContainer.style.setProperty("--shadow-parallax-y", "6px");
+      cutoutContainer.style.setProperty("--floor-scale-x", "1");
+      cutoutContainer.style.setProperty("--floor-skew-x", "0deg");
     });
   }
 
@@ -1698,6 +1782,23 @@ body {
 
     if (cutoutContainer) {
       cutoutContainer.style.transform = transformStr;
+
+      // Realistic Dynamic Lighting: Shadow casts opposite to tilt angle
+      var shadowX = (-curRotY * 1.6).toFixed(2);
+      var shadowY = (22 - curRotX * 1.4).toFixed(2);
+      var shadowBlur = (30 + Math.abs(curRotX) * 0.4 + Math.abs(curRotY) * 0.4).toFixed(1);
+      var parallaxX = (-curRotY * 1.1).toFixed(2);
+      var parallaxY = (6 - curRotX * 0.9).toFixed(2);
+      var floorScaleX = (1.0 + Math.abs(curRotY) * 0.015).toFixed(3);
+      var floorSkewX = (-curRotY * 0.8).toFixed(2);
+
+      cutoutContainer.style.setProperty("--hero-shadow-x", shadowX + "px");
+      cutoutContainer.style.setProperty("--hero-shadow-y", shadowY + "px");
+      cutoutContainer.style.setProperty("--hero-shadow-blur", shadowBlur + "px");
+      cutoutContainer.style.setProperty("--shadow-parallax-x", parallaxX + "px");
+      cutoutContainer.style.setProperty("--shadow-parallax-y", parallaxY + "px");
+      cutoutContainer.style.setProperty("--floor-scale-x", floorScaleX);
+      cutoutContainer.style.setProperty("--floor-skew-x", floorSkewX + "deg");
     }
     if (gatePassCard) {
       gatePassCard.style.transform = transformStr;
@@ -1815,6 +1916,32 @@ body {
   function escapeHtml(val) {
     return String(val || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
+
+  function syncCutoutShadowDimensions() {
+    var img = document.getElementById("memberCutoutImg");
+    var container = document.getElementById("heroCutoutContainer");
+    if (!img || !container) return;
+
+    function applyDims() {
+      var rect = img.getBoundingClientRect();
+      var w = rect.width;
+      var h = rect.height;
+      if (w > 30 && h > 30) {
+        container.style.setProperty("--cutout-actual-w", Math.round(w) + "px");
+        container.style.setProperty("--cutout-actual-h", Math.round(h) + "px");
+        container.style.setProperty("--ground-shadow-w", Math.round(w * 0.86) + "px");
+      }
+    }
+
+    applyDims();
+    if (!img.complete) {
+      img.addEventListener("load", applyDims, { once: true });
+    }
+  }
+
+  window.addEventListener("resize", syncCutoutShadowDimensions);
+  window.addEventListener("DOMContentLoaded", syncCutoutShadowDimensions);
+  setTimeout(syncCutoutShadowDimensions, 250);
 
   function renderMemberProfile(data) {
     if (!data) return;
@@ -1934,6 +2061,7 @@ body {
     var maleCutout = "assets/images/member-male-cutout.png";
     var femaleCutout = "assets/images/member-female-cutout.png";
     var memberCutoutImg = document.getElementById("memberCutoutImg");
+    var cutoutDepthProjection = document.getElementById("cutoutDepthProjection");
 
     var resolvedPhoto = photo;
     if (!resolvedPhoto && roll) {
@@ -1942,13 +2070,23 @@ body {
       } catch(e) {}
     }
 
-    if (resolvedPhoto && (resolvedPhoto.startsWith("data:") || resolvedPhoto.startsWith("http") || resolvedPhoto.startsWith("assets/"))) {
+    var isCustomPhoto = false;
+    if (resolvedPhoto && (resolvedPhoto.startsWith("data:") || resolvedPhoto.startsWith("http") || (resolvedPhoto.startsWith("assets/") && !resolvedPhoto.includes("member-male-cutout") && !resolvedPhoto.includes("member-female-cutout")))) {
       memberCutoutImg.src = resolvedPhoto;
+      isCustomPhoto = true;
     } else if (photo === "female") {
       memberCutoutImg.src = femaleCutout;
     } else {
       memberCutoutImg.src = maleCutout;
     }
+
+    if (memberCutoutImg) {
+      memberCutoutImg.classList.toggle("is-custom-photo", isCustomPhoto);
+    }
+    if (cutoutDepthProjection) {
+      cutoutDepthProjection.classList.toggle("is-custom-photo", isCustomPhoto);
+    }
+    syncCutoutShadowDimensions();
 
 
 
