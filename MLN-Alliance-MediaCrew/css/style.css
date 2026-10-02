@@ -709,7 +709,7 @@ p{ margin: 0 0 1em; max-width: 62ch; }
    -------------------------------------------------------------------------- */
 .hero{
   position: relative;
-  min-height: min(88vh, 820px);
+  min-height: calc(100vh - 72px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -865,7 +865,7 @@ p{ margin: 0 0 1em; max-width: 62ch; }
 }
 
 .hero h1{
-  font-size: clamp(3rem, 7vw, 6.2rem);
+  font-size: clamp(2.8rem, 4.8vw, 4.4rem);
   line-height: 1.02;
   margin: 0 0 12px;
   letter-spacing: -0.055em;
@@ -904,7 +904,7 @@ p{ margin: 0 0 1em; max-width: 62ch; }
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 50px;
+  margin-bottom: 32px;
   animation: heroItemFadeIn 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: 350ms;
 }
@@ -3657,7 +3657,7 @@ body.register-page {
     background-position: center right;
   }
   .hero-stage .lens-rig{ opacity: 0.28; }
-  .hero h1{ font-size: clamp(2.8rem, 13vw, 4.4rem); }
+  .hero h1{ font-size: clamp(2.0rem, 9.2vw, 3.2rem); line-height: 1.08; letter-spacing: -0.03em; }
   .hero-actions{ flex-direction: column; align-items: stretch; }
   .hero-stats{ justify-content: space-between; width: 100%; }
   .hero-stats > div{ padding-right: 14px; margin-right: 14px; }
