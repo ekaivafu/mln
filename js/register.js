@@ -1848,13 +1848,13 @@
 
       // QR Instructions
       ctx.textAlign = "center";
-      ctx.fillStyle = "#00f2a1";
+      ctx.fillStyle = "#10b981";
       ctx.font = "bold 13px 'Plus Jakarta Sans', sans-serif";
-      ctx.fillText("DUAL-PURPOSE ATTENDANCE & DIGITAL ID PASS", photoCenterX, 958);
+      ctx.fillText("OFFICIAL VERIFIED QR-ID", photoCenterX, 958);
 
-      ctx.fillStyle = "#a89c93";
+      ctx.fillStyle = "#64748b";
       ctx.font = "500 12px 'Plus Jakarta Sans', sans-serif";
-      ctx.fillText("Scan with Google Lens to view live portfolio, or tap at campus events", photoCenterX, 980);
+      ctx.fillText("Scan to verify member identity", photoCenterX, 980);
 
       // 9. Bottom Security Banner
       var bannerY = 1010;

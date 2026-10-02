@@ -16,34 +16,36 @@
    ========================================================================== */
 
 :root {
-  --port-bg: #f4f4f5;
+  --port-bg: #f8fafc;
   --port-stage-bg: #ffffff;
   --port-glass: #ffffff;
-  --port-glass-hover: #f8f9fa;
-  --port-border: #e4e4e7;
-  --port-border-strong: #d4d4d8;
-  --port-border-glow: rgba(0, 0, 0, 0.12);
+  --port-glass-hover: #f1f5f9;
+  --port-border: #e2e8f0;
+  --port-border-strong: #cbd5e1;
+  --port-border-glow: rgba(37, 99, 235, 0.25);
   --port-specular: inset 0 1px 0 0 rgba(255, 255, 255, 1);
-  --port-text-hi: #09090b;
-  --port-text-mid: #52525b;
-  --port-text-low: #71717a;
-  --port-coral: #09090b;
-  --port-peach: #27272a;
-  --port-mint: #09090b;
-  --port-blue: #09090b;
-  --port-purple: #52525b;
+  --port-text-hi: #0f172a;
+  --port-text-mid: #475569;
+  --port-text-low: #94a3b8;
+  --port-coral: #1d4ed8; /* Vibrant Royal Electric Blue from reference photo! */
+  --port-peach: #6366f1; /* Electric Indigo */
+  --port-mint: #10b981;  /* Emerald Verified */
+  --port-blue: #2563eb;  /* Media Lead Blue */
+  --port-purple: #7c3aed; /* Bot Icon Violet */
 }
 
 /* Department Theme Variants */
 body.theme-designing {
-  --port-coral: #ffffff;
-  --port-peach: #e4e4e7;
-  --port-border-glow: rgba(255, 255, 255, 0.45);
+  --port-coral: #7c3aed;
+  --port-peach: #ec4899;
+  --port-blue: #7c3aed;
+  --port-border-glow: rgba(124, 58, 237, 0.35);
 }
 body.theme-marketing {
-  --port-coral: #ffffff;
-  --port-peach: #d4d4d8;
-  --port-border-glow: rgba(255, 255, 255, 0.45);
+  --port-coral: #1d4ed8;
+  --port-peach: #6366f1;
+  --port-blue: #2563eb;
+  --port-border-glow: rgba(37, 99, 235, 0.35);
 }
 
 * {
@@ -263,13 +265,13 @@ body {
   gap: 8px;
   padding: 6px 16px;
   border-radius: 999px;
-  background: #f4f4f5;
-  border: 1px solid #e4e4e7;
-  color: #52525b;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  color: #4f46e5;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   margin: 18px auto 14px;
 }
@@ -350,7 +352,7 @@ body {
   width: 310px;
   height: 310px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
   filter: blur(40px);
   top: 18%;
   z-index: 1;
@@ -502,15 +504,15 @@ body {
 /* Floating HUD Tag Over Cutout */
 .cutout-floating-action-btn {
   position: absolute;
-  bottom: 12px;
-  right: 22px;
-  width: 44px;
-  height: 44px;
+  bottom: 14px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: #09090b;
+  background: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%);
   color: #ffffff;
-  border: 2px solid #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  border: 3px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -519,8 +521,8 @@ body {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
 }
 .cutout-floating-action-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
+  transform: scale(1.12);
+  box-shadow: 0 14px 32px rgba(99, 102, 241, 0.6);
 }
 .cutout-hud-badge {
   position: absolute;
@@ -561,13 +563,14 @@ body {
 
 .hero-lead-title {
   font-family: 'Space Grotesk', -apple-system, sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #09090b;
+  letter-spacing: -0.02em;
+  color: #1d4ed8; /* VIBRANT ROYAL BLUE FROM REFERENCE PHOTO! */
   text-align: center;
   margin-top: 24px;
   line-height: 1.1;
+  text-transform: uppercase;
 }
 
 .hero-lead-degree {
@@ -597,9 +600,9 @@ body {
   gap: 6px;
   padding: 4px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: var(--port-mint);
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #059669;
   font-size: 0.72rem;
   font-weight: 800;
 }
@@ -685,9 +688,10 @@ body {
   margin-bottom: 12px;
 }
 .bento-link-row:hover {
-  border-color: #09090b;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
+  background: #f8fafc;
+  border-color: #2563eb;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.12);
 }
 
 .bento-link-row::after {
@@ -701,13 +705,6 @@ body {
 }
 .bento-link-row:hover::after {
   opacity: 1;
-}
-
-.bento-link-row:hover {
-  transform: translateY(-3px) scale(1.01);
-  background: var(--port-glass-hover);
-  border-color: var(--port-border-glow);
-  box-shadow: 0 12px 30px -10px rgba(255, 255, 255, 0.25), var(--port-specular);
 }
 
 .bento-link-left {
@@ -749,14 +746,14 @@ body {
   color: #25d366;
 }
 .bento-link-row.portfolio .bento-link-icon-box {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(212, 212, 216, 0.2));
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(124, 58, 237, 0.15));
+  border-color: rgba(99, 102, 241, 0.35);
+  color: #6366f1;
 }
 .bento-link-row.email .bento-link-icon-box {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(228, 228, 231, 0.2));
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(234, 88, 12, 0.15));
+  border-color: rgba(249, 115, 22, 0.35);
+  color: #ea580c;
 }
 
 .bento-link-texts {
@@ -822,11 +819,11 @@ body {
 }
 
 .gate-pass-card {
-  background: linear-gradient(145deg, rgba(24, 24, 27, 0.94) 0%, rgba(12, 12, 14, 0.98) 100%);
-  border: 1px solid var(--port-border-strong);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 26px;
   padding: 24px;
-  box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
@@ -877,20 +874,20 @@ body {
   align-items: center;
   gap: 5px;
   padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
   border-radius: 8px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: var(--port-mint);
+  color: #059669;
 }
 .qr-badge .qr-badge-pulse {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--port-mint);
+  background: #10b981;
   animation: pulseDot 1.5s infinite;
 }
 
@@ -900,8 +897,8 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 24px 16px;
-  background: rgba(10, 8, 7, 0.88);
-  border: 1px solid #e4e4e7;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 20px;
   margin-bottom: 20px;
   position: relative;
@@ -945,16 +942,16 @@ body {
   margin-top: 8px;
   padding: 4px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid #e4e4e7;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
   font-family: monospace;
   font-size: 0.72rem;
-  color: var(--port-peach);
+  color: #1d4ed8;
   cursor: pointer;
   transition: background 0.2s;
 }
 .gate-tiny-url-badge:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: #dbeafe;
 }
 
 /* Action Buttons (Download & Save Contact) */
@@ -983,24 +980,24 @@ body {
 }
 .pass-btn.primary {
   background: linear-gradient(135deg, var(--port-coral) 0%, var(--port-peach) 100%);
-  color: #09090b;
-  box-shadow: 0 8px 24px -6px rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  box-shadow: 0 8px 24px -6px rgba(37, 99, 235, 0.45);
 }
 .pass-btn.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.65);
   filter: brightness(1.08);
 }
 .pass-btn.secondary {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--port-border-strong);
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
   color: #09090b;
-  box-shadow: var(--port-specular);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 .pass-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: var(--port-coral);
-  color: var(--port-peach);
+  background: #eff6ff;
+  border-color: #2563eb;
+  color: #1d4ed8;
   transform: translateY(-2px);
 }
 
@@ -1015,9 +1012,9 @@ body {
   height: 56px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--port-coral) 0%, var(--port-peach) 100%);
-  color: #09090b;
+  color: #ffffff;
   border: none;
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1027,7 +1024,7 @@ body {
 }
 .floating-assistant-bot:hover {
   transform: scale(1.08) rotate(5deg);
-  box-shadow: 0 14px 38px rgba(255, 255, 255, 0.75);
+  box-shadow: 0 14px 38px rgba(37, 99, 235, 0.65);
 }
 
 .action-quick-drawer {
