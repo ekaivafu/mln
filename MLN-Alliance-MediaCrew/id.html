@@ -55,6 +55,7 @@ body.theme-marketing {
 html {
   scroll-behavior: auto;
   -webkit-tap-highlight-color: transparent;
+  min-height: 100%;
 }
 
 body {
@@ -62,36 +63,54 @@ body {
   color: var(--port-text-mid);
   font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
+  /* CRITICAL: Cancel style.css pageEntrance animation and transform which breaks position: fixed */
+  animation: none !important;
+  transform: none !important;
+  perspective: none !important;
+  filter: none !important;
 }
 
-/* ==================== AMBIENT LIVING BACKGROUND CANVAS ==================== */
+/* ==================== AMBIENT LIVING BACKGROUND CANVAS (FIXED IN VIEWPORT) ==================== */
 #ambientBgCanvas {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
   opacity: 0.95;
+  transform: none !important;
 }
 
-/* Static GPU Cyber Living Grid Backdrop - Zero CPU Repaints */
+/* Static GPU Cyber Living Grid Backdrop - Permanently pinned to viewport */
 .perspective-grid-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
   background-image: 
     linear-gradient(to right, rgba(255, 224, 201, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 224, 201, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
+  background-attachment: fixed !important;
   opacity: 0.85;
-  transform: translate3d(0, 0, 0);
+  transform: none !important;
 }
 
 /* ==================== CENTERED PORTFOLIO STAGE ==================== */
@@ -99,7 +118,8 @@ body {
   width: 100%;
   max-width: 520px;
   min-height: 100vh;
-  background: linear-gradient(180deg, rgba(14, 10, 8, 0.52) 0%, rgba(10, 7, 6, 0.62) 100%);
+  min-height: 100dvh;
+  background: linear-gradient(180deg, rgba(14, 10, 8, 0.65) 0%, rgba(10, 7, 6, 0.78) 100%);
   border-left: 1px solid var(--port-border);
   border-right: 1px solid var(--port-border);
   position: relative;
@@ -129,7 +149,7 @@ body {
   padding: 16px 22px;
   position: sticky;
   top: 0;
-  background: rgba(12, 9, 7, 0.9);
+  background: rgba(10, 7, 6, 0.96);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   z-index: 60;
@@ -1416,9 +1436,19 @@ body {
   var shockwaves = [];
   var mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
 
+  var lastW = 0, lastH = 0;
   function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+    var newW = window.innerWidth;
+    var newH = window.innerHeight;
+    // On mobile devices, address bar collapse on scroll changes height by ~56px.
+    // Do NOT re-initialize canvas on scroll events to prevent jumping!
+    if (lastW > 0 && Math.abs(newW - lastW) < 6 && Math.abs(newH - lastH) < 120) {
+      return;
+    }
+    lastW = newW;
+    lastH = newH;
+    width = canvas.width = newW;
+    height = canvas.height = newH;
   }
   window.addEventListener("resize", resize);
   resize();
@@ -1447,16 +1477,16 @@ body {
     }
   }, { passive: true });
 
-  // Adaptive particle count for fluid 120Hz mobile & high-res screens
-  var PARTICLE_COUNT = (window.innerWidth < 768) ? 36 : 64;
+  // Adaptive particle count with calm 360-degree floating drift (not rushing upwards)
+  var PARTICLE_COUNT = (window.innerWidth < 768) ? 32 : 58;
   for (var i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 2.0 + 0.8,
-      vx: (Math.random() - 0.5) * 0.45,
-      vy: -Math.random() * 0.65 - 0.25,
-      alpha: Math.random() * 0.65 + 0.25,
+      radius: Math.random() * 1.8 + 0.6,
+      vx: (Math.random() - 0.5) * 0.26,
+      vy: (Math.random() - 0.5) * 0.26,
+      alpha: Math.random() * 0.60 + 0.20,
       color: Math.random() > 0.5 ? "239, 118, 87" : (Math.random() > 0.5 ? "0, 242, 161" : "255, 154, 112")
     });
   }
@@ -1584,10 +1614,10 @@ body {
 })();
 
 /* ==========================================================================
-   INTERACTIVE 3D TILT PHYSICS & SPOTLIGHT CURSOR ENGINE
-   Guarded for fine pointer / hover devices to prevent mobile scroll lag
+   DESKTOP MOUSE 3D TILT & SPOTLIGHT CURSOR ENGINE
+   Guarded strictly for desktop fine mouse pointers
    ========================================================================== */
-(function initTiltAndSpotlight() {
+(function initDesktopMouseTilt() {
   if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     return;
   }
@@ -1638,20 +1668,127 @@ body {
       gatePassCard.style.transform = "rotateX(0deg) rotateY(0deg)";
     });
   }
+})();
 
-  if (window.DeviceOrientationEvent) {
-    window.addEventListener("deviceorientation", function(e) {
-      if (e.gamma !== null && e.beta !== null) {
-        var rotY = Math.max(-15, Math.min(15, e.gamma * 0.4));
-        var rotX = Math.max(-12, Math.min(12, (e.beta - 45) * 0.3));
-        if (cutoutContainer) {
-          cutoutContainer.style.transform = "rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg)";
-        }
-        if (gatePassCard) {
-          gatePassCard.style.transform = "rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg)";
+/* ==========================================================================
+   MOBILE 3D GYROSCOPE & KINETIC SENSOR ENGINE
+   Full support for Android (Poco F6, Chrome, Brave) and iOS DeviceOrientation
+   Auto-calibrates to natural holding posture with silky 120Hz physics lerp
+   ========================================================================== */
+(function initMobileGyroscope() {
+  var cutoutContainer = document.getElementById("heroCutoutContainer");
+  var gatePassCard = document.getElementById("gatePassCard");
+  if (!cutoutContainer && !gatePassCard) return;
+
+  var baseBeta = null;
+  var baseGamma = null;
+  var curRotX = 0;
+  var curRotY = 0;
+  var targetRotX = 0;
+  var targetRotY = 0;
+  var isTicking = false;
+
+  function updateTransforms() {
+    isTicking = false;
+    // Silky lerp interpolation optimized for 120Hz screens (Poco F6)
+    curRotX += (targetRotX - curRotX) * 0.16;
+    curRotY += (targetRotY - curRotY) * 0.16;
+
+    var transformStr = "rotateX(" + curRotX.toFixed(2) + "deg) rotateY(" + curRotY.toFixed(2) + "deg)";
+
+    if (cutoutContainer) {
+      cutoutContainer.style.transform = transformStr;
+    }
+    if (gatePassCard) {
+      gatePassCard.style.transform = transformStr;
+    }
+
+    if (Math.abs(targetRotX - curRotX) > 0.05 || Math.abs(targetRotY - curRotY) > 0.05) {
+      requestAnimationFrame(updateTransforms);
+      isTicking = true;
+    }
+  }
+
+  function onOrientation(e) {
+    var beta = e.beta;   // Pitch: tilt front / back [-180, 180]
+    var gamma = e.gamma; // Roll: tilt left / right [-90, 90]
+
+    if (beta === null || gamma === null || typeof beta === "undefined") return;
+
+    // Calibrate baseline holding posture on first readings
+    if (baseBeta === null) {
+      baseBeta = beta;
+      baseGamma = gamma;
+    } else {
+      // Extremely gentle drift to adapt to natural hand fatigue or posture shift
+      baseBeta += (beta - baseBeta) * 0.003;
+      baseGamma += (gamma - baseGamma) * 0.003;
+    }
+
+    var deltaGamma = gamma - baseGamma;
+    var deltaBeta = beta - baseBeta;
+
+    // Responsive 3D dynamic tilt range
+    targetRotY = Math.max(-20, Math.min(20, deltaGamma * 0.85));
+    targetRotX = Math.max(-18, Math.min(18, -deltaBeta * 0.75));
+
+    if (!isTicking) {
+      isTicking = true;
+      requestAnimationFrame(updateTransforms);
+    }
+  }
+
+  // Interactive Touch-Tilt fallback (allows user to drag card with finger too)
+  if (cutoutContainer) {
+    var touchStartX = 0, touchStartY = 0;
+    cutoutContainer.addEventListener("touchstart", function(e) {
+      if (e.touches && e.touches[0]) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    cutoutContainer.addEventListener("touchmove", function(e) {
+      if (e.touches && e.touches[0]) {
+        var dx = (e.touches[0].clientX - touchStartX) / (window.innerWidth / 2);
+        var dy = (e.touches[0].clientY - touchStartY) / 160;
+        targetRotY = Math.max(-22, Math.min(22, dx * 18));
+        targetRotX = Math.max(-18, Math.min(18, -dy * 16));
+        if (!isTicking) {
+          isTicking = true;
+          requestAnimationFrame(updateTransforms);
         }
       }
-    });
+    }, { passive: true });
+
+    cutoutContainer.addEventListener("touchend", function() {
+      targetRotX = 0;
+      targetRotY = 0;
+      if (!isTicking) {
+        isTicking = true;
+        requestAnimationFrame(updateTransforms);
+      }
+    }, { passive: true });
+  }
+
+  // Register device orientation events
+  if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
+    // iOS 13+ requires user gesture
+    function requestIosPermission() {
+      DeviceOrientationEvent.requestPermission().then(function(state) {
+        if (state === "granted") {
+          window.addEventListener("deviceorientation", onOrientation, true);
+        }
+      }).catch(function() {});
+      window.removeEventListener("touchend", requestIosPermission);
+      window.removeEventListener("click", requestIosPermission);
+    }
+    window.addEventListener("touchend", requestIosPermission, { passive: true });
+    window.addEventListener("click", requestIosPermission, { passive: true });
+  } else {
+    // Android (Chrome / Brave / Poco F6)
+    window.addEventListener("deviceorientation", onOrientation, true);
+    window.addEventListener("deviceorientationabsolute", onOrientation, true);
   }
 })();
 

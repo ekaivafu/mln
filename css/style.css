@@ -79,8 +79,8 @@ html{
 }
 
 @keyframes pageEntrance{
-  0%{ opacity: 0; transform: translateY(6px); }
-  100%{ opacity: 1; transform: none; }
+  0%{ opacity: 0; }
+  100%{ opacity: 1; }
 }
 
 body{
@@ -94,7 +94,7 @@ body{
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  animation: pageEntrance 250ms var(--ease-out) forwards;
+  animation: pageEntrance 200ms var(--ease-out);
 }
 
 body.page-leaving{
